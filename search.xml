@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>/2023/02/08/vuex/</url>
+    <content><![CDATA[<h1 id="关于Vuex的学习"><a href="#关于Vuex的学习" class="headerlink" title="关于Vuex的学习"></a>关于Vuex的学习</h1><h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p>
+<p>github地址：<a href="http://github.com/vuejs/vuex">http://github.com/vuejs/vuex</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>利用Hexo搭建个人博客</title>
     <url>/2023/02/03/hello-world/</url>
     <content><![CDATA[<p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p>
@@ -21,10 +28,5 @@
 <p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p>
 <p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2023/02/08/vuex/</url>
-    <content><![CDATA[<h1 id="关于Vuex的学习"><a href="#关于Vuex的学习" class="headerlink" title="关于Vuex的学习"></a>关于Vuex的学习</h1>]]></content>
   </entry>
 </search>
