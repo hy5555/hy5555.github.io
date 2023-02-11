@@ -6,7 +6,7 @@
   <link href="https://github.com/hy5555/hy5555.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/hy5555/hy5555.github.io.git/"/>
-  <updated>2023-02-11T06:40:47.349Z</updated>
+  <updated>2023-02-11T06:49:19.259Z</updated>
   <id>https://github.com/hy5555/hy5555.github.io.git/</id>
   
   <author>
@@ -21,16 +21,20 @@
     <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
     <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</id>
     <published>2023-02-11T05:58:25.949Z</published>
-    <updated>2023-02-11T06:40:47.349Z</updated>
+    <updated>2023-02-11T06:49:19.259Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型：是一个对象模板，通俗意义上的理解就是一个类。</p><p>（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享原型的所有属性和方法。</p><p>例：Person.prototype.sayHello() = function(){</p><pre><code>console.log(&quot;你好&quot;)</code></pre><p>}</p><p>（2）严格模式下，原型的属性和方法还是会被原型实例所共享的。</p><p>（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。</p><p>（4）原型的总结：</p><ul><li>所有引用类型都有一个 <code>__proto__</code>(隐式原型)属性，属性值是一个普通的对象</li><li>所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</li><li>所有引用类型的 <code>__proto__</code>属性指向它构造函数的prototype</li></ul><p>（5）函数的原型prototype：函数才有prototype，prototype是一个对象，指向了当前构造函数的引用地址。</p><pre><code>prototype是一个对象，指向当前构造函数的引用地址，与构造函数有关。__proto__是实例化对象中的一个属性，也是一个对象，指向prototype这个对象，与实例化对象有关。</code></pre><p>（6）函数的原型对象__proto__：所有对象都有__proto__属性， 当用构造函数实例化（new）一个对象时，会将新对象的__proto__属性指向 构造函数的prototype。</p><h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a><strong>原型链</strong></h3><p>1）原型链：原型链是原型对象创建过程的历史记录，当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的 <code>__proto__</code>中查找，这样一层一层向上查找就会形成一个链式结构</p><p>2）原型设计的问题：当查找一个对象的属性时，JavaScript 会根据原型链向上遍历对象的原型，直到找到给定名称的属性为止，直到到达原型链的顶部仍然没有找到指定的属性，就会返回 undefined</p><p>也可以理解为原型链继承时查找属性的过程是先查找自身属性，当自身属性不存在时，会在原型链中逐级查找</p><p>3）hasOwnProperty 函数：可以用来检查对象自身是否含有某个属性，返回值是布尔值，当属性不存在时不会向上查找对象原型链，hasOwnProperty是 JavaScript 中唯一一个处理属性但是不查找原型链的函数</p><p>4）getOwnPropertyNames 函数：可以获取对象所有的自身属性，返回值是由对象自身属性名称组成的数组，同样不会向上查找对象原型链</p><p>5）原型链的小结：</p><ul><li>一直往上层查找，直到到null还没有找到，则返回undefined</li><li><code>Object.prototype.__proto__ === null</code></li><li>所有从原型或更高级原型中的得到、执行的方法，其中的this在执行时，指向当前这个触发事件执行的对象</li></ul><p>6）JavaScript的原型是为了实现对象间的联系，解决构造函数无法数据共享而引入的一个属性，而原型链是一个实现对象间联系即继承的主要方法</p><p>原文链接：<a href="https://www.php.cn/js-tutorial-462738.html">js的原型和原型链是什么-js教程-PHP中文网</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型：是一个对象模板，通俗意义上的理解就是一个类。</p><p>（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享原型的所有属性和方法。</p><p>例：Person.prototype.sayHello() = function(){</p><pre><code>console.log(&quot;你好&quot;)</code></pre><p>}</p><p>（2）严格模式下，原型的属性和方法还是会被原型实例所共享的。</p><p>（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。</p><p>（4）原型的总结：</p><span id="more"></span><ul><li>所有引用类型都有一个 <code>__proto__</code>(隐式原型)属性，属性值是一个普通的对象</li><li>所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</li><li>所有引用类型的 <code>__proto__</code>属性指向它构造函数的prototype</li></ul><p>（5）函数的原型prototype：函数才有prototype，prototype是一个对象，指向了当前构造函数的引用地址。</p><pre><code>prototype是一个对象，指向当前构造函数的引用地址，与构造函数有关。__proto__是实例化对象中的一个属性，也是一个对象，指向prototype这个对象，与实例化对象有关。</code></pre><p>（6）函数的原型对象__proto__：所有对象都有__proto__属性， 当用构造函数实例化（new）一个对象时，会将新对象的__proto__属性指向 构造函数的prototype。</p><h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a><strong>原型链</strong></h3><p>1）原型链：原型链是原型对象创建过程的历史记录，当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的 <code>__proto__</code>中查找，这样一层一层向上查找就会形成一个链式结构</p><p>2）原型设计的问题：当查找一个对象的属性时，JavaScript 会根据原型链向上遍历对象的原型，直到找到给定名称的属性为止，直到到达原型链的顶部仍然没有找到指定的属性，就会返回 undefined</p><p>也可以理解为原型链继承时查找属性的过程是先查找自身属性，当自身属性不存在时，会在原型链中逐级查找</p><p>3）hasOwnProperty 函数：可以用来检查对象自身是否含有某个属性，返回值是布尔值，当属性不存在时不会向上查找对象原型链，hasOwnProperty是 JavaScript 中唯一一个处理属性但是不查找原型链的函数</p><p>4）getOwnPropertyNames 函数：可以获取对象所有的自身属性，返回值是由对象自身属性名称组成的数组，同样不会向上查找对象原型链</p><p>5）原型链的小结：</p><ul><li>一直往上层查找，直到到null还没有找到，则返回undefined</li><li><code>Object.prototype.__proto__ === null</code></li><li>所有从原型或更高级原型中的得到、执行的方法，其中的this在执行时，指向当前这个触发事件执行的对象</li></ul><p>6）JavaScript的原型是为了实现对象间的联系，解决构造函数无法数据共享而引入的一个属性，而原型链是一个实现对象间联系即继承的主要方法</p><p>原文链接：<a href="https://www.php.cn/js-tutorial-462738.html">js的原型和原型链是什么-js教程-PHP中文网</a></p>]]></content>
     
     
-      
-      
     <summary type="html">&lt;h3 id=&quot;原型&quot;&gt;&lt;a href=&quot;#原型&quot; class=&quot;headerlink&quot; title=&quot;原型&quot;&gt;&lt;/a&gt;原型&lt;/h3&gt;&lt;p&gt;原型：是一个对象模板，通俗意义上的理解就是一个类。&lt;/p&gt;
-&lt;p&gt;（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享</summary>
-      
+&lt;p&gt;（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享原型的所有属性和方法。&lt;/p&gt;
+&lt;p&gt;例：Person.prototype.sayHello() = function(){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(&amp;quot;你好&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;（2）严格模式下，原型的属性和方法还是会被原型实例所共享的。&lt;/p&gt;
+&lt;p&gt;（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。&lt;/p&gt;
+&lt;p&gt;（4）原型的总结：&lt;/p&gt;</summary>
     
     
     
@@ -42,15 +46,14 @@
     <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/08/Vuex/"/>
     <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/08/Vuex/</id>
     <published>2023-02-08T11:16:51.381Z</published>
-    <updated>2023-02-11T05:43:26.337Z</updated>
+    <updated>2023-02-11T06:49:33.024Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p><p>github地址：<a href="http://github.com/vuejs/vuex">http://github.com/vuejs/vuex</a></p><h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p><a href="https://juejin.cn/post/7013325675129995272">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p><p>github地址：<a href="http://github.com/vuejs/vuex">http://github.com/vuejs/vuex</a></p><h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><span id="more"></span><p><a href="https://juejin.cn/post/7013325675129995272">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h3 id=&quot;Vuex是什么&quot;&gt;&lt;a href=&quot;#Vuex是什么&quot; class=&quot;headerlink&quot; title=&quot;Vuex是什么&quot;&gt;&lt;/a&gt;Vuex是什么&lt;/h3&gt;&lt;p&gt;概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行</summary>
-      
+    <summary type="html">&lt;h3 id=&quot;Vuex是什么&quot;&gt;&lt;a href=&quot;#Vuex是什么&quot; class=&quot;headerlink&quot; title=&quot;Vuex是什么&quot;&gt;&lt;/a&gt;Vuex是什么&lt;/h3&gt;&lt;p&gt;概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。&lt;/p&gt;
+&lt;p&gt;github地址：&lt;a href=&quot;http://github.com/vuejs/vuex&quot;&gt;http://github.com/vuejs/vuex&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;使用说明&quot;&gt;&lt;a href=&quot;#使用说明&quot; class=&quot;headerlink&quot; title=&quot;使用说明&quot;&gt;&lt;/a&gt;使用说明&lt;/h3&gt;</summary>
     
     
     
@@ -62,16 +65,22 @@
     <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/"/>
     <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/</id>
     <published>2023-02-03T05:59:25.615Z</published>
-    <updated>2023-02-05T09:38:54.149Z</updated>
+    <updated>2023-02-11T06:49:26.722Z</updated>
     
-    <content type="html"><![CDATA[<p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，命名为Hexo</p><p>在Hexo目录下打开命令行窗口，执行以下指令：</p><p><code>    npm install hexo-cli -g</code></p><p><code>    hexo init blog</code></p><p><code>    cd blog</code></p><p><code>    npm install</code></p><p><code>    hexo server</code></p><p>此时你打开本地4000端口，已经可以发现属于你的博客了。</p><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><p>将文件打包生成静态资源，执行以下命令，将会生成public文件夹，里面存放静态资源，后续将博客部署到github上时，上传的也是静态文件（不直接更改里面的代码）。</p><p><code>hexo g</code></p><h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p><a href="https://hexo.io/themes/">主题(hexo.io)</a></p><p>在上面找到自己喜欢的主题并进入主题给出的github界面，那里会教你安装使用对应主题。</p><h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p><p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p><p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>]]></content>
+    <content type="html"><![CDATA[<p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，命名为Hexo</p><p>在Hexo目录下打开命令行窗口，执行以下指令：</p><p><code>    npm install hexo-cli -g</code></p><p><code>    hexo init blog</code></p><p><code>    cd blog</code></p><p><code>    npm install</code></p><p><code>    hexo server</code></p><p>此时你打开本地4000端口，已经可以发现属于你的博客了。</p><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><span id="more"></span><p>将文件打包生成静态资源，执行以下命令，将会生成public文件夹，里面存放静态资源，后续将博客部署到github上时，上传的也是静态文件（不直接更改里面的代码）。</p><p><code>hexo g</code></p><h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p><a href="https://hexo.io/themes/">主题(hexo.io)</a></p><p>在上面找到自己喜欢的主题并进入主题给出的github界面，那里会教你安装使用对应主题。</p><h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p><p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p><p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>]]></content>
     
     
-      
-      
     <summary type="html">&lt;p&gt;本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！&lt;/p&gt;
-&lt;h3 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; tit</summary>
-      
+&lt;h3 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h3&gt;&lt;p&gt;需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）&lt;/p&gt;
+&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;p&gt;新建一个文件夹，命名为Hexo&lt;/p&gt;
+&lt;p&gt;在Hexo目录下打开命令行窗口，执行以下指令：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    npm install hexo-cli -g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    hexo init blog&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    cd blog&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    npm install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    hexo server&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;此时你打开本地4000端口，已经可以发现属于你的博客了。&lt;/p&gt;
+&lt;h3 id=&quot;打包&quot;&gt;&lt;a href=&quot;#打包&quot; class=&quot;headerlink&quot; title=&quot;打包&quot;&gt;&lt;/a&gt;打包&lt;/h3&gt;</summary>
     
     
     
