@@ -46,14 +46,15 @@
     <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/08/Vuex/"/>
     <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/08/Vuex/</id>
     <published>2023-02-08T11:16:51.381Z</published>
-    <updated>2023-02-11T06:49:33.024Z</updated>
+    <updated>2023-02-11T12:55:59.243Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p><p>github地址：<a href="http://github.com/vuejs/vuex">http://github.com/vuejs/vuex</a></p><h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><span id="more"></span><p><a href="https://juejin.cn/post/7013325675129995272">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p><p>github地址：<a href="http://github.com/vuejs/vuex">http://github.com/vuejs/vuex</a></p><h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p><a href="https://juejin.cn/post/7013325675129995272">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>]]></content>
     
     
-    <summary type="html">&lt;h3 id=&quot;Vuex是什么&quot;&gt;&lt;a href=&quot;#Vuex是什么&quot; class=&quot;headerlink&quot; title=&quot;Vuex是什么&quot;&gt;&lt;/a&gt;Vuex是什么&lt;/h3&gt;&lt;p&gt;概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。&lt;/p&gt;
-&lt;p&gt;github地址：&lt;a href=&quot;http://github.com/vuejs/vuex&quot;&gt;http://github.com/vuejs/vuex&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;使用说明&quot;&gt;&lt;a href=&quot;#使用说明&quot; class=&quot;headerlink&quot; title=&quot;使用说明&quot;&gt;&lt;/a&gt;使用说明&lt;/h3&gt;</summary>
+      
+      
+    <summary type="html">&lt;h3 id=&quot;Vuex是什么&quot;&gt;&lt;a href=&quot;#Vuex是什么&quot; class=&quot;headerlink&quot; title=&quot;Vuex是什么&quot;&gt;&lt;/a&gt;Vuex是什么&lt;/h3&gt;&lt;p&gt;概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行</summary>
+      
     
     
     
