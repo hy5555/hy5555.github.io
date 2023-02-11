@@ -1,10 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>原型和原型链</title>
+    <url>/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
+    <content><![CDATA[<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型：是一个对象模板，通俗意义上的理解就是一个类。</p>
+<p>（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享原型的所有属性和方法。</p>
+<p>例：Person.prototype.sayHello() = function(){</p>
+<pre><code>console.log(&quot;你好&quot;)
+</code></pre>
+<p>}</p>
+<p>（2）严格模式下，原型的属性和方法还是会被原型实例所共享的。</p>
+<p>（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。</p>
+<p>（4）原型的总结：</p>
+<ul>
+<li>所有引用类型都有一个 <code>__proto__</code>(隐式原型)属性，属性值是一个普通的对象</li>
+<li>所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</li>
+<li>所有引用类型的 <code>__proto__</code>属性指向它构造函数的prototype</li>
+</ul>
+<p>（5）函数的原型prototype：函数才有prototype，prototype是一个对象，指向了当前构造函数的引用地址。</p>
+<pre><code>prototype是一个对象，指向当前构造函数的引用地址，与构造函数有关。
+
+__proto__是实例化对象中的一个属性，也是一个对象，指向prototype这个对象，与实例化对象有关。
+</code></pre>
+<p>（6）函数的原型对象__proto__：所有对象都有__proto__属性， 当用构造函数实例化（new）一个对象时，会将新对象的__proto__属性指向 构造函数的prototype。</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a><strong>原型链</strong></h3><p>1）原型链：原型链是原型对象创建过程的历史记录，当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的 <code>__proto__</code>中查找，这样一层一层向上查找就会形成一个链式结构</p>
+<p>2）原型设计的问题：当查找一个对象的属性时，JavaScript 会根据原型链向上遍历对象的原型，直到找到给定名称的属性为止，直到到达原型链的顶部仍然没有找到指定的属性，就会返回 undefined</p>
+<p>也可以理解为原型链继承时查找属性的过程是先查找自身属性，当自身属性不存在时，会在原型链中逐级查找</p>
+<p>3）hasOwnProperty 函数：可以用来检查对象自身是否含有某个属性，返回值是布尔值，当属性不存在时不会向上查找对象原型链，hasOwnProperty是 JavaScript 中唯一一个处理属性但是不查找原型链的函数</p>
+<p>4）getOwnPropertyNames 函数：可以获取对象所有的自身属性，返回值是由对象自身属性名称组成的数组，同样不会向上查找对象原型链</p>
+<p>5）原型链的小结：</p>
+<ul>
+<li>一直往上层查找，直到到null还没有找到，则返回undefined</li>
+<li><code>Object.prototype.__proto__ === null</code></li>
+<li>所有从原型或更高级原型中的得到、执行的方法，其中的this在执行时，指向当前这个触发事件执行的对象</li>
+</ul>
+<p>6）JavaScript的原型是为了实现对象间的联系，解决构造函数无法数据共享而引入的一个属性，而原型链是一个实现对象间联系即继承的主要方法</p>
+<p>原文链接：<a href="https://www.php.cn/js-tutorial-462738.html">js的原型和原型链是什么-js教程-PHP中文网</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>关于Vuex的学习</title>
     <url>/2023/02/08/Vuex/</url>
     <content><![CDATA[<h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p>
 <p>github地址：<a href="http://github.com/vuejs/vuex">http://github.com/vuejs/vuex</a></p>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p><a href="https://juejin.cn/post/7013325675129995272">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>
 ]]></content>
   </entry>
   <entry>
