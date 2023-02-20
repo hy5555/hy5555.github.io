@@ -87,6 +87,27 @@
       <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      <a href="/2023/02/20/this%E6%8C%87%E5%90%91/" class="archive-article-date">
+  <time datetime="2023-02-20T12:17:09.653Z" itemprop="datePublished">02/20</time>
+</a>
+       
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2023/02/20/this%E6%8C%87%E5%90%91/"
+    >箭头函数与普通函数this指向的问题</a> 
+</h2>
+ 
+
+    </header>
+    
+    
+  </div>
+</article>
+      
+  
+  
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
       <a href="/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="archive-article-date">
   <time datetime="2023-02-11T05:58:25.949Z" itemprop="datePublished">02/11</time>
 </a>
@@ -519,42 +540,6 @@
 </style>
     
     
-<script>
-  const password = "84";
-  const lock_password = window.sessionStorage.getItem("lock_password");
-  console.log(password, lock_password);
-  if (lock_password !== password) {
-    Swal.fire({
-      title: "请输入访问密码",
-      input: "text",
-      inputAttributes: {
-        autocapitalize: "off",
-      },
-      showCancelButton: false,
-      showLoaderOnConfirm: true,
-      allowOutsideClick: false,
-      confirmButtonText: "确定",
-    }).then((result) => {
-      console.log(result);
-      if (result.isConfirmed) {
-        console.log(password);
-        if (result.value === password) {
-          window.sessionStorage.setItem("lock_password", result.value);
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "密码错误，请重试",
-            confirmButtonText: "确定",
-            allowOutsideClick: false,
-          }).then(() => {
-            window.location.reload();
-          });
-        }
-      }
-    });
-  }
-</script>
-
 
   </div>
 </body>
