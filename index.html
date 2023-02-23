@@ -166,6 +166,54 @@
     
     
     <article
+  id="post-Vue3第一天"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/"
+    >Vue3第一天</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/" class="article-date">
+  <time datetime="2023-02-23T03:33:45.555Z" itemprop="datePublished">2023-02-23</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><p>setup配置项是vue3中新添加的配置项，组件所用到的数据、方法等等均放在此配置项中。setup返回值有两种，一种是返回对象，还有一种是返回自定义渲染模板（render函数）。在vue3中使用setup无疑比vue2更接近原生JS。</p>
+<h3 id="ref和reactive"><a href="#ref和reactive" class="headerlink" title="ref和reactive"></a>ref和reactive</h3><p>ref</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-测试属性"
   class="article article-type-post"
   itemscope
@@ -193,18 +241,11 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p>
-<h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p>
-<p>let o = { x: 1}</p>
-<p>“x” in o               //true</p>
-<p>“y” in o              //false</p>
-<p>“toString” in o          //true (继承属性)</p>
-<h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p>
-<p>let o = { x: 1}</p>
-<p>o.hasOwnProperty(“x”)              //true</p>
-<h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
-<h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
- 
+  <p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p> 
+      <a class="article-more-link" href="/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
