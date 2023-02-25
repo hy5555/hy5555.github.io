@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>利用Hexo搭建个人博客</title>
+    <title>Vue项目</title>
     <url>/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/</url>
-    <content><![CDATA[<p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，命名为Hexo</p>
-<p>在Hexo目录下打开命令行窗口，执行以下指令：</p>
-<p><code>    npm install hexo-cli -g</code></p>
-<p><code>    hexo init blog</code></p>
-<p><code>    cd blog</code></p>
-<p><code>    npm install</code></p>
-<p><code>    hexo server</code></p>
-<p>此时你打开本地4000端口，已经可以发现属于你的博客了。</p>
-<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><span id="more"></span>
+    <content><![CDATA[<h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><h4 id="ElementUI引入及使用"><a href="#ElementUI引入及使用" class="headerlink" title="ElementUI引入及使用"></a>ElementUI引入及使用</h4><p><a href="https://element.eleme.cn/#/zh-CN/component/color">官网 | Element</a></p>
+<p>全局使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import ElementUI from &#x27;element-ui&#x27;//引入UI组件库</span><br><span class="line">import &#x27;element-ui/lib/theme-chalk/index.css&#x27;</span><br></pre></td></tr></table></figure>
 
+<p>局部使用</p>
+<p>首先，安装 babel-plugin-component：</p>
+<p><code>npm install babel-plugin-component -D</code></p>
+<p>然后，将 .babelrc 修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [[&quot;es2015&quot;, &#123; &quot;modules&quot;: false &#125;]],</span><br><span class="line">  &quot;plugins&quot;: [</span><br><span class="line">    [</span><br><span class="line">      &quot;component&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;libraryName&quot;: &quot;element-ui&quot;,</span><br><span class="line">        &quot;styleLibraryName&quot;: &quot;theme-chalk&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>将文件打包生成静态资源，执行以下命令，将会生成public文件夹，里面存放静态资源，后续将博客部署到github上时，上传的也是静态文件（不直接更改里面的代码）。</p>
-<p><code>hexo g</code></p>
-<h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p><a href="https://hexo.io/themes/">主题(hexo.io)</a></p>
-<p>在上面找到自己喜欢的主题并进入主题给出的github界面，那里会教你安装使用对应主题。</p>
-<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p>
-<p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p>
-<p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>
+<p>接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;;</span><br><span class="line">import &#123; Button, Select &#125; from &#x27;element-ui&#x27;;</span><br><span class="line">import App from &#x27;./App.vue&#x27;;</span><br><span class="line"></span><br><span class="line">Vue.component(Button.name, Button);</span><br><span class="line">Vue.component(Select.name, Select);</span><br><span class="line">/* 或写为</span><br><span class="line"> * Vue.use(Button)</span><br><span class="line"> * Vue.use(Select)</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#x27;#app&#x27;,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>为了更好地模块化工程，可以将ElementUI按需引入做一个文件，文件位置通常为plugins/elementui.js，被main.js引入。</p>
+<h4 id="样式重置"><a href="#样式重置" class="headerlink" title="样式重置"></a>样式重置</h4><p><a href="https://meyerweb.com/eric/tools/css/reset/">样式重置文件 (meyerweb.com)</a></p>
+<p>通常放在src/assets/css/reset.css中，在App.vue的 <code>&lt;style&gt;</code>中通过@import url(‘../src/assets/css/reset.css’)被引入</p>
+<h4 id="图标库引入及其使用"><a href="#图标库引入及其使用" class="headerlink" title="图标库引入及其使用"></a>图标库引入及其使用</h4><p><a href="https://fontawesome.com/">Font Awesome图标库</a></p>
+<p>需要下载</p>
+<p><code>cnpm i -D font-awesome</code></p>
+<p>下载之后在main.js中导入</p>
+<p><code>import &#39;font-awesome/css/font-awesome.min.css&#39;</code></p>
 ]]></content>
   </entry>
   <entry>
@@ -34,28 +35,31 @@
 ]]></content>
   </entry>
   <entry>
-    <title>利用Hexo搭建个人博客</title>
-    <url>/2023/02/03/hello-world/</url>
-    <content><![CDATA[<p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，命名为Hexo</p>
-<p>在Hexo目录下打开命令行窗口，执行以下指令：</p>
-<p><code>    npm install hexo-cli -g</code></p>
-<p><code>    hexo init blog</code></p>
-<p><code>    cd blog</code></p>
-<p><code>    npm install</code></p>
-<p><code>    hexo server</code></p>
-<p>此时你打开本地4000端口，已经可以发现属于你的博客了。</p>
-<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><span id="more"></span>
+    <title>测试属性（判断属性是否在对象中）</title>
+    <url>/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p>
+<span id="more"></span>
+
+<h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p>
+<p>let o = { x: 1}</p>
+<p>“x” in o               //true</p>
+<p>“y” in o              //false</p>
+<p>“toString” in o          //true (继承属性)</p>
+<h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p>
+<p>let o = { x: 1}</p>
+<p>o.hasOwnProperty(“x”)              //true</p>
+<h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
+<h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>箭头函数与普通函数this指向的问题</title>
+    <url>/2023/02/20/this%E6%8C%87%E5%90%91/</url>
+    <content><![CDATA[<p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p>
+<span id="more"></span>
 
 
-<p>将文件打包生成静态资源，执行以下命令，将会生成public文件夹，里面存放静态资源，后续将博客部署到github上时，上传的也是静态文件（不直接更改里面的代码）。</p>
-<p><code>hexo g</code></p>
-<h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p><a href="https://hexo.io/themes/">主题(hexo.io)</a></p>
-<p>在上面找到自己喜欢的主题并进入主题给出的github界面，那里会教你安装使用对应主题。</p>
-<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p>
-<p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p>
-<p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>
+<p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>
 ]]></content>
   </entry>
   <entry>
@@ -108,31 +112,28 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
 ]]></content>
   </entry>
   <entry>
-    <title>箭头函数与普通函数this指向的问题</title>
-    <url>/2023/02/20/this%E6%8C%87%E5%90%91/</url>
-    <content><![CDATA[<p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p>
-<span id="more"></span>
+    <title>利用Hexo搭建个人博客</title>
+    <url>/2023/02/03/hello-world/</url>
+    <content><![CDATA[<p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，命名为Hexo</p>
+<p>在Hexo目录下打开命令行窗口，执行以下指令：</p>
+<p><code>    npm install hexo-cli -g</code></p>
+<p><code>    hexo init blog</code></p>
+<p><code>    cd blog</code></p>
+<p><code>    npm install</code></p>
+<p><code>    hexo server</code></p>
+<p>此时你打开本地4000端口，已经可以发现属于你的博客了。</p>
+<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><span id="more"></span>
 
 
-<p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>测试属性（判断属性是否在对象中）</title>
-    <url>/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p>
-<span id="more"></span>
-
-<h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p>
-<p>let o = { x: 1}</p>
-<p>“x” in o               //true</p>
-<p>“y” in o              //false</p>
-<p>“toString” in o          //true (继承属性)</p>
-<h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p>
-<p>let o = { x: 1}</p>
-<p>o.hasOwnProperty(“x”)              //true</p>
-<h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
-<h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
+<p>将文件打包生成静态资源，执行以下命令，将会生成public文件夹，里面存放静态资源，后续将博客部署到github上时，上传的也是静态文件（不直接更改里面的代码）。</p>
+<p><code>hexo g</code></p>
+<h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p><a href="https://hexo.io/themes/">主题(hexo.io)</a></p>
+<p>在上面找到自己喜欢的主题并进入主题给出的github界面，那里会教你安装使用对应主题。</p>
+<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p>
+<p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p>
+<p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>
 ]]></content>
   </entry>
 </search>

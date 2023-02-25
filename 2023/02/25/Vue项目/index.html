@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>利用Hexo搭建个人博客 |  Real Man</title>
+      <title>Vue项目 |  Real Man</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -76,7 +76,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  利用Hexo搭建个人博客
+  Vue项目
 </h1>
  
 
@@ -92,7 +92,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">339</span>
+            <span class="post-count">311</span>
         </span>
     </span>
 
@@ -116,26 +116,27 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p>
-<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，命名为Hexo</p>
-<p>在Hexo目录下打开命令行窗口，执行以下指令：</p>
-<p><code>    npm install hexo-cli -g</code></p>
-<p><code>    hexo init blog</code></p>
-<p><code>    cd blog</code></p>
-<p><code>    npm install</code></p>
-<p><code>    hexo server</code></p>
-<p>此时你打开本地4000端口，已经可以发现属于你的博客了。</p>
-<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><span id="more"></span>
+  <h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><h4 id="ElementUI引入及使用"><a href="#ElementUI引入及使用" class="headerlink" title="ElementUI引入及使用"></a>ElementUI引入及使用</h4><p><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/color">官网 | Element</a></p>
+<p>全局使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import ElementUI from &#x27;element-ui&#x27;//引入UI组件库</span><br><span class="line">import &#x27;element-ui/lib/theme-chalk/index.css&#x27;</span><br></pre></td></tr></table></figure>
 
+<p>局部使用</p>
+<p>首先，安装 babel-plugin-component：</p>
+<p><code>npm install babel-plugin-component -D</code></p>
+<p>然后，将 .babelrc 修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [[&quot;es2015&quot;, &#123; &quot;modules&quot;: false &#125;]],</span><br><span class="line">  &quot;plugins&quot;: [</span><br><span class="line">    [</span><br><span class="line">      &quot;component&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;libraryName&quot;: &quot;element-ui&quot;,</span><br><span class="line">        &quot;styleLibraryName&quot;: &quot;theme-chalk&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>将文件打包生成静态资源，执行以下命令，将会生成public文件夹，里面存放静态资源，后续将博客部署到github上时，上传的也是静态文件（不直接更改里面的代码）。</p>
-<p><code>hexo g</code></p>
-<h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p><a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题(hexo.io)</a></p>
-<p>在上面找到自己喜欢的主题并进入主题给出的github界面，那里会教你安装使用对应主题。</p>
-<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>
+<p>接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;;</span><br><span class="line">import &#123; Button, Select &#125; from &#x27;element-ui&#x27;;</span><br><span class="line">import App from &#x27;./App.vue&#x27;;</span><br><span class="line"></span><br><span class="line">Vue.component(Button.name, Button);</span><br><span class="line">Vue.component(Select.name, Select);</span><br><span class="line">/* 或写为</span><br><span class="line"> * Vue.use(Button)</span><br><span class="line"> * Vue.use(Select)</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#x27;#app&#x27;,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>为了更好地模块化工程，可以将ElementUI按需引入做一个文件，文件位置通常为plugins/elementui.js，被main.js引入。</p>
+<h4 id="样式重置"><a href="#样式重置" class="headerlink" title="样式重置"></a>样式重置</h4><p><a target="_blank" rel="noopener" href="https://meyerweb.com/eric/tools/css/reset/">样式重置文件 (meyerweb.com)</a></p>
+<p>通常放在src/assets/css/reset.css中，在App.vue的 <code>&lt;style&gt;</code>中通过@import url(‘../src/assets/css/reset.css’)被引入</p>
+<h4 id="图标库引入及其使用"><a href="#图标库引入及其使用" class="headerlink" title="图标库引入及其使用"></a>图标库引入及其使用</h4><p><a target="_blank" rel="noopener" href="https://fontawesome.com/">Font Awesome图标库</a></p>
+<p>需要下载</p>
+<p><code>cnpm i -D font-awesome</code></p>
+<p>下载之后在main.js中导入</p>
+<p><code>import &#39;font-awesome/css/font-awesome.min.css&#39;</code></p>
  
       <!-- reward -->
       
