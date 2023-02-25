@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Vue3第一天 |  Real Man</title>
+      <title>Vue3 |  Real Man</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -76,7 +76,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Vue3第一天
+  Vue3
 </h1>
  
 
@@ -92,7 +92,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">79</span>
+            <span class="post-count">212</span>
         </span>
     </span>
 
@@ -117,7 +117,8 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><p>setup配置项是vue3中新添加的配置项，组件所用到的数据、方法等等均放在此配置项中。setup返回值有两种，一种是返回对象，还有一种是返回自定义渲染模板（render函数）。在vue3中使用setup无疑比vue2更接近原生JS。</p>
-<h3 id="ref和reactive"><a href="#ref和reactive" class="headerlink" title="ref和reactive"></a>ref和reactive</h3><p>ref</p>
+<h3 id="ref和reactive"><a href="#ref和reactive" class="headerlink" title="ref和reactive"></a>ref和reactive</h3><p>ref和reactive是两个函数，使用时需要引入，ref函数用来定义基本数据类型，reactive函数用来定义复杂数据类型，使其数据成为响应式。在vue2中，通过Object.defineProperty()函数中的set和get方法来实现数据劫持，在删除属性和添加属性上有一定的不便之处，在vue3中通过这两个函数可以解决这个问题。ref定义的值获取通过xxx.value获取。</p>
+<h3 id="computed函数"><a href="#computed函数" class="headerlink" title="computed函数"></a>computed函数</h3><p>使用前需要引入，写入setup中</p>
  
       <!-- reward -->
       
@@ -198,6 +199,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            利用Hexo搭建个人博客
+          
+        </div>
+      </a>
     
     
       <a href="/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/" class="article-nav-link">
