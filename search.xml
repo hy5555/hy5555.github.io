@@ -33,6 +33,42 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Vue3</title>
+    <url>/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>
+    <content><![CDATA[<h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><p>setup配置项是vue3中新添加的配置项，组件所用到的数据、方法等等均放在此配置项中。setup返回值有两种，一种是返回对象，还有一种是返回自定义渲染模板（render函数）。在vue3中使用setup无疑比vue2更接近原生JS。</p>
+<h3 id="ref和reactive"><a href="#ref和reactive" class="headerlink" title="ref和reactive"></a>ref和reactive</h3><p>ref和reactive是两个函数，使用时需要引入，ref函数用来定义基本数据类型，reactive函数用来定义复杂数据类型，使其数据成为响应式。在vue2中，通过Object.defineProperty()函数中的set和get方法来实现数据劫持，在删除属性和添加属性上有一定的不便之处，在vue3中通过这两个函数可以解决这个问题。ref定义的值获取通过xxx.value获取。</p>
+<h3 id="computed函数"><a href="#computed函数" class="headerlink" title="computed函数"></a>computed函数</h3><p>使用前需要引入，写入setup中</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>测试属性（判断属性是否在对象中）</title>
+    <url>/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p>
+<span id="more"></span>
+
+<h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p>
+<p>let o = { x: 1}</p>
+<p>“x” in o               //true</p>
+<p>“y” in o              //false</p>
+<p>“toString” in o          //true (继承属性)</p>
+<h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p>
+<p>let o = { x: 1}</p>
+<p>o.hasOwnProperty(“x”)              //true</p>
+<h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
+<h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>箭头函数与普通函数this指向的问题</title>
+    <url>/2023/02/20/this%E6%8C%87%E5%90%91/</url>
+    <content><![CDATA[<p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p>
+<span id="more"></span>
+
+
+<p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>原型和原型链</title>
     <url>/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
     <content><![CDATA[<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型：是一个对象模板，通俗意义上的理解就是一个类。</p>
@@ -104,42 +140,6 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
 <h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p>
 <p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p>
 <p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>箭头函数与普通函数this指向的问题</title>
-    <url>/2023/02/20/this%E6%8C%87%E5%90%91/</url>
-    <content><![CDATA[<p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p>
-<span id="more"></span>
-
-
-<p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Vue3</title>
-    <url>/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>
-    <content><![CDATA[<h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><p>setup配置项是vue3中新添加的配置项，组件所用到的数据、方法等等均放在此配置项中。setup返回值有两种，一种是返回对象，还有一种是返回自定义渲染模板（render函数）。在vue3中使用setup无疑比vue2更接近原生JS。</p>
-<h3 id="ref和reactive"><a href="#ref和reactive" class="headerlink" title="ref和reactive"></a>ref和reactive</h3><p>ref和reactive是两个函数，使用时需要引入，ref函数用来定义基本数据类型，reactive函数用来定义复杂数据类型，使其数据成为响应式。在vue2中，通过Object.defineProperty()函数中的set和get方法来实现数据劫持，在删除属性和添加属性上有一定的不便之处，在vue3中通过这两个函数可以解决这个问题。ref定义的值获取通过xxx.value获取。</p>
-<h3 id="computed函数"><a href="#computed函数" class="headerlink" title="computed函数"></a>computed函数</h3><p>使用前需要引入，写入setup中</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>测试属性（判断属性是否在对象中）</title>
-    <url>/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p>
-<span id="more"></span>
-
-<h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p>
-<p>let o = { x: 1}</p>
-<p>“x” in o               //true</p>
-<p>“y” in o              //false</p>
-<p>“toString” in o          //true (继承属性)</p>
-<h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p>
-<p>let o = { x: 1}</p>
-<p>o.hasOwnProperty(“x”)              //true</p>
-<h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
-<h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
 ]]></content>
   </entry>
 </search>
