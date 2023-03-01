@@ -118,10 +118,14 @@
        
   <h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><h4 id="ElementUI引入及使用"><a href="#ElementUI引入及使用" class="headerlink" title="ElementUI引入及使用"></a>ElementUI引入及使用</h4><p><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/color">官网 | Element</a></p>
 <p>全局使用</p>
+<span id="more"></span>
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import ElementUI from &#x27;element-ui&#x27;//引入UI组件库</span><br><span class="line">import &#x27;element-ui/lib/theme-chalk/index.css&#x27;</span><br></pre></td></tr></table></figure>
 
 <p>局部使用</p>
 <p>首先，安装 babel-plugin-component：</p>
+<!--more-->
+
 <p><code>npm install babel-plugin-component -D</code></p>
 <p>然后，将 .babelrc 修改为：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [[&quot;es2015&quot;, &#123; &quot;modules&quot;: false &#125;]],</span><br><span class="line">  &quot;plugins&quot;: [</span><br><span class="line">    [</span><br><span class="line">      &quot;component&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;libraryName&quot;: &quot;element-ui&quot;,</span><br><span class="line">        &quot;styleLibraryName&quot;: &quot;theme-chalk&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
