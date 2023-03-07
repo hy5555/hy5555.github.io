@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Vue项目 |  Real Man</title>
+      <title>归档: 2023/3 |  Real Man</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -64,200 +64,52 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-Vue项目"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
+  
+  
+  <article class="articles">
     
-    <header class="article-header">
+    
+    <h1 class="page-type-title">2023/3</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2023" class="archive-year">2023</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2023/03/07/TypeScript/" class="archive-article-date">
+  <time datetime="2023-03-07T11:00:40.196Z" itemprop="datePublished">03/07</time>
+</a>
        
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Vue项目
-</h1>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2023/03/07/TypeScript/"
+    >TypeScript基础</a> 
+</h2>
  
 
-      
     </header>
-     
-    <div class="article-meta">
-      <a href="/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/" class="article-date">
-  <time datetime="2023-02-25T09:14:13.964Z" itemprop="datePublished">2023-02-25</time>
-</a>   
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">558</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
-      
-    <div class="tocbot"></div>
-
-
-
-
-  
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><h4 id="ElementUI引入及使用"><a href="#ElementUI引入及使用" class="headerlink" title="ElementUI引入及使用"></a>ElementUI引入及使用</h4><p><a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/color">官网 | Element</a></p>
-<p>全局使用</p>
-<span id="more"></span>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import ElementUI from &#x27;element-ui&#x27;//引入UI组件库</span><br><span class="line">import &#x27;element-ui/lib/theme-chalk/index.css&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>局部使用</p>
-<p>首先，安装 babel-plugin-component：</p>
-<!--more-->
-
-<p><code>npm install babel-plugin-component -D</code></p>
-<p>然后，将 .babelrc 修改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [[&quot;es2015&quot;, &#123; &quot;modules&quot;: false &#125;]],</span><br><span class="line">  &quot;plugins&quot;: [</span><br><span class="line">    [</span><br><span class="line">      &quot;component&quot;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;libraryName&quot;: &quot;element-ui&quot;,</span><br><span class="line">        &quot;styleLibraryName&quot;: &quot;theme-chalk&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接下来，如果你只希望引入部分组件，比如 Button 和 Select，那么需要在 main.js 中写入以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#x27;vue&#x27;;</span><br><span class="line">import &#123; Button, Select &#125; from &#x27;element-ui&#x27;;</span><br><span class="line">import App from &#x27;./App.vue&#x27;;</span><br><span class="line"></span><br><span class="line">Vue.component(Button.name, Button);</span><br><span class="line">Vue.component(Select.name, Select);</span><br><span class="line">/* 或写为</span><br><span class="line"> * Vue.use(Button)</span><br><span class="line"> * Vue.use(Select)</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &#x27;#app&#x27;,</span><br><span class="line">  render: h =&gt; h(App)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>为了更好地模块化工程，可以将ElementUI按需引入做一个文件，文件位置通常为plugins/elementui.js，被main.js引入。</p>
-<h4 id="样式重置"><a href="#样式重置" class="headerlink" title="样式重置"></a>样式重置</h4><p><a target="_blank" rel="noopener" href="https://meyerweb.com/eric/tools/css/reset/">样式重置文件 (meyerweb.com)</a></p>
-<p>通常放在src/assets/css/reset.css中，在App.vue的 <code>&lt;style&gt;</code>中通过@import url(‘../src/assets/css/reset.css’)被引入</p>
-<h4 id="图标库引入及其使用"><a href="#图标库引入及其使用" class="headerlink" title="图标库引入及其使用"></a>图标库引入及其使用</h4><p><a target="_blank" rel="noopener" href="https://fontawesome.com/">Font Awesome图标库</a></p>
-<p>需要下载</p>
-<p><code>cnpm i -D font-awesome</code></p>
-<p>下载之后在main.js中导入</p>
-<p><code>import &#39;font-awesome/css/font-awesome.min.css&#39;</code></p>
-<p>在官网中，每个图标都可以找到使用方法。</p>
-<h3 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h3><p>下载：</p>
-<p><code>cnpm i vue-router@3.5.3 -S</code></p>
-<p>配置文件路径通常为src/router/index.js</p>
-<h3 id="校验登录"><a href="#校验登录" class="headerlink" title="校验登录"></a>校验登录</h3><p>项目中运用ElementUI，写下登录相应的规则（rules）。给登录按钮绑定方法，在方法里调用validata函数，判断用户名和密码是否通过正则表达式设定的规则。ElementUI中也有自带的校验方法。在项目中，校验方法进行了模块化。同时对axios进行了二次封装。</p>
-<p>token是一种 <strong>身份验证的机制</strong> ，初始时用户提交账号数据给服务端，服务端采用一定的策略生成一个字符串（token），token字符串中包含了少量的用户信息，并且有一定的期限。在项目里，我在发送请求前获取token（存储在浏览器本地），将其作为请求响应头。在每次请求后更新token。</p>
- 
-      <!-- reward -->
-      
-      <div id="reword-out">
-        <div id="reward-btn">
-          打赏
-        </div>
-      </div>
-      
-    </div>
     
-
-    <!-- copyright -->
     
-    <div class="declare">
-      <ul class="post-copyright">
-        <li>
-          <i class="ri-copyright-line"></i>
-          <strong>版权声明： </strong>
-          
-          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
-          
-        </li>
-      </ul>
-    </div>
-    
-    <footer class="article-footer">
-       
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
-
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
-    </footer>
   </div>
-
-   
-  <nav class="article-nav">
-    
-      <a href="/2023/03/07/TypeScript/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            TypeScript基础
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Vue3</div>
-      </a>
-    
-  </nav>
+</article>
+      
+      
+    </div>
+  </div>
+  
+  
 
   
-   
-    
-    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
-    <div id="twikoo" class="twikoo"></div>
-    <script>
-        twikoo.init({
-            envId: ""
-        })
-    </script>
- 
-</article>
-
 </section>
       <footer class="footer">
   <div class="outer">
@@ -404,22 +256,6 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
