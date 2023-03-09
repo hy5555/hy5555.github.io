@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>中软国际笔试加一面</title>
+    <url>/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/</url>
+    <content><![CDATA[<p>笔试（十五题）：</p>
+<p>1、说几个未知宽高元素水平垂直居中的方法。</p>
+<p>2、说一下computed和whtch的区别。</p>
+<p>3、前端存储方式。</p>
+<p>4、什么是跨域，如何解决跨域。</p>
+<p>5、Vue的生命周期，数据在哪个周期加载。</p>
+<p>6、JS数据类型有哪些。</p>
+<p>7、什么是闭包。</p>
+<p>8、数组去重。</p>
+<p>9、实现判断后端请求的函数。</p>
+<p>10、建立一个包含10个10-100的数组并排序。</p>
+<p>11、字符串比对。</p>
+<p>12、组件通信的方式。</p>
+<p>13、说下mixins</p>
+<p>还有两个题目忘记了</p>
+]]></content>
+  </entry>
+  <entry>
     <title>TypeScript基础</title>
     <url>/2023/03/07/TypeScript/</url>
     <content><![CDATA[<h2 id="编译选项"><a href="#编译选项" class="headerlink" title="编译选项"></a>编译选项</h2><h3 id="自动编译文件"><a href="#自动编译文件" class="headerlink" title="自动编译文件"></a>自动编译文件</h3><p>编译文件时，使用 -w 指令后，TS编译器会自动监视文件的变化，并在文件发生变化时对文件进行重新编译。</p>
 <p>示例：</p>
+<span id="more"></span>
+
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">tsc xxx.ts <span class="literal">-w</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="自动编译整个项目"><a href="#自动编译整个项目" class="headerlink" title="自动编译整个项目"></a>自动编译整个项目</h3><p>如果直接使用tsc指令，则可以自动将当前项目下的所有ts文件编译为js文件。</p>

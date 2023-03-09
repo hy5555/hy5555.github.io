@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>TypeScript基础 |  Real Man</title>
+      <title>中软国际笔试加一面 |  Real Man</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -65,7 +65,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-TypeScript"
+  id="post-中软国际笔试加一面"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -76,7 +76,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  TypeScript基础
+  中软国际笔试加一面
 </h1>
  
 
@@ -84,15 +84,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/03/07/TypeScript/" class="article-date">
-  <time datetime="2023-03-07T11:00:40.196Z" itemprop="datePublished">2023-03-07</time>
+      <a href="/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/" class="article-date">
+  <time datetime="2023-03-09T11:02:27.676Z" itemprop="datePublished">2023-03-09</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.1k</span>
+            <span class="post-count">143</span>
         </span>
     </span>
 
@@ -101,213 +101,34 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4 分钟</span>
+            <span class="post-count">1 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="编译选项"><a href="#编译选项" class="headerlink" title="编译选项"></a>编译选项</h2><h3 id="自动编译文件"><a href="#自动编译文件" class="headerlink" title="自动编译文件"></a>自动编译文件</h3><p>编译文件时，使用 -w 指令后，TS编译器会自动监视文件的变化，并在文件发生变化时对文件进行重新编译。</p>
-<p>示例：</p>
-<span id="more"></span>
-
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc xxx.ts <span class="literal">-w</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="自动编译整个项目"><a href="#自动编译整个项目" class="headerlink" title="自动编译整个项目"></a>自动编译整个项目</h3><p>如果直接使用tsc指令，则可以自动将当前项目下的所有ts文件编译为js文件。</p>
-<p><strong>但是能直接使用tsc命令的前提时，要先在项目根目录下创建一个ts的配置文件 tsconfig.json</strong></p>
-<p>tsconfig.json是一个JSON文件，添加配置文件后，只需只需 tsc 命令即可完成对整个项目的编译</p>
-<p>配置选项：</p>
-<h4 id="include"><a href="#include" class="headerlink" title="include"></a><strong>include</strong></h4><ul>
-<li>定义希望被编译文件所在的目录</li>
-<li>默认值：[“**/*”]</li>
-</ul>
-<p>示例：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;include&quot;</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="string">&quot;src/**/*&quot;</span><span class="punctuation">,</span> <span class="string">&quot;tests/**/*&quot;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<p>上述示例中，所有src目录和tests目录下的文件都会被编译</p>
-<h4 id="exclude"><a href="#exclude" class="headerlink" title="exclude"></a><strong>exclude</strong></h4><ul>
-<li>定义需要排除在外的目录</li>
-<li>默认值：[“node_modules”, “bower_components”, “jspm_packages”]</li>
-</ul>
-<p>示例：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;exclude&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;./src/hello/**/*&quot;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<p>上述示例中，src下hello目录下的文件都不会被编译</p>
-<h4 id="extends"><a href="#extends" class="headerlink" title="extends"></a><strong>extends</strong></h4><ul>
-<li>定义被继承的配置文件</li>
-</ul>
-<p>示例：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;extends&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./configs/base&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>上述示例中，当前配置文件中会自动包含config目录下base.json中的所有配置信息</p>
-<h4 id="files"><a href="#files" class="headerlink" title="files"></a><strong>files</strong></h4><ul>
-<li>指定被编译文件的列表，<strong>只有需要编译的文件少时才会用到</strong></li>
-</ul>
-<p>示例：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;files&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;core.ts&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;sys.ts&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;types.ts&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;scanner.ts&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;parser.ts&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;utilities.ts&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;binder.ts&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;checker.ts&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;tsc.ts&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>列表中的文件都会被TS编译器所编译</li>
-</ul>
-<h4 id="compilerOptions"><a href="#compilerOptions" class="headerlink" title="compilerOptions"></a>compilerOptions</h4><ul>
-<li>编译选项是配置文件中非常重要也比较复杂的配置选项</li>
-<li>在compilerOptions中包含多个子选项，用来完成对编译的配置</li>
-</ul>
-<p>项目选项：</p>
-<ul>
-<li>target<ul>
-<li>设置ts代码编译的目标版本</li>
-<li>可选值：<ul>
-<li>ES3（默认）、ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2018、ES2019、ES2020、ESNext</li>
-</ul>
-</li>
-<li>示例：<ul>
-<li>```json<br>“compilerOptions”: {<pre><code>&quot;target&quot;: &quot;ES6&quot;
-</code></pre>
-}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  * 如上设置，我们所编写的ts代码将会被编译为ES6版本的js代码</span><br><span class="line">* lib</span><br><span class="line">  * 指定代码运行时所包含的库（宿主环境）</span><br><span class="line">  * 可选值：</span><br><span class="line">    * ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2018、ES2019、ES2020、ESNext、DOM、WebWorker、ScriptHost ......</span><br><span class="line">  * 示例：</span><br><span class="line">    * ```json</span><br><span class="line">      &quot;compilerOptions&quot;: &#123;</span><br><span class="line">          &quot;target&quot;: &quot;ES6&quot;,</span><br><span class="line">          &quot;lib&quot;: [&quot;ES6&quot;, &quot;DOM&quot;],</span><br><span class="line">          &quot;outDir&quot;: &quot;dist&quot;,</span><br><span class="line">          &quot;outFile&quot;: &quot;dist/aa.js&quot;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>module<ul>
-<li>设置编译后代码使用的模块化系统</li>
-<li>可选值：<ul>
-<li>CommonJS、UMD、AMD、System、ES2020、ESNext、None</li>
-</ul>
-</li>
-<li>示例：<ul>
-<li>```ts<br>“compilerOptions”: {<pre><code>&quot;module&quot;: &quot;CommonJS&quot;
-</code></pre>
-}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* outDir</span><br><span class="line">  * 编译后文件的所在目录</span><br><span class="line">  * 默认情况下，编译后的js文件会和ts文件位于相同的目录，设置outDir后可以改变编译后文件的位置</span><br><span class="line">  * 示例：</span><br><span class="line">    * ```json</span><br><span class="line">      &quot;compilerOptions&quot;: &#123;</span><br><span class="line">          &quot;outDir&quot;: &quot;dist&quot;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></li>
-<li>设置后编译后的js文件将会生成到dist目录</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>outFile<ul>
-<li>将所有的文件编译为一个js文件</li>
-<li>默认会将所有的编写在全局作用域中的代码合并为一个js文件，如果module制定了None、System或AMD则会将模块一起合并到文件之中</li>
-<li>示例：<ul>
-<li>```json<br>“compilerOptions”: {<pre><code>&quot;outFile&quot;: &quot;dist/app.js&quot;
-</code></pre>
-}<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* rootDir</span><br><span class="line">  * 指定代码的根目录，默认情况下编译后文件的目录结构会以最长的公共目录为根目录，通过rootDir可以手动指定根目录</span><br><span class="line">  * 示例：</span><br><span class="line">    * ```json</span><br><span class="line">      &quot;compilerOptions&quot;: &#123;</span><br><span class="line">          &quot;rootDir&quot;: &quot;./src&quot;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>allowJs<ul>
-<li>是否对js文件编译</li>
-</ul>
-</li>
-<li>checkJs<ul>
-<li>是否对js文件进行检查</li>
-<li>示例：<ul>
-<li><pre><code class="json">&quot;compilerOptions&quot;: &#123;
-    &quot;allowJs&quot;: true,
-    &quot;checkJs&quot;: true
-&#125;
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>removeComments<ul>
-<li>是否删除注释</li>
-<li>默认值：false</li>
-</ul>
-</li>
-<li>noEmit<ul>
-<li>不对代码进行编译</li>
-<li>默认值：false</li>
-</ul>
-</li>
-<li>sourceMap<ul>
-<li>是否生成sourceMap</li>
-<li>默认值：false</li>
-</ul>
-</li>
-<li>严格检查<ul>
-<li>strict<ul>
-<li>启用所有的严格检查，默认值为true，设置后相当于开启了所有的严格检查</li>
-</ul>
-</li>
-<li>alwaysStrict<ul>
-<li>总是以严格模式对代码进行编译</li>
-</ul>
-</li>
-<li>noImplicitAny<ul>
-<li>禁止隐式的any类型</li>
-</ul>
-</li>
-<li>noImplicitThis<ul>
-<li>禁止类型不明确的this</li>
-</ul>
-</li>
-<li>strictBindCallApply<ul>
-<li>严格检查bind、call和apply的参数列表</li>
-</ul>
-</li>
-<li>strictFunctionTypes<ul>
-<li>严格检查函数的类型</li>
-</ul>
-</li>
-<li>strictNullChecks<ul>
-<li>严格的空值检查</li>
-</ul>
-</li>
-<li>strictPropertyInitialization<ul>
-<li>严格检查属性是否初始化</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>额外检查<ul>
-<li>noFallthroughCasesInSwitch<ul>
-<li>检查switch语句包含正确的break</li>
-</ul>
-</li>
-<li>noImplicitReturns<ul>
-<li>检查函数没有隐式的返回值</li>
-</ul>
-</li>
-<li>noUnusedLocals<ul>
-<li>检查未使用的局部变量</li>
-</ul>
-</li>
-<li>noUnusedParameters<ul>
-<li>检查未使用的参数</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>高级<ul>
-<li>allowUnreachableCode<ul>
-<li>检查不可达代码</li>
-<li>可选值：<ul>
-<li>true，忽略不可达代码</li>
-<li>false，不可达代码将引起错误</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>noEmitOnError<ul>
-<li>有错误的情况下不进行编译</li>
-<li>默认值：false</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+  <p>笔试（十五题）：</p>
+<p>1、说几个未知宽高元素水平垂直居中的方法。</p>
+<p>2、说一下computed和whtch的区别。</p>
+<p>3、前端存储方式。</p>
+<p>4、什么是跨域，如何解决跨域。</p>
+<p>5、Vue的生命周期，数据在哪个周期加载。</p>
+<p>6、JS数据类型有哪些。</p>
+<p>7、什么是闭包。</p>
+<p>8、数组去重。</p>
+<p>9、实现判断后端请求的函数。</p>
+<p>10、建立一个包含10个10-100的数组并排序。</p>
+<p>11、字符串比对。</p>
+<p>12、组件通信的方式。</p>
+<p>13、说下mixins</p>
+<p>还有两个题目忘记了</p>
  
       <!-- reward -->
       
@@ -378,7 +199,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2023/03/07/TypeScript/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -389,19 +210,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            中软国际笔试加一面
-          
-        </div>
-      </a>
     
-    
-      <a href="/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/" class="article-nav-link">
+      <a href="/2023/03/07/TypeScript/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Vue项目</div>
+        <div class="article-nav-title">TypeScript基础</div>
       </a>
     
   </nav>
