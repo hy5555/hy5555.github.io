@@ -6,7 +6,7 @@
   <link href="https://github.com/hy5555/hy5555.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/hy5555/hy5555.github.io.git/"/>
-  <updated>2023-03-09T11:14:30.351Z</updated>
+  <updated>2023-03-09T11:25:20.132Z</updated>
   <id>https://github.com/hy5555/hy5555.github.io.git/</id>
   
   <author>
@@ -17,13 +17,13 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>中软国际笔试加一面</title>
+    <title>中软国际笔试加一面（前端实习）</title>
     <link href="https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/"/>
     <id>https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/</id>
     <published>2023-03-09T11:02:27.676Z</published>
-    <updated>2023-03-09T11:14:30.351Z</updated>
+    <updated>2023-03-09T11:25:20.132Z</updated>
     
-    <content type="html"><![CDATA[<p>笔试（十五题）：</p><p>1、说几个未知宽高元素水平垂直居中的方法。</p><p>2、说一下computed和whtch的区别。</p><p>3、前端存储方式。</p><p>4、什么是跨域，如何解决跨域。</p><p>5、Vue的生命周期，数据在哪个周期加载。</p><p>6、JS数据类型有哪些。</p><p>7、什么是闭包。</p><p>8、数组去重。</p><p>9、实现判断后端请求的函数。</p><p>10、建立一个包含10个10-100的数组并排序。</p><p>11、字符串比对。</p><p>12、组件通信的方式。</p><p>13、说下mixins</p><p>还有两个题目忘记了</p>]]></content>
+    <content type="html"><![CDATA[<p>笔试（十五题）：</p><p>1、说几个未知宽高元素水平垂直居中的方法。</p><p>2、说一下computed和whtch的区别。</p><p>3、前端存储方式。</p><p>4、什么是跨域，如何解决跨域。</p><p>5、Vue的生命周期，数据在哪个周期加载。</p><p>6、JS数据类型有哪些。</p><p>7、什么是闭包。</p><p>8、数组去重。</p><p>9、实现判断后端请求的函数。</p><p>10、建立一个包含10个10-100的数组并排序。</p><p>11、字符串比对。</p><p>12、组件通信的方式。</p><p>13、说下mixins</p><p>还有两个题目忘记了</p><p>笔试完直接一面了，问了下项目，问了下前面题目答案没写全的，十来分钟，第一次面试，题目还是挺简单的，但是没有好好背八股，肯定是无了。算法也只会几个排序。但是第一次面试对自己的收获还是挺大的，没有想象的这么难。接下来就好好背八股，写下算法题。大厂不抱希望，希望能进稍微好点的公司实习。</p>]]></content>
     
     
       
