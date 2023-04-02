@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>JS常见方法或对象 |  Real Man</title>
+      <title>尚品汇项目难点亮点 |  Real Man</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -65,7 +65,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-常见API"
+  id="post-尚品汇项目总结"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -76,7 +76,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  JS常见方法或对象
+  尚品汇项目难点亮点
 </h1>
  
 
@@ -84,15 +84,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/03/09/%E5%B8%B8%E8%A7%81API/" class="article-date">
-  <time datetime="2023-03-09T12:26:47.497Z" itemprop="datePublished">2023-03-09</time>
+      <a href="/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" class="article-date">
+  <time datetime="2023-04-02T12:44:12.012Z" itemprop="datePublished">2023-04-02</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">298</span>
+            <span class="post-count">320</span>
         </span>
     </span>
 
@@ -108,21 +108,20 @@
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>sort():排序方法，可有参数也可无参数，无参数是按照字符集顺序进行排序。</p>
-<p>filter(()=&gt;{}}):过滤函数，根据箭头函数返回的boolean值决定是否保留该元素。要说的是，箭头函数中第一个参数为数组值，第二个参数为索引值。</p>
-<p>forEach(()=&gt;{}):遍历数组，想想可不可以不新增变量，直接通过此方法实现数组元素全部加1，注意，并不可行，此函数并不会改变原数组，所以正确操作应该是新定义一个空数组，在forEach循环遍历时将元素加1并push进新数组。</p>
-<p>map(()=&gt;{}):此方法会创建一个新数组，新数组由老数组中每个元素都调用一次提供后的函数返回值组成。</p>
-<p>new Set(arr):Set对象允许你存任意类型的唯一值，强烈推荐使用此对象进行数组去重。</p>
-<p>Math:此对象常用于取整或形成随机数，想形成num1到num2范围的随机数，记住公式Math.floor(Math.random() * (num2 - num1 + 1) + num1)</p>
-<p>join:此方法用于拼接字符串。</p>
-<p>split:将字符串转为数组。</p>
- 
+  <h3 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h3><p>获取路由信息:$route（只可以读取路由信息，如果要进行路由操作需要用$$router进行)；在项目中，我们有些页面需要展示Footer组件内容，有些页面不需要展示Footer组件内容，我通过在路由信息中添加meta元素，再由页面通过读取meta元素配合v-if控制是否展示。路由跳转有两种方式：声明式导航（<code>&lt;router-view&gt;</code>和 <code>&lt;router-link&gt;</code>搭配）和编程式导航（this.$router.push()或$this.router.replace()）。在项目中，我们重写了push方法和replace方法，为什么需要重写，这是因为在编程式导航时，我们多次点击跳转时，会抛出异常，我们可以在push方法参数中传入成功的回调和失败的回调函数解决，但是在项目中我们多次用到编程式导航，所以选择重写。声明式导航不会报错，因为声明式导航内部已经解决这个问题。</p>
+<h3 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h3><p>防抖节流：lodash</p>
+<p>轮播图:swiper</p>
+<p>uuid:临时id（面试不用说这个，不合业务逻辑）</p>
+<p>页面假数据：mokejs</p>
+<h3 id="home主页"><a href="#home主页" class="headerlink" title="home主页"></a>home主页</h3><h3 id="搜索页面"><a href="#搜索页面" class="headerlink" title="搜索页面"></a>搜索页面</h3><h3 id="购物车业务"><a href="#购物车业务" class="headerlink" title="购物车业务"></a>购物车业务</h3><h3 id="登录注册"><a href="#登录注册" class="headerlink" title="登录注册"></a>登录注册</h3><h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -192,7 +191,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E5%B8%B8%E8%A7%81API/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -203,19 +202,10 @@
    
   <nav class="article-nav">
     
+    
       <a href="/2023/03/14/Less/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Less学习
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">中软国际笔试加一面（前端实习）</div>
+        <div class="article-nav-title">Less学习</div>
       </a>
     
   </nav>
