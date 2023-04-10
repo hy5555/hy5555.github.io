@@ -166,6 +166,84 @@
     
     
     <article
+  id="post-node"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/04/09/node/"
+    >Node.js</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/04/09/node/" class="article-date">
+  <time datetime="2023-04-09T06:38:33.767Z" itemprop="datePublished">2023-04-09</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Node.js不是一门编程语言，是一个应用程序，是一个软件。</p>
+<p>Node.js不能使用BOM和DOM中的API，可以使用定时器和cosole.log</p>
+<p>Node.js的顶级对象为global，浏览器的顶级对象为window</p>
+<h3 id="创建Buffer"><a href="#创建Buffer" class="headerlink" title="创建Buffer"></a>创建Buffer</h3><p>Buffer.alloc(数字)：创建buffer，并将该位置原来的数据清零</p>
+<p>Buffer.allocUnsafe(数字)：创建buffer，不会将原来的数据清零</p>
+<p>Buffer.from(参数)：创建buffer</p>
+<p>Buffer转字符串：buffer.toString()</p>
+<h3 id="写入文件和读取文件"><a href="#写入文件和读取文件" class="headerlink" title="写入文件和读取文件"></a>写入文件和读取文件</h3><p>读取和写入文件的模块：const fs = require(‘fs’)</p>
+<p>同步写入：fs.writeFileSync(文件名，数据)</p>
+<p>同步读取：fs.readFileSync(文件名)</p>
+<p>写入方式：</p>
+<p>1、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fs.writeFile(&#x27;./座右铭.txt&#x27;,&#x27;三人行，则必有我师！&#x27;,&#123;flag:&#x27;a&#x27;&#125;,err=&gt;&#123;</span><br><span class="line">    if(err)&#123;</span><br><span class="line">        console.log(&#x27;失败！&#x27;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#x27;成功！&#x27;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writeFileSync(&#x27;./座右铭.txt&#x27;,&#x27;三人行，则必有我师！&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>3、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const ws = fs.createWriteStream(&#x27;../资料/高考加油复制.mp4&#x27;,)</span><br><span class="line">ws.write(&#x27;啦啦啦&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>读取方式：</p>
+<p>1、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fs.writeFile(&#x27;./座右铭.txt&#x27;,(err,data)=&gt;&#123;</span><br><span class="line">    if(err)&#123;</span><br><span class="line">        console.log(&#x27;失败&#x27;);</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#x27;成功&#x27;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fs.writeFileSync(&#x27;./座右铭.txt&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>3、</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const rs = fs.createReadStream(&#x27;../资料/高考加油.mp4&#x27;)</span><br><span class="line">rs.on(&#x27;data&#x27;,chunk=&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line">rs.on(&#x27;end&#x27;,()=&gt;&#123;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>例题：复制文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-尚品汇项目总结"
   class="article article-type-post"
   itemscope
@@ -200,7 +278,9 @@
 <p>页面假数据：mokejs</p>
 <h3 id="home主页"><a href="#home主页" class="headerlink" title="home主页"></a>home主页</h3><p>三级路由</p>
 <h3 id="搜索页面"><a href="#搜索页面" class="headerlink" title="搜索页面"></a>搜索页面</h3><h3 id="购物车业务"><a href="#购物车业务" class="headerlink" title="购物车业务"></a>购物车业务</h3><h3 id="登录注册"><a href="#登录注册" class="headerlink" title="登录注册"></a>登录注册</h3><h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><p>在项目中，我用到了前置路由守卫，用于判断用户是否登录，如果登录，则不许用户回到登录页面，如果用户未登录，则不许进入购物车页面。路由守卫有三个参数，第一个参数from是跳转前路径，第二个参数to是跳转后路径，第三个参数next方法是跳转方法。</p>
-<h3 id="项目难点"><a href="#项目难点" class="headerlink" title="项目难点"></a>项目难点</h3><p>在路由跳转使用编程式导航时，我设置点击搜索进入搜索页，当我一次点击多下时，控制台会抛出异常，我开始不明白为什么，后面查到当点击多次时，当push方法内部检查到跳转路由没有变化时，会抛出一个失败的Promise，这里解决方式有两种，第一种是每次使用push方法时在push方法中添加两个箭头函数作为成功和失败的回调。第二种是重写push和replace方法。</p>
+<h3 id="项目难点"><a href="#项目难点" class="headerlink" title="项目难点"></a>项目难点</h3><p>(1)、在路由跳转使用编程式导航时，我设置点击搜索进入搜索页，当我一次点击多下时，控制台会抛出异常，我开始不明白为什么，后面查到当点击多次时，当push方法内部检查到跳转路由没有变化时，会抛出一个失败的Promise，这里解决方式有两种，第一种是每次使用push方法时在push方法中添加两个箭头函数作为成功和失败的回调。第二种是重写push和replace方法。</p>
+<p>(2)、在做轮播图时，刚开始将new Swiper放在mounted中，但是请求是异步的，new Swiper时数据可能还没有获取到，解决办法，将new Swiper放在watch监听里，并将immediate设置为true</p>
+<h3 id="项目亮点"><a href="#项目亮点" class="headerlink" title="项目亮点"></a>项目亮点</h3><p>封装分页器组件，需要的数据：一页展示多少条数据，总共有多少条数据，连续页数，当前是第几页</p>
  
       <!-- reward -->
       
@@ -614,64 +694,6 @@
        
   <p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p> 
       <a class="article-more-link" href="/2023/02/20/this%E6%8C%87%E5%90%91/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-01原型和原型链"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"
-    >原型和原型链</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="article-date">
-  <time datetime="2023-02-11T05:58:25.949Z" itemprop="datePublished">2023-02-11</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型：是一个对象模板，通俗意义上的理解就是一个类。</p>
-<p>（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享原型的所有属性和方法。</p>
-<p>例：Person.prototype.sayHello() = function(){</p>
-<pre><code>console.log(&quot;你好&quot;)
-</code></pre>
-<p>}</p>
-<p>（2）严格模式下，原型的属性和方法还是会被原型实例所共享的。</p>
-<p>（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。</p>
-<p>（4）原型的总结：</p> 
-      <a class="article-more-link" href="/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"
         >阅读更多...</a
       >
        

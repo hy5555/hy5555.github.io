@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Node.js</title>
+    <url>/2023/04/09/node/</url>
+    <content><![CDATA[<p>Node.js不是一门编程语言，是一个应用程序，是一个软件。</p>
+<p>Node.js不能使用BOM和DOM中的API，可以使用定时器和cosole.log</p>
+<p>Node.js的顶级对象为global，浏览器的顶级对象为window</p>
+<h3 id="创建Buffer"><a href="#创建Buffer" class="headerlink" title="创建Buffer"></a>创建Buffer</h3><p>Buffer.alloc(数字)：创建buffer，并将该位置原来的数据清零</p>
+<p>Buffer.allocUnsafe(数字)：创建buffer，不会将原来的数据清零</p>
+<p>Buffer.from(参数)：创建buffer</p>
+<p>Buffer转字符串：buffer.toString()</p>
+<h3 id="写入文件和读取文件"><a href="#写入文件和读取文件" class="headerlink" title="写入文件和读取文件"></a>写入文件和读取文件</h3><p>读取和写入文件的模块：const fs = require(‘fs’)</p>
+<p>同步写入：fs.writeFileSync(文件名，数据)</p>
+<p>同步读取：fs.readFileSync(文件名)</p>
+<p>写入方式：</p>
+<p>1、</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fs.writeFile(&#x27;./座右铭.txt&#x27;,&#x27;三人行，则必有我师！&#x27;,&#123;flag:&#x27;a&#x27;&#125;,err=&gt;&#123;</span><br><span class="line">    if(err)&#123;</span><br><span class="line">        console.log(&#x27;失败！&#x27;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#x27;成功！&#x27;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2、</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fs.writeFileSync(&#x27;./座右铭.txt&#x27;,&#x27;三人行，则必有我师！&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>3、</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const ws = fs.createWriteStream(&#x27;../资料/高考加油复制.mp4&#x27;,)</span><br><span class="line">ws.write(&#x27;啦啦啦&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>读取方式：</p>
+<p>1、</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fs.writeFile(&#x27;./座右铭.txt&#x27;,(err,data)=&gt;&#123;</span><br><span class="line">    if(err)&#123;</span><br><span class="line">        console.log(&#x27;失败&#x27;);</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    console.log(&#x27;成功&#x27;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2、</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fs.writeFileSync(&#x27;./座右铭.txt&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>3、</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const rs = fs.createReadStream(&#x27;../资料/高考加油.mp4&#x27;)</span><br><span class="line">rs.on(&#x27;data&#x27;,chunk=&gt;&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line">rs.on(&#x27;end&#x27;,()=&gt;&#123;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>例题：复制文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
     <title>尚品汇项目难点亮点</title>
     <url>/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h3 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h3><p>获取路由信息:$route（只可以读取路由信息，如果要进行路由操作需要用$$router进行)；在项目中，我们有些页面需要展示Footer组件内容，有些页面不需要展示Footer组件内容，我通过在路由信息中添加meta元素，再由页面通过读取meta元素配合v-if控制是否展示。路由跳转有两种方式：声明式导航（<code>&lt;router-view&gt;</code>和 <code>&lt;router-link&gt;</code>搭配）和编程式导航（this.$router.push()或$this.router.replace()）。在项目中，我们重写了push方法和replace方法，为什么需要重写，这是因为在编程式导航时，我们多次点击跳转时，会抛出异常，我们可以在push方法参数中传入成功的回调和失败的回调函数解决，但是在项目中我们多次用到编程式导航，所以选择重写。声明式导航不会报错，因为声明式导航内部已经解决这个问题。</p>
@@ -10,7 +47,9 @@
 <p>页面假数据：mokejs</p>
 <h3 id="home主页"><a href="#home主页" class="headerlink" title="home主页"></a>home主页</h3><p>三级路由</p>
 <h3 id="搜索页面"><a href="#搜索页面" class="headerlink" title="搜索页面"></a>搜索页面</h3><h3 id="购物车业务"><a href="#购物车业务" class="headerlink" title="购物车业务"></a>购物车业务</h3><h3 id="登录注册"><a href="#登录注册" class="headerlink" title="登录注册"></a>登录注册</h3><h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><p>在项目中，我用到了前置路由守卫，用于判断用户是否登录，如果登录，则不许用户回到登录页面，如果用户未登录，则不许进入购物车页面。路由守卫有三个参数，第一个参数from是跳转前路径，第二个参数to是跳转后路径，第三个参数next方法是跳转方法。</p>
-<h3 id="项目难点"><a href="#项目难点" class="headerlink" title="项目难点"></a>项目难点</h3><p>在路由跳转使用编程式导航时，我设置点击搜索进入搜索页，当我一次点击多下时，控制台会抛出异常，我开始不明白为什么，后面查到当点击多次时，当push方法内部检查到跳转路由没有变化时，会抛出一个失败的Promise，这里解决方式有两种，第一种是每次使用push方法时在push方法中添加两个箭头函数作为成功和失败的回调。第二种是重写push和replace方法。</p>
+<h3 id="项目难点"><a href="#项目难点" class="headerlink" title="项目难点"></a>项目难点</h3><p>(1)、在路由跳转使用编程式导航时，我设置点击搜索进入搜索页，当我一次点击多下时，控制台会抛出异常，我开始不明白为什么，后面查到当点击多次时，当push方法内部检查到跳转路由没有变化时，会抛出一个失败的Promise，这里解决方式有两种，第一种是每次使用push方法时在push方法中添加两个箭头函数作为成功和失败的回调。第二种是重写push和replace方法。</p>
+<p>(2)、在做轮播图时，刚开始将new Swiper放在mounted中，但是请求是异步的，new Swiper时数据可能还没有获取到，解决办法，将new Swiper放在watch监听里，并将immediate设置为true</p>
+<h3 id="项目亮点"><a href="#项目亮点" class="headerlink" title="项目亮点"></a>项目亮点</h3><p>封装分页器组件，需要的数据：一页展示多少条数据，总共有多少条数据，连续页数，当前是第几页</p>
 ]]></content>
   </entry>
   <entry>
