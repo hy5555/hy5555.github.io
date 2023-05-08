@@ -5,6 +5,17 @@
     <url>/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/</url>
     <content><![CDATA[<p>第一天工作安排</p>
 <p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png" alt="1683552602215"></p>
+<p>第一天任务完成答案：</p>
+<p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552737235.png" alt="1683552737235"></p>
+<p>克隆仓库：</p>
+<p><code>git clone 仓库名</code></p>
+<p>创建个人新分支</p>
+<p><code>git checkout -b 分支名   //创建并切换本地分支</code></p>
+<p>更改文件</p>
+<p>推送到远程分支</p>
+<p><code>git push origin 本地分支名：远程分支名   //有参数可以用</code></p>
+<p>合并远程分支</p>
+<p>git</p>
 ]]></content>
   </entry>
   <entry>
