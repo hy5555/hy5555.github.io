@@ -6,7 +6,7 @@
   <link href="https://github.com/hy5555/hy5555.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/hy5555/hy5555.github.io.git/"/>
-  <updated>2023-05-08T13:39:02.382Z</updated>
+  <updated>2023-05-08T13:42:15.873Z</updated>
   <id>https://github.com/hy5555/hy5555.github.io.git/</id>
   
   <author>
@@ -21,16 +21,14 @@
     <link href="https://github.com/hy5555/hy5555.github.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/"/>
     <id>https://github.com/hy5555/hy5555.github.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/</id>
     <published>2023-05-08T05:50:00.502Z</published>
-    <updated>2023-05-08T13:39:02.382Z</updated>
+    <updated>2023-05-08T13:42:15.873Z</updated>
     
-    <content type="html"><![CDATA[<p>第一天工作安排</p><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png" alt="1683552602215"></p><p>第一天任务完成答案：</p><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552737235.png" alt="1683552737235"></p><p>克隆仓库：</p><p><code>git clone 仓库名</code></p><p>创建个人新分支</p><p><code>git checkout -b 分支名   //创建并切换本地分支</code></p><p>更改文件</p><p>推送到远程分支</p><p><code>git push origin 本地分支名：远程分支名   //有参数可以用</code></p><p>合并远程分支</p><p>git</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="第一天工作安排"><a href="#第一天工作安排" class="headerlink" title="第一天工作安排"></a>第一天工作安排</h3><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png" alt="1683552602215"></p><h4 id="第一天任务完成答案："><a href="#第一天任务完成答案：" class="headerlink" title="第一天任务完成答案："></a>第一天任务完成答案：</h4><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552737235.png" alt="1683552737235"></p><p>克隆仓库：</p><p><code>git clone 仓库名</code></p><p>创建个人新分支</p><p><code>git checkout -b 分支名   //创建并切换本地分支</code></p><p>更改文件</p><p>推送到远程分支</p><p><code>git push origin 本地分支名：远程分支名   //有参数可以用</code></p><p>合并远程分支</p><p><code>git merge 分支名称   //会有合并冲突</code></p><p>解决合并冲突</p><p>1、找到代码进行更改</p><p>2、<code>git add .</code></p><p>3、<code>git commit -m &quot; 注释&quot;</code></p>]]></content>
     
     
       
       
-    <summary type="html">&lt;p&gt;第一天工作安排&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png&quot; alt=&quot;1683552602215&quot;&gt;&lt;/p&gt;
-&lt;p&gt;第一天任务完成答案：&lt;/p</summary>
+    <summary type="html">&lt;h3 id=&quot;第一天工作安排&quot;&gt;&lt;a href=&quot;#第一天工作安排&quot; class=&quot;headerlink&quot; title=&quot;第一天工作安排&quot;&gt;&lt;/a&gt;第一天工作安排&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%</summary>
       
     
     
