@@ -18,6 +18,43 @@
 <p>1、找到代码进行更改</p>
 <p>2、<code>git add .</code></p>
 <p>3、<code>git commit -m &quot; 注释&quot;</code></p>
+<h3 id="第二和第三天工作安排"><a href="#第二和第三天工作安排" class="headerlink" title="第二和第三天工作安排"></a>第二和第三天工作安排</h3><p>这两天做了一个登录界面并实现了一些交互。</p>
+<p>页面如下：<a href="https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/%E4%BA%91%E5%8F%B7?node-id=31:5633" title="设计稿">https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/云号?node-id=31%3A5633</a></p>
+<p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683788178152.png" alt="1683788178152"></p>
+<ul>
+<li>要求<ul>
+<li>遵循开发规范</li>
+<li>完成静态页面开发</li>
+<li>可参考原代码，不要照抄</li>
+<li>不使用ipu-开头的className</li>
+<li>不使用Mobile和IpuMobile对象</li>
+<li>所有消息提示，调用this.$util.modal.toast(message)提示，如手机号码不正确（原工程看，输入不规范的消息是在页面里显示文字）</li>
+</ul>
+</li>
+<li>完成页面交互<ul>
+<li>点击第一个输入框后的小图标，显示弹框</li>
+<li>验证码输入框，在点击获取获取验证码后才可编辑输入</li>
+<li>点获取验证码，验证手机号格式正确后，才发送验证码</li>
+<li>发送验证码后，发送验证码60s倒计时，倒计时内不可再点击</li>
+<li>点击登录，验证手机号，验证码已输入，并勾选同意隐私协议，调用登录接口进行登录</li>
+<li>登录成功后，提示登录成功，并保存登录手机号，下次进入登录页面时，手机输入框显示最近登录成功的手机号</li>
+<li>点击’《云号APP用户隐私政策》’进入路由名称为’PrivacyPolicy’页面</li>
+</ul>
+</li>
+<li>接口及参数说明<br>工程中定义了接口模拟<br>import { subnumManageApi, accountManageApi } from ‘../../api’<br>// 获取验证码接口，只能给13112341234的手机发送短信<br>accountManageApi.getMessageCode({phone：’手机号’})<br>// 调用登录接口，手机号只能为13112341234，验证码只能为123456<br>accountManageApi.login({‘phone’:’13112341234’, code::’123456’})</li>
+</ul>
+<h4 id="移动端样式差异"><a href="#移动端样式差异" class="headerlink" title="移动端样式差异"></a>移动端样式差异</h4><ul>
+<li>适配vw + rem</li>
+<li>切图使用2倍图，图片为展示尺寸2倍，尽量使用长宽相等切图</li>
+<li>适配宽度范围<ul>
+<li>320~480自适应范围</li>
+<li>小于320，按320尺寸展示</li>
+<li>大于480尺寸，按480尺寸时显示</li>
+</ul>
+</li>
+<li>0.5px边框：不能直接定义0.5px边框，可能不显示，一般使用伪元素定义1px边框，0.5倍缩放</li>
+<li>设计稿页面上一般有手机系统工具栏区域，h5界面是不处理这个区域，考虑边距时要减掉这块的高度</li>
+</ul>
 ]]></content>
   </entry>
   <entry>
