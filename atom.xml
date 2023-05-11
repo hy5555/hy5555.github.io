@@ -3,11 +3,11 @@
   <title>Real Man</title>
   
   
-  <link href="https://github.com/hy5555/hy5555.github.io.git/atom.xml" rel="self"/>
+  <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/atom.xml" rel="self"/>
   
-  <link href="https://github.com/hy5555/hy5555.github.io.git/"/>
-  <updated>2023-05-11T06:58:30.032Z</updated>
-  <id>https://github.com/hy5555/hy5555.github.io.git/</id>
+  <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/"/>
+  <updated>2023-05-11T07:05:04.146Z</updated>
+  <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/</id>
   
   <author>
     <name>Yellow One</name>
@@ -18,12 +18,12 @@
   
   <entry>
     <title>第一周任务</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/</id>
     <published>2023-05-08T05:50:00.502Z</published>
-    <updated>2023-05-11T06:58:30.032Z</updated>
+    <updated>2023-05-11T07:05:04.146Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="第一天工作安排"><a href="#第一天工作安排" class="headerlink" title="第一天工作安排"></a>第一天工作安排</h3><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png" alt="1683552602215"></p><h4 id="第一天任务完成答案："><a href="#第一天任务完成答案：" class="headerlink" title="第一天任务完成答案："></a>第一天任务完成答案：</h4><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552737235.png" alt="1683552737235"></p><p>克隆仓库：</p><p><code>git clone 仓库名</code></p><p>创建个人新分支</p><p><code>git checkout -b 分支名   //创建并切换本地分支</code></p><p>更改文件</p><p>推送到远程分支</p><p><code>git push origin 本地分支名：远程分支名   //有参数可以用</code></p><p>合并远程分支</p><p><code>git merge 分支名称   //会有合并冲突</code></p><p>解决合并冲突</p><p>1、找到代码进行更改</p><p>2、<code>git add .</code></p><p>3、<code>git commit -m &quot; 注释&quot;</code></p><h3 id="第二和第三天工作安排"><a href="#第二和第三天工作安排" class="headerlink" title="第二和第三天工作安排"></a>第二和第三天工作安排</h3><p>这两天做了一个登录界面并实现了一些交互。</p><p>页面如下：<a href="https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/%E4%BA%91%E5%8F%B7?node-id=31:5633" title="设计稿">https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/云号?node-id=31%3A5633</a></p><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683788178152.png" alt="1683788178152"></p><ul><li>要求<ul><li>遵循开发规范</li><li>完成静态页面开发</li><li>可参考原代码，不要照抄</li><li>不使用ipu-开头的className</li><li>不使用Mobile和IpuMobile对象</li><li>所有消息提示，调用this.$util.modal.toast(message)提示，如手机号码不正确（原工程看，输入不规范的消息是在页面里显示文字）</li></ul></li><li>完成页面交互<ul><li>点击第一个输入框后的小图标，显示弹框</li><li>验证码输入框，在点击获取获取验证码后才可编辑输入</li><li>点获取验证码，验证手机号格式正确后，才发送验证码</li><li>发送验证码后，发送验证码60s倒计时，倒计时内不可再点击</li><li>点击登录，验证手机号，验证码已输入，并勾选同意隐私协议，调用登录接口进行登录</li><li>登录成功后，提示登录成功，并保存登录手机号，下次进入登录页面时，手机输入框显示最近登录成功的手机号</li><li>点击’《云号APP用户隐私政策》’进入路由名称为’PrivacyPolicy’页面</li></ul></li><li>接口及参数说明<br>工程中定义了接口模拟<br>import { subnumManageApi, accountManageApi } from ‘../../api’<br>// 获取验证码接口，只能给13112341234的手机发送短信<br>accountManageApi.getMessageCode({phone：’手机号’})<br>// 调用登录接口，手机号只能为13112341234，验证码只能为123456<br>accountManageApi.login({‘phone’:’13112341234’, code::’123456’})</li></ul><h4 id="移动端样式差异"><a href="#移动端样式差异" class="headerlink" title="移动端样式差异"></a>移动端样式差异</h4><ul><li>适配vw + rem</li><li>切图使用2倍图，图片为展示尺寸2倍，尽量使用长宽相等切图</li><li>适配宽度范围<ul><li>320~480自适应范围</li><li>小于320，按320尺寸展示</li><li>大于480尺寸，按480尺寸时显示</li></ul></li><li>0.5px边框：不能直接定义0.5px边框，可能不显示，一般使用伪元素定义1px边框，0.5倍缩放</li><li>设计稿页面上一般有手机系统工具栏区域，h5界面是不处理这个区域，考虑边距时要减掉这块的高度</li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="第一天工作安排"><a href="#第一天工作安排" class="headerlink" title="第一天工作安排"></a>第一天工作安排</h3><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png" alt="1683552602215"></p><h4 id="第一天任务完成答案："><a href="#第一天任务完成答案：" class="headerlink" title="第一天任务完成答案："></a>第一天任务完成答案：</h4><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552737235.png" alt="1683552737235"></p><p>克隆仓库：</p><p><code>git clone 仓库名</code></p><p>创建个人新分支</p><p><code>git checkout -b 分支名   //创建并切换本地分支</code></p><p>更改文件</p><p>推送到远程分支</p><p><code>git push origin 本地分支名：远程分支名   //有参数可以用</code></p><p>合并远程分支</p><p><code>git merge 分支名称   //会有合并冲突</code></p><p>解决合并冲突</p><p>1、找到代码进行更改</p><p>2、<code>git add .</code></p><p>3、<code>git commit -m &quot; 注释&quot;</code></p><h3 id="第二和第三天工作安排"><a href="#第二和第三天工作安排" class="headerlink" title="第二和第三天工作安排"></a>第二和第三天工作安排</h3><p>这两天做了一个登录界面并实现了一些交互。</p><p>页面如下：<a href="https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/%E4%BA%91%E5%8F%B7?node-id=31:5633" title="设计稿">https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/云号?node-id=31%3A5633</a></p><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683788178152.png" alt="1683788178152"></p><ul><li>要求<ul><li>遵循开发规范</li><li>完成静态页面开发</li><li>可参考原代码，不要照抄</li><li>不使用ipu-开头的className</li><li>不使用Mobile和IpuMobile对象</li><li>所有消息提示，调用this.$util.modal.toast(message)提示，如手机号码不正确（原工程看，输入不规范的消息是在页面里显示文字）</li></ul></li><li>完成页面交互<ul><li>点击第一个输入框后的小图标，显示弹框</li><li>验证码输入框，在点击获取获取验证码后才可编辑输入</li><li>点获取验证码，验证手机号格式正确后，才发送验证码</li><li>发送验证码后，发送验证码60s倒计时，倒计时内不可再点击</li><li>点击登录，验证手机号，验证码已输入，并勾选同意隐私协议，调用登录接口进行登录</li><li>登录成功后，提示登录成功，并保存登录手机号，下次进入登录页面时，手机输入框显示最近登录成功的手机号</li><li>点击’《云号APP用户隐私政策》’进入路由名称为’PrivacyPolicy’页面</li></ul></li><li>接口及参数说明<br>工程中定义了接口模拟<br>import { subnumManageApi, accountManageApi } from ‘../../api’<br>// 获取验证码接口，只能给13112341234的手机发送短信<br>accountManageApi.getMessageCode({phone：’手机号’})<br>// 调用登录接口，手机号只能为13112341234，验证码只能为123456<br>accountManageApi.login({‘phone’:’13112341234’, code::’123456’})</li></ul><h4 id="移动端样式差异"><a href="#移动端样式差异" class="headerlink" title="移动端样式差异"></a>移动端样式差异</h4><ul><li><p>适配vw + rem</p></li><li><p>切图使用2倍图，图片为展示尺寸2倍，尽量使用长宽相等切图</p></li><li><p>适配宽度范围</p><ul><li>320~480自适应范围</li><li>小于320，按320尺寸展示</li><li>大于480尺寸，按480尺寸时显示</li></ul></li><li><p>0.5px边框：不能直接定义0.5px边框，可能不显示，一般使用伪元素定义1px边框，0.5倍缩放</p></li><li><p>设计稿页面上一般有手机系统工具栏区域，h5界面是不处理这个区域，考虑边距时要减掉这块的高度</p><h4 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h4></li><li><p>知道了在vue项目中进行移动端适配（之前都是写html页面）</p></li><li><p>了解了一些开发上面的规范，命名规范还有文件夹功能</p></li><li><p>感觉很棒，很久没有写过css了，重新温习了一遍</p></li></ul>]]></content>
     
     
       
@@ -38,8 +38,8 @@
   
   <entry>
     <title>Node.js</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/04/09/node/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/04/09/node/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/04/09/node/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/04/09/node/</id>
     <published>2023-04-09T06:38:33.767Z</published>
     <updated>2023-04-25T12:49:46.535Z</updated>
     
@@ -57,8 +57,8 @@
   
   <entry>
     <title>尚品汇项目难点亮点</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</id>
     <published>2023-04-02T12:44:12.012Z</published>
     <updated>2023-04-05T05:45:14.511Z</updated>
     
@@ -77,8 +77,8 @@
   
   <entry>
     <title>Less学习</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/03/14/Less/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/03/14/Less/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/03/14/Less/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/03/14/Less/</id>
     <published>2023-03-14T13:42:53.384Z</published>
     <updated>2023-03-14T13:45:16.172Z</updated>
     
@@ -99,8 +99,8 @@
   
   <entry>
     <title>JS常见方法或对象</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E5%B8%B8%E8%A7%81API/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E5%B8%B8%E8%A7%81API/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/03/09/%E5%B8%B8%E8%A7%81API/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/03/09/%E5%B8%B8%E8%A7%81API/</id>
     <published>2023-03-09T12:26:47.497Z</published>
     <updated>2023-03-12T07:15:26.350Z</updated>
     
@@ -121,8 +121,8 @@
   
   <entry>
     <title>中软国际笔试加一面（前端实习）</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/</id>
     <published>2023-03-09T11:02:27.676Z</published>
     <updated>2023-03-09T11:25:20.132Z</updated>
     
@@ -146,8 +146,8 @@
   
   <entry>
     <title>TypeScript基础</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/03/07/TypeScript/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/03/07/TypeScript/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/03/07/TypeScript/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/03/07/TypeScript/</id>
     <published>2023-03-07T11:00:40.196Z</published>
     <updated>2023-03-07T13:36:18.861Z</updated>
     
@@ -164,8 +164,8 @@
   
   <entry>
     <title>Vue项目</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/</id>
     <published>2023-02-25T09:14:13.964Z</published>
     <updated>2023-03-01T13:26:57.516Z</updated>
     
@@ -182,8 +182,8 @@
   
   <entry>
     <title>Vue3</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/</id>
     <published>2023-02-23T03:33:45.555Z</published>
     <updated>2023-02-25T09:14:14.115Z</updated>
     
@@ -202,8 +202,8 @@
   
   <entry>
     <title>测试属性（判断属性是否在对象中）</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</id>
     <published>2023-02-22T11:36:22.717Z</published>
     <updated>2023-02-23T03:33:45.693Z</updated>
     
@@ -219,8 +219,8 @@
   
   <entry>
     <title>箭头函数与普通函数this指向的问题</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/20/this%E6%8C%87%E5%90%91/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/20/this%E6%8C%87%E5%90%91/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/20/this%E6%8C%87%E5%90%91/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/20/this%E6%8C%87%E5%90%91/</id>
     <published>2023-02-20T12:17:09.653Z</published>
     <updated>2023-02-20T12:44:23.044Z</updated>
     
@@ -236,8 +236,8 @@
   
   <entry>
     <title>原型和原型链</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</id>
     <published>2023-02-11T05:58:25.949Z</published>
     <updated>2023-02-11T06:49:19.259Z</updated>
     
@@ -261,8 +261,8 @@
   
   <entry>
     <title>关于Vuex的学习</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/08/Vuex/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/08/Vuex/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/08/Vuex/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/08/Vuex/</id>
     <published>2023-02-08T11:16:51.381Z</published>
     <updated>2023-02-11T12:55:59.243Z</updated>
     
@@ -281,8 +281,8 @@
   
   <entry>
     <title>利用Hexo搭建个人博客</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/</id>
+    <link href="https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/03/hello-world/"/>
+    <id>https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/02/03/hello-world/</id>
     <published>2023-02-03T05:59:25.615Z</published>
     <updated>2023-02-11T06:49:26.722Z</updated>
     

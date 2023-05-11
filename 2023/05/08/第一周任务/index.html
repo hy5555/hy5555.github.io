@@ -92,7 +92,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">662</span>
+            <span class="post-count">729</span>
         </span>
     </span>
 
@@ -157,16 +157,27 @@
 <li>接口及参数说明<br>工程中定义了接口模拟<br>import { subnumManageApi, accountManageApi } from ‘../../api’<br>// 获取验证码接口，只能给13112341234的手机发送短信<br>accountManageApi.getMessageCode({phone：’手机号’})<br>// 调用登录接口，手机号只能为13112341234，验证码只能为123456<br>accountManageApi.login({‘phone’:’13112341234’, code::’123456’})</li>
 </ul>
 <h4 id="移动端样式差异"><a href="#移动端样式差异" class="headerlink" title="移动端样式差异"></a>移动端样式差异</h4><ul>
-<li>适配vw + rem</li>
-<li>切图使用2倍图，图片为展示尺寸2倍，尽量使用长宽相等切图</li>
-<li>适配宽度范围<ul>
+<li><p>适配vw + rem</p>
+</li>
+<li><p>切图使用2倍图，图片为展示尺寸2倍，尽量使用长宽相等切图</p>
+</li>
+<li><p>适配宽度范围</p>
+<ul>
 <li>320~480自适应范围</li>
 <li>小于320，按320尺寸展示</li>
 <li>大于480尺寸，按480尺寸时显示</li>
 </ul>
 </li>
-<li>0.5px边框：不能直接定义0.5px边框，可能不显示，一般使用伪元素定义1px边框，0.5倍缩放</li>
-<li>设计稿页面上一般有手机系统工具栏区域，h5界面是不处理这个区域，考虑边距时要减掉这块的高度</li>
+<li><p>0.5px边框：不能直接定义0.5px边框，可能不显示，一般使用伪元素定义1px边框，0.5倍缩放</p>
+</li>
+<li><p>设计稿页面上一般有手机系统工具栏区域，h5界面是不处理这个区域，考虑边距时要减掉这块的高度</p>
+<h4 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h4></li>
+<li><p>知道了在vue项目中进行移动端适配（之前都是写html页面）</p>
+</li>
+<li><p>了解了一些开发上面的规范，命名规范还有文件夹功能</p>
+</li>
+<li><p>感觉很棒，很久没有写过css了，重新温习了一遍</p>
+</li>
 </ul>
  
       <!-- reward -->
@@ -238,7 +249,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/hy_hy/hy_hy.gitee.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/" alt="微信分享二维码">
     </div>
 </div>
 
