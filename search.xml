@@ -1,44 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>原型和原型链</title>
-    <url>/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
-    <content><![CDATA[<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型：是一个对象模板，通俗意义上的理解就是一个类。</p>
-<p>（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享原型的所有属性和方法。</p>
-<p>例：Person.prototype.sayHello() = function(){</p>
-<pre><code class="hljs">console.log(&quot;你好&quot;)
-</code></pre>
-<p>}</p>
-<p>（2）严格模式下，原型的属性和方法还是会被原型实例所共享的。</p>
-<p>（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。</p>
-<p>（4）原型的总结：</p>
+    <title>第一周任务</title>
+    <url>/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/</url>
+    <content><![CDATA[<h3 id="第一天工作安排"><a href="#第一天工作安排" class="headerlink" title="第一天工作安排"></a>第一天工作安排</h3><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png" alt="1683552602215"></p>
+<h4 id="第一天任务完成答案："><a href="#第一天任务完成答案：" class="headerlink" title="第一天任务完成答案："></a>第一天任务完成答案：</h4><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552737235.png" alt="1683552737235"></p>
+<p>克隆仓库：</p>
+<p><code>git clone 仓库名</code></p>
+<p>创建个人新分支</p>
+<p><code>git checkout -b 分支名   //创建并切换本地分支</code></p>
+<p>更改文件</p>
+<p>推送到远程分支</p>
+<p><code>git push origin 本地分支名：远程分支名   //有参数可以用</code></p>
+<p>合并远程分支</p>
+<p><code>git merge 分支名称   //会有合并冲突</code></p>
+<p>解决合并冲突</p>
+<p>1、找到代码进行更改</p>
+<p>2、<code>git add .</code></p>
+<p>3、<code>git commit -m &quot; 注释&quot;</code></p>
+<h3 id="第二和第三天工作安排"><a href="#第二和第三天工作安排" class="headerlink" title="第二和第三天工作安排"></a>第二和第三天工作安排</h3><p>这两天做了一个登录界面并实现了一些交互。</p>
+<p>页面如下：<a href="https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/%E4%BA%91%E5%8F%B7?node-id=31:5633" title="设计稿">https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/云号?node-id=31%3A5633</a></p>
+<p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683788178152.png" alt="1683788178152"></p>
+<ul>
+<li>要求<ul>
+<li>遵循开发规范</li>
+<li>完成静态页面开发</li>
+<li>可参考原代码，不要照抄</li>
+<li>不使用ipu-开头的className</li>
+<li>不使用Mobile和IpuMobile对象</li>
+<li>所有消息提示，调用this.$util.modal.toast(message)提示，如手机号码不正确（原工程看，输入不规范的消息是在页面里显示文字）</li>
+</ul>
+</li>
+<li>完成页面交互<ul>
+<li>点击第一个输入框后的小图标，显示弹框</li>
+<li>验证码输入框，在点击获取获取验证码后才可编辑输入</li>
+<li>点获取验证码，验证手机号格式正确后，才发送验证码</li>
+<li>发送验证码后，发送验证码60s倒计时，倒计时内不可再点击</li>
+<li>点击登录，验证手机号，验证码已输入，并勾选同意隐私协议，调用登录接口进行登录</li>
+<li>登录成功后，提示登录成功，并保存登录手机号，下次进入登录页面时，手机输入框显示最近登录成功的手机号</li>
+<li>点击’《云号APP用户隐私政策》’进入路由名称为’PrivacyPolicy’页面</li>
+</ul>
+</li>
+<li>接口及参数说明<br>工程中定义了接口模拟<br>import { subnumManageApi, accountManageApi } from ‘../../api’<br>// 获取验证码接口，只能给13112341234的手机发送短信<br>accountManageApi.getMessageCode({phone：’手机号’})<br>// 调用登录接口，手机号只能为13112341234，验证码只能为123456<br>accountManageApi.login({‘phone’:’13112341234’, code::’123456’})</li>
+</ul>
+<h4 id="移动端样式差异"><a href="#移动端样式差异" class="headerlink" title="移动端样式差异"></a>移动端样式差异</h4><ul>
+<li><p>适配vw + rem</p>
+</li>
+<li><p>切图使用2倍图，图片为展示尺寸2倍，尽量使用长宽相等切图</p>
+</li>
+<li><p>适配宽度范围</p>
+<ul>
+<li>320~480自适应范围</li>
+<li>小于320，按320尺寸展示</li>
+<li>大于480尺寸，按480尺寸时显示</li>
+</ul>
+</li>
+<li><p>0.5px边框：不能直接定义0.5px边框，可能不显示，一般使用伪元素定义1px边框，0.5倍缩放</p>
+</li>
+<li><p>设计稿页面上一般有手机系统工具栏区域，h5界面是不处理这个区域，考虑边距时要减掉这块的高度</p>
+<h4 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h4></li>
+<li><p>知道了在vue项目中进行移动端适配（之前都是写html页面）</p>
+</li>
+<li><p>了解了一些开发上面的规范，命名规范还有文件夹功能</p>
+</li>
+<li><p>感觉很棒，很久没有写过css了，重新温习了一遍</p>
+<p>写页面应该尽量做到如下：</p>
+<p>尽量自适应<br>少使用绝对定位：根据边距来确定位置<br>少用固定尺寸<br>宽度百分百不要再定义<br>相同样式复用</p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Node.js</title>
+    <url>/2023/04/09/node/</url>
+    <content><![CDATA[<p>Node.js不是一门编程语言，是一个应用程序，是一个软件。</p>
+<p>Node.js不能使用BOM和DOM中的API，可以使用定时器和cosole.log</p>
+<p>Node.js的顶级对象为global，浏览器的顶级对象为window</p>
 <span id="more"></span>
 
+<h3 id="一、Buffer"><a href="#一、Buffer" class="headerlink" title="一、Buffer"></a>一、Buffer</h3><p>概念：Buffer是一个类似于数组的对象，用于固定长度的字节序列。其本质是一段内存空间，专门用来处理二进制数据。</p>
+<p>特点：1、Buffer大小固定且无法调整</p>
+<pre><code class="hljs">2、Buffer性能较好，可以直接对计算机内存进行操作
 
-<ul>
-<li>所有引用类型都有一个 <code>__proto__</code>(隐式原型)属性，属性值是一个普通的对象</li>
-<li>所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</li>
-<li>所有引用类型的 <code>__proto__</code>属性指向它构造函数的prototype</li>
-</ul>
-<p>（5）函数的原型prototype：函数才有prototype，prototype是一个对象，指向了当前构造函数的引用地址。</p>
-<pre><code class="hljs">prototype是一个对象，指向当前构造函数的引用地址，与构造函数有关。
-
-__proto__是实例化对象中的一个属性，也是一个对象，指向prototype这个对象，与实例化对象有关。
+3、每个元素的大小为1byte
 </code></pre>
-<p>（6）函数的原型对象__proto__：所有对象都有__proto__属性， 当用构造函数实例化（new）一个对象时，会将新对象的__proto__属性指向 构造函数的prototype。</p>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a><strong>原型链</strong></h3><p>1）原型链：原型链是原型对象创建过程的历史记录，当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的 <code>__proto__</code>中查找，这样一层一层向上查找就会形成一个链式结构</p>
-<p>2）原型设计的问题：当查找一个对象的属性时，JavaScript 会根据原型链向上遍历对象的原型，直到找到给定名称的属性为止，直到到达原型链的顶部仍然没有找到指定的属性，就会返回 undefined</p>
-<p>也可以理解为原型链继承时查找属性的过程是先查找自身属性，当自身属性不存在时，会在原型链中逐级查找</p>
-<p>3）hasOwnProperty 函数：可以用来检查对象自身是否含有某个属性，返回值是布尔值，当属性不存在时不会向上查找对象原型链，hasOwnProperty是 JavaScript 中唯一一个处理属性但是不查找原型链的函数</p>
-<p>4）getOwnPropertyNames 函数：可以获取对象所有的自身属性，返回值是由对象自身属性名称组成的数组，同样不会向上查找对象原型链</p>
-<p>5）原型链的小结：</p>
+<p>使用</p>
+<p>创建：</p>
+<p>1、Buffer.alloc()</p>
+<figure class="highlight tap"><table><tr><td class="code"><pre><code class="hljs tap">//创建一个长度为10字节的Buffer，相当于申请了10字节的内存空间<br>let buf_1 = Buffer.alloc(10)<br>//结果为&lt;Buffer<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00&gt;<br></code></pre></td></tr></table></figure>
+
+<p>2、Buffer.allocUnsafe()</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">//创建了一个长度为10的Buffer，buffer中可能存在旧数据，可能会影响执行结果，所以叫unsafe，但是效率比alloc更高</span><br><span class="hljs-keyword">let</span> buf_2 = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Buffer</span>.</span></span>alloc<span class="hljs-constructor">Unsafe(10)</span><br></code></pre></td></tr></table></figure>
+
+<p>3、Buffer.from()</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-comment">//通过字符串创建Buffer</span><br><span class="hljs-keyword">let</span> buf_3 = Buffer.<span class="hljs-keyword">from</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-comment">//通过数组创建Buffer</span><br><span class="hljs-keyword">let</span> buf_4 = Buffer.<span class="hljs-keyword">from</span>([<span class="hljs-number">105</span>,<span class="hljs-number">108</span>,<span class="hljs-number">111</span>,<span class="hljs-number">118</span>,<span class="hljs-number">101</span>,<span class="hljs-number">121</span>,<span class="hljs-number">111</span>,<span class="hljs-number">117</span>])<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">Buffer与字符串的转化
+</code></pre>
+<p>我们可以借助toString方法将Buffer转为字符串</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">let</span> buf_4 = Buffer.from([<span class="hljs-number">105</span>,<span class="hljs-number">108</span>,<span class="hljs-number">111</span>,<span class="hljs-number">118</span>,<span class="hljs-number">101</span>,<span class="hljs-number">121</span>,<span class="hljs-number">111</span>,<span class="hljs-number">117</span>])<br><span class="hljs-attribute">console</span>.log(buf_4.toString())//=&gt;iloveyou<br></code></pre></td></tr></table></figure>
+
+<p>Buffer的读写</p>
+<p>Buffer可以直接通过[]的方式对数据进行处理。</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">let buf_3 = Buffer<span class="hljs-selector-class">.from</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-comment">//读取</span><br>cosole<span class="hljs-selector-class">.log</span>(buf_3<span class="hljs-selector-attr">[1]</span>)<span class="hljs-comment">//=&gt;101</span><br><span class="hljs-comment">//修改</span><br>buf_3<span class="hljs-selector-attr">[1]</span> = <span class="hljs-number">97</span><br><span class="hljs-comment">//查看字符串结果</span><br>console<span class="hljs-selector-class">.log</span>(buf_3<span class="hljs-selector-class">.toString</span>())<span class="hljs-comment">//=&gt;hello</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>1、如果修改的数值超过255，则超过8位数据会被舍弃</p>
+<p>2、一个utf-8的字符一般占3个字节</p>
+<h3 id="二、fs模块"><a href="#二、fs模块" class="headerlink" title="二、fs模块"></a>二、fs模块</h3><p>fs全称为file system，称之为文件系统，是Node.js中的内置模块，可以对计算机中的磁盘进行操作。</p>
+<p>本章节会介绍如下几个操作：</p>
+<p>1、文件写入</p>
+<p>2、文件读取</p>
+<p>3、文件移动和重命名</p>
+<p>4、文件删除</p>
+<p>5、文件夹操作</p>
+<p>6、查看资源状态</p>
+<h4 id="1、文件写入"><a href="#1、文件写入" class="headerlink" title="1、文件写入"></a>1、文件写入</h4><p>文件写入就是将数据保存在文件中</p>
+<p><img src="image/node/1682425154825.png" alt="1682425154825"></p>
+<p>writeFile异步写入</p>
+<p>语法：fs.writeFile(file,data[,options],callback)</p>
+<p>参数说明：</p>
+<p>file文件名</p>
+<p>data待写入的数据</p>
+<p>options选项设置（可选）</p>
+<p>callback写入回调</p>
+<p>返回值：undefined</p>
+<p>代码示例：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//require是Node.js环境中的‘全局’变量，用来导入模块</span><br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-comment">//将[三人行，必有我师焉]写入到当前文件夹下的[座右铭.txt]文件中</span><br>fs.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;三人行，则必有我师！&#x27;</span>,&#123;<span class="hljs-attr">flag</span>:<span class="hljs-string">&#x27;a&#x27;</span>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>writeFileSync同步写入</p>
+<p>语法：fs.writeFileSync(file,data[,options])</p>
+<p>参数与fs.writeFile大体一致，只是没有callback参数</p>
+<p>返回值:undefined</p>
+<p>代码示例：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">fs<span class="hljs-selector-class">.writeFileSync</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;三人行，则必有我师！&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>Node.js中的磁盘操作是由其他线程完成的，结果的处理有两种模式;</p>
+<p>1、同步处理JavaScript主线程会等待其线程的执行结果，然后再继续执行主线程的代码，效率较低</p>
+<p>2、异步处理JavaScript主线程不会等待其线程的执行结果，直接执行后续的的主线程代码，效率较低</p>
+<p>appendFile/appendFileSync追加写入</p>
+<p>appendFile作用是在文件尾部追加内容，语法和writeFile语法完全一样。</p>
+<p>语法：</p>
+<p>fs.appendFile(file,data[,options],callback)</p>
+<p>fs.appendFileSync(file,data[,options])</p>
+<p>返回值：二者都为undefined</p>
+<p>示例代码：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">fs<span class="hljs-selector-class">.append</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;则其善者而从之，其不善者而改之。&#x27;</span>,err=&gt;&#123;<br>	<span class="hljs-built_in">if</span>(err)&#123;<br>	sonsole<span class="hljs-selector-class">.log</span>(<span class="hljs-string">&quot;失败&quot;</span>)<br>	&#125;<br>	comsole<span class="hljs-selector-class">.log</span>(<span class="hljs-string">&#x27;成功&#x27;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>createWriteStream流式写入</p>
+<p>语法：fs.createWriteStream(path[,options])</p>
+<p>参数说明：</p>
+<p>path文件路径</p>
+<p>options选项配置（可选）</p>
+<p>返回值：Object</p>
+<p>代码示例：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">let</span> <span class="hljs-keyword">ws</span> = fs.createWriteStream(<span class="hljs-string">&#x27;./观书有感.txt&#x27;</span>)<br>//写入数据到流<br><span class="hljs-keyword">ws</span>.<span class="hljs-keyword">write</span>(<span class="hljs-string">&#x27;哈哈哈哈&#x27;</span>)<br><span class="hljs-keyword">ws</span>.<span class="hljs-keyword">write</span>(<span class="hljs-string">&#x27;啦啦啦啦&#x27;</span>)<br><span class="hljs-keyword">ws</span>.end()<br></code></pre></td></tr></table></figure>
+
+<p>程序打开一个文件是需要消耗资源的，流式写入可以减少打开关闭文件的次数。流式写入方式适用于 大文件写入或者频繁写入的场景，<code>writeFile</code>适合于 写入频率较低的场景</p>
+<p>文件读取：文件读取顾名思义，就是通过程序从文件中取出其中的数据，我们可以使用如下几种方式：</p>
+<p><img src="image/node/1682426823556.png" alt="1682426823556"></p>
+<p>readFile异步读取</p>
+<p> <strong>语法</strong> : <code>fs.readFile(path[, options], callback)</code></p>
+<p> <strong>参数说明</strong> ：</p>
 <ul>
-<li>一直往上层查找，直到到null还没有找到，则返回undefined</li>
-<li><code>Object.prototype.__proto__ === null</code></li>
-<li>所有从原型或更高级原型中的得到、执行的方法，其中的this在执行时，指向当前这个触发事件执行的对象</li>
+<li>path 文件路径</li>
+<li>options 选项配置</li>
+<li>callback 回调函数</li>
 </ul>
-<p>6）JavaScript的原型是为了实现对象间的联系，解决构造函数无法数据共享而引入的一个属性，而原型链是一个实现对象间联系即继承的主要方法</p>
-<p>原文链接：<a href="https://www.php.cn/js-tutorial-462738.html">js的原型和原型链是什么-js教程-PHP中文网</a></p>
+<p><strong>返 回 值 ：</strong> <code>undefined</code></p>
+<p>代码示例：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 导入 fs 模块</span><br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-string">&#x27;uft-8&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+
+
+
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">const rs = fs.createReadStream(<span class="hljs-string">&#x27;../资料/高考加油.mp4&#x27;</span>)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>,chunk=&gt;&#123;<br><br>&#125;)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>,<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>例题：复制文件</p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> rs = fs.createReadStream(<span class="hljs-string">&#x27;../资料/高考加油.mp4&#x27;</span>)<br><span class="hljs-keyword">const</span> ws = fs.createWriteStream(<span class="hljs-string">&#x27;../资料/高考加油复制.mp4&#x27;</span>,)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>,chunk=&gt;&#123;<br>    ws.write(chunk)<br>&#125;)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>,()=&gt;&#123;<br>    console.log(<span class="hljs-string">&#x27;完成&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>重命名文件（也可用于更换文件目录）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">rename</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;./论语.txt&#x27;</span>,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>删除文件方法1（也可用于删除目录）</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">fs.rm(<span class="hljs-string">&#x27;./哈哈.txt&#x27;</span>,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>删除文件方法2</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">unlink</span>(<span class="hljs-string">&#x27;./哈哈.txt&#x27;</span>,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="对目录的操作"><a href="#对目录的操作" class="headerlink" title="对目录的操作"></a>对目录的操作</h3><p>删除目录</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">const fs = require(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-comment">//不推荐</span><br>fs.rmdir(<span class="hljs-string">&#x27;./a&#x27;</span>,&#123;<span class="hljs-attr">recursive</span>:<span class="hljs-literal">true</span>&#125;,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br><span class="hljs-comment">//推荐</span><br>fs.rm(<span class="hljs-string">&#x27;./a&#x27;</span>,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>新建目录</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">mkdir</span>(<span class="hljs-string">&#x27;./a/b/c&#x27;</span>,&#123;<span class="hljs-attr">recursive</span>:<span class="hljs-literal">true</span>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>读取目录</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">readdir</span>(<span class="hljs-string">&#x27;../资料&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>拼接路径</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">const fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>const <span class="hljs-built_in">path</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>// console.<span class="hljs-built_in">log</span>(__dirname + <span class="hljs-string">&#x27;/论语.txt&#x27;</span>);<br>console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">path</span>.resolve(__dirname,<span class="hljs-string">&#x27;./论语.txt&#x27;</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>服务器和浏览器会分别产生响应报文和请求报文，请求报文通常由请求行，请求头和请求体构成</p>
+<p>请求行：url，中文名称“统一资源定位符”，用于定位服务器中的资源，url标准形式为“协议名+主机名+端口+路径+字符串参数”</p>
+<p><img src="image/node/1681300653595.png" alt="1681300653595"></p>
+<p>获取请求头和响应头</p>
+<p><img src="image/node/1681384551111.png" alt="1681384551111"></p>
+<p>url绝对路径：</p>
+<p><img src="image/node/1681473900053.png" alt="1681473900053"></p>
+<p>相对路径：</p>
+<p><img src="image/node/1681473967322.png" alt="1681473967322"></p>
+<p><img src="image/node/1681475952698.png" alt="1681475952698"></p>
+<p><img src="image/node/1682256697178.png" alt="1682256697178"></p>
+<p><img src="image/node/1682328681037.png" alt="1682328681037"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>尚品汇项目难点亮点</title>
+    <url>/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h3><p>获取路由信息:$route（只可以读取路由信息，如果要进行路由操作需要用$$router进行)；在项目中，我们有些页面需要展示Footer组件内容，有些页面不需要展示Footer组件内容，我通过在路由信息中添加meta元素，再由页面通过读取meta元素配合v-if控制是否展示。路由跳转有两种方式：声明式导航（<code>&lt;router-view&gt;</code>和 <code>&lt;router-link&gt;</code>搭配）和编程式导航（this.$router.push()或$this.router.replace()）。在项目中，我们重写了push方法和replace方法，为什么需要重写，这是因为在编程式导航时，我们多次点击跳转时，会抛出异常，我们可以在push方法参数中传入成功的回调和失败的回调函数解决，但是在项目中我们多次用到编程式导航，所以选择重写。声明式导航不会报错，因为声明式导航内部已经解决这个问题。</p>
+<h3 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h3><p>防抖节流：lodash</p>
+<p>轮播图:swiper</p>
+<p>uuid:临时id（面试不用说这个，不合业务逻辑）</p>
+<p>页面假数据：mokejs</p>
+<h3 id="home主页"><a href="#home主页" class="headerlink" title="home主页"></a>home主页</h3><p>三级路由</p>
+<h3 id="搜索页面"><a href="#搜索页面" class="headerlink" title="搜索页面"></a>搜索页面</h3><h3 id="购物车业务"><a href="#购物车业务" class="headerlink" title="购物车业务"></a>购物车业务</h3><h3 id="登录注册"><a href="#登录注册" class="headerlink" title="登录注册"></a>登录注册</h3><h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><p>在项目中，我用到了前置路由守卫，用于判断用户是否登录，如果登录，则不许用户回到登录页面，如果用户未登录，则不许进入购物车页面。路由守卫有三个参数，第一个参数from是跳转前路径，第二个参数to是跳转后路径，第三个参数next方法是跳转方法。</p>
+<h3 id="项目难点"><a href="#项目难点" class="headerlink" title="项目难点"></a>项目难点</h3><p>(1)、在路由跳转使用编程式导航时，我设置点击搜索进入搜索页，当我一次点击多下时，控制台会抛出异常，我开始不明白为什么，后面查到当点击多次时，当push方法内部检查到跳转路由没有变化时，会抛出一个失败的Promise，这里解决方式有两种，第一种是每次使用push方法时在push方法中添加两个箭头函数作为成功和失败的回调。第二种是重写push和replace方法。</p>
+<p>(2)、在做轮播图时，刚开始将new Swiper放在mounted中，但是请求是异步的，new Swiper时数据可能还没有获取到，解决办法，将new Swiper放在watch监听里，并将immediate设置为true</p>
+<h3 id="项目亮点"><a href="#项目亮点" class="headerlink" title="项目亮点"></a>项目亮点</h3><p>封装分页器组件，需要的数据：一页展示多少条数据，总共有多少条数据，连续页数，当前是第几页</p>
 ]]></content>
   </entry>
   <entry>
@@ -46,6 +234,40 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
     <url>/2023/03/14/Less/</url>
     <content><![CDATA[<p>是一门预编译语言</p>
 <p><a href="https://juejin.cn/post/6844903520441729037#comment">学习Less-看这篇就够了 - 掘金 (juejin.cn)</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>JS常见方法或对象</title>
+    <url>/2023/03/09/%E5%B8%B8%E8%A7%81API/</url>
+    <content><![CDATA[<p>sort():排序方法，可有参数也可无参数，无参数是按照字符集顺序进行排序。</p>
+<p>filter(()=&gt;{}}):过滤函数，根据箭头函数返回的boolean值决定是否保留该元素。要说的是，箭头函数中第一个参数为数组值，第二个参数为索引值。</p>
+<p>forEach(()=&gt;{}):遍历数组，想想可不可以不新增变量，直接通过此方法实现数组元素全部加1，注意，并不可行，此函数并不会改变原数组，所以正确操作应该是新定义一个空数组，在forEach循环遍历时将元素加1并push进新数组。</p>
+<p>map(()=&gt;{}):此方法会创建一个新数组，新数组由老数组中每个元素都调用一次提供后的函数返回值组成。</p>
+<p>new Set(arr):Set对象允许你存任意类型的唯一值，强烈推荐使用此对象进行数组去重。</p>
+<p>Math:此对象常用于取整或形成随机数，想形成num1到num2范围的随机数，记住公式Math.floor(Math.random() * (num2 - num1 + 1) + num1)</p>
+<p>join:此方法用于拼接字符串。</p>
+<p>split:将字符串转为数组。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>中软国际笔试加一面（前端实习）</title>
+    <url>/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/</url>
+    <content><![CDATA[<p>笔试（十五题）：</p>
+<p>1、说几个未知宽高元素水平垂直居中的方法。</p>
+<p>2、说一下computed和whtch的区别。</p>
+<p>3、前端存储方式。</p>
+<p>4、什么是跨域，如何解决跨域。</p>
+<p>5、Vue的生命周期，数据在哪个周期加载。</p>
+<p>6、JS数据类型有哪些。</p>
+<p>7、什么是闭包。</p>
+<p>8、数组去重。</p>
+<p>9、实现判断后端请求的函数。</p>
+<p>10、建立一个包含10个10-100的数组并排序。</p>
+<p>11、字符串比对。</p>
+<p>12、组件通信的方式。</p>
+<p>13、说下mixins</p>
+<p>还有两个题目忘记了</p>
+<p>笔试完直接一面了，问了下项目，问了下前面题目答案没写全的，十来分钟，第一次面试，题目还是挺简单的，但是没有好好背八股，肯定是无了。算法也只会几个排序。但是第一次面试对自己的收获还是挺大的，没有想象的这么难。接下来就好好背八股，写下算法题。大厂不抱希望，希望能进稍微好点的公司实习。</p>
 ]]></content>
   </entry>
   <entry>
@@ -246,14 +468,6 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
 ]]></content>
   </entry>
   <entry>
-    <title>关于Vuex的学习</title>
-    <url>/2023/02/08/Vuex/</url>
-    <content><![CDATA[<h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p>
-<p>github地址：<a href="http://github.com/vuejs/vuex">http://github.com/vuejs/vuex</a></p>
-<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p><a href="https://juejin.cn/post/7013325675129995272">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Vue项目</title>
     <url>/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><h4 id="ElementUI引入及使用"><a href="#ElementUI引入及使用" class="headerlink" title="ElementUI引入及使用"></a>ElementUI引入及使用</h4><p><a href="https://element.eleme.cn/#/zh-CN/component/color">官网 | Element</a></p>
@@ -298,6 +512,83 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
 ]]></content>
   </entry>
   <entry>
+    <title>测试属性（判断属性是否在对象中）</title>
+    <url>/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p>
+<span id="more"></span>
+
+<h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p>
+<p>let o = { x: 1}</p>
+<p>“x” in o               //true</p>
+<p>“y” in o              //false</p>
+<p>“toString” in o          //true (继承属性)</p>
+<h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p>
+<p>let o = { x: 1}</p>
+<p>o.hasOwnProperty(“x”)              //true</p>
+<h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
+<h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>箭头函数与普通函数this指向的问题</title>
+    <url>/2023/02/20/this%E6%8C%87%E5%90%91/</url>
+    <content><![CDATA[<p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p>
+<span id="more"></span>
+
+
+<p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>原型和原型链</title>
+    <url>/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
+    <content><![CDATA[<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型：是一个对象模板，通俗意义上的理解就是一个类。</p>
+<p>（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享原型的所有属性和方法。</p>
+<p>例：Person.prototype.sayHello() = function(){</p>
+<pre><code class="hljs">console.log(&quot;你好&quot;)
+</code></pre>
+<p>}</p>
+<p>（2）严格模式下，原型的属性和方法还是会被原型实例所共享的。</p>
+<p>（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。</p>
+<p>（4）原型的总结：</p>
+<span id="more"></span>
+
+
+<ul>
+<li>所有引用类型都有一个 <code>__proto__</code>(隐式原型)属性，属性值是一个普通的对象</li>
+<li>所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</li>
+<li>所有引用类型的 <code>__proto__</code>属性指向它构造函数的prototype</li>
+</ul>
+<p>（5）函数的原型prototype：函数才有prototype，prototype是一个对象，指向了当前构造函数的引用地址。</p>
+<pre><code class="hljs">prototype是一个对象，指向当前构造函数的引用地址，与构造函数有关。
+
+__proto__是实例化对象中的一个属性，也是一个对象，指向prototype这个对象，与实例化对象有关。
+</code></pre>
+<p>（6）函数的原型对象__proto__：所有对象都有__proto__属性， 当用构造函数实例化（new）一个对象时，会将新对象的__proto__属性指向 构造函数的prototype。</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a><strong>原型链</strong></h3><p>1）原型链：原型链是原型对象创建过程的历史记录，当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的 <code>__proto__</code>中查找，这样一层一层向上查找就会形成一个链式结构</p>
+<p>2）原型设计的问题：当查找一个对象的属性时，JavaScript 会根据原型链向上遍历对象的原型，直到找到给定名称的属性为止，直到到达原型链的顶部仍然没有找到指定的属性，就会返回 undefined</p>
+<p>也可以理解为原型链继承时查找属性的过程是先查找自身属性，当自身属性不存在时，会在原型链中逐级查找</p>
+<p>3）hasOwnProperty 函数：可以用来检查对象自身是否含有某个属性，返回值是布尔值，当属性不存在时不会向上查找对象原型链，hasOwnProperty是 JavaScript 中唯一一个处理属性但是不查找原型链的函数</p>
+<p>4）getOwnPropertyNames 函数：可以获取对象所有的自身属性，返回值是由对象自身属性名称组成的数组，同样不会向上查找对象原型链</p>
+<p>5）原型链的小结：</p>
+<ul>
+<li>一直往上层查找，直到到null还没有找到，则返回undefined</li>
+<li><code>Object.prototype.__proto__ === null</code></li>
+<li>所有从原型或更高级原型中的得到、执行的方法，其中的this在执行时，指向当前这个触发事件执行的对象</li>
+</ul>
+<p>6）JavaScript的原型是为了实现对象间的联系，解决构造函数无法数据共享而引入的一个属性，而原型链是一个实现对象间联系即继承的主要方法</p>
+<p>原文链接：<a href="https://www.php.cn/js-tutorial-462738.html">js的原型和原型链是什么-js教程-PHP中文网</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>关于Vuex的学习</title>
+    <url>/2023/02/08/Vuex/</url>
+    <content><![CDATA[<h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p>
+<p>github地址：<a href="http://github.com/vuejs/vuex">http://github.com/vuejs/vuex</a></p>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p><a href="https://juejin.cn/post/7013325675129995272">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>利用Hexo搭建个人博客</title>
     <url>/2023/02/03/hello-world/</url>
     <content><![CDATA[<figure class="highlight subunit"><table><tr><td class="code"><pre><code class="hljs subunit">categories:<br>- 博客搭建<br><span class="hljs-keyword">tags:</span><br>- 博客搭建<br></code></pre></td></tr></table></figure>
@@ -321,297 +612,6 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
 <h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p>
 <p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p>
 <p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Node.js</title>
-    <url>/2023/04/09/node/</url>
-    <content><![CDATA[<p>Node.js不是一门编程语言，是一个应用程序，是一个软件。</p>
-<p>Node.js不能使用BOM和DOM中的API，可以使用定时器和cosole.log</p>
-<p>Node.js的顶级对象为global，浏览器的顶级对象为window</p>
-<span id="more"></span>
-
-<h3 id="一、Buffer"><a href="#一、Buffer" class="headerlink" title="一、Buffer"></a>一、Buffer</h3><p>概念：Buffer是一个类似于数组的对象，用于固定长度的字节序列。其本质是一段内存空间，专门用来处理二进制数据。</p>
-<p>特点：1、Buffer大小固定且无法调整</p>
-<pre><code class="hljs">2、Buffer性能较好，可以直接对计算机内存进行操作
-
-3、每个元素的大小为1byte
-</code></pre>
-<p>使用</p>
-<p>创建：</p>
-<p>1、Buffer.alloc()</p>
-<figure class="highlight tap"><table><tr><td class="code"><pre><code class="hljs tap">//创建一个长度为10字节的Buffer，相当于申请了10字节的内存空间<br>let buf_1 = Buffer.alloc(10)<br>//结果为&lt;Buffer<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00&gt;<br></code></pre></td></tr></table></figure>
-
-<p>2、Buffer.allocUnsafe()</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">//创建了一个长度为10的Buffer，buffer中可能存在旧数据，可能会影响执行结果，所以叫unsafe，但是效率比alloc更高</span><br><span class="hljs-keyword">let</span> buf_2 = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Buffer</span>.</span></span>alloc<span class="hljs-constructor">Unsafe(10)</span><br></code></pre></td></tr></table></figure>
-
-<p>3、Buffer.from()</p>
-<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-comment">//通过字符串创建Buffer</span><br><span class="hljs-keyword">let</span> buf_3 = Buffer.<span class="hljs-keyword">from</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-comment">//通过数组创建Buffer</span><br><span class="hljs-keyword">let</span> buf_4 = Buffer.<span class="hljs-keyword">from</span>([<span class="hljs-number">105</span>,<span class="hljs-number">108</span>,<span class="hljs-number">111</span>,<span class="hljs-number">118</span>,<span class="hljs-number">101</span>,<span class="hljs-number">121</span>,<span class="hljs-number">111</span>,<span class="hljs-number">117</span>])<br></code></pre></td></tr></table></figure>
-
-<pre><code class="hljs">Buffer与字符串的转化
-</code></pre>
-<p>我们可以借助toString方法将Buffer转为字符串</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">let</span> buf_4 = Buffer.from([<span class="hljs-number">105</span>,<span class="hljs-number">108</span>,<span class="hljs-number">111</span>,<span class="hljs-number">118</span>,<span class="hljs-number">101</span>,<span class="hljs-number">121</span>,<span class="hljs-number">111</span>,<span class="hljs-number">117</span>])<br><span class="hljs-attribute">console</span>.log(buf_4.toString())//=&gt;iloveyou<br></code></pre></td></tr></table></figure>
-
-<p>Buffer的读写</p>
-<p>Buffer可以直接通过[]的方式对数据进行处理。</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">let buf_3 = Buffer<span class="hljs-selector-class">.from</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-comment">//读取</span><br>cosole<span class="hljs-selector-class">.log</span>(buf_3<span class="hljs-selector-attr">[1]</span>)<span class="hljs-comment">//=&gt;101</span><br><span class="hljs-comment">//修改</span><br>buf_3<span class="hljs-selector-attr">[1]</span> = <span class="hljs-number">97</span><br><span class="hljs-comment">//查看字符串结果</span><br>console<span class="hljs-selector-class">.log</span>(buf_3<span class="hljs-selector-class">.toString</span>())<span class="hljs-comment">//=&gt;hello</span><br></code></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<p>1、如果修改的数值超过255，则超过8位数据会被舍弃</p>
-<p>2、一个utf-8的字符一般占3个字节</p>
-<h3 id="二、fs模块"><a href="#二、fs模块" class="headerlink" title="二、fs模块"></a>二、fs模块</h3><p>fs全称为file system，称之为文件系统，是Node.js中的内置模块，可以对计算机中的磁盘进行操作。</p>
-<p>本章节会介绍如下几个操作：</p>
-<p>1、文件写入</p>
-<p>2、文件读取</p>
-<p>3、文件移动和重命名</p>
-<p>4、文件删除</p>
-<p>5、文件夹操作</p>
-<p>6、查看资源状态</p>
-<h4 id="1、文件写入"><a href="#1、文件写入" class="headerlink" title="1、文件写入"></a>1、文件写入</h4><p>文件写入就是将数据保存在文件中</p>
-<p><img src="image/node/1682425154825.png" alt="1682425154825"></p>
-<p>writeFile异步写入</p>
-<p>语法：fs.writeFile(file,data[,options],callback)</p>
-<p>参数说明：</p>
-<p>file文件名</p>
-<p>data待写入的数据</p>
-<p>options选项设置（可选）</p>
-<p>callback写入回调</p>
-<p>返回值：undefined</p>
-<p>代码示例：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//require是Node.js环境中的‘全局’变量，用来导入模块</span><br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-comment">//将[三人行，必有我师焉]写入到当前文件夹下的[座右铭.txt]文件中</span><br>fs.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;三人行，则必有我师！&#x27;</span>,&#123;<span class="hljs-attr">flag</span>:<span class="hljs-string">&#x27;a&#x27;</span>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>writeFileSync同步写入</p>
-<p>语法：fs.writeFileSync(file,data[,options])</p>
-<p>参数与fs.writeFile大体一致，只是没有callback参数</p>
-<p>返回值:undefined</p>
-<p>代码示例：</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">fs<span class="hljs-selector-class">.writeFileSync</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;三人行，则必有我师！&#x27;</span>)<br></code></pre></td></tr></table></figure>
-
-<p>Node.js中的磁盘操作是由其他线程完成的，结果的处理有两种模式;</p>
-<p>1、同步处理JavaScript主线程会等待其线程的执行结果，然后再继续执行主线程的代码，效率较低</p>
-<p>2、异步处理JavaScript主线程不会等待其线程的执行结果，直接执行后续的的主线程代码，效率较低</p>
-<p>appendFile/appendFileSync追加写入</p>
-<p>appendFile作用是在文件尾部追加内容，语法和writeFile语法完全一样。</p>
-<p>语法：</p>
-<p>fs.appendFile(file,data[,options],callback)</p>
-<p>fs.appendFileSync(file,data[,options])</p>
-<p>返回值：二者都为undefined</p>
-<p>示例代码：</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">fs<span class="hljs-selector-class">.append</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;则其善者而从之，其不善者而改之。&#x27;</span>,err=&gt;&#123;<br>	<span class="hljs-built_in">if</span>(err)&#123;<br>	sonsole<span class="hljs-selector-class">.log</span>(<span class="hljs-string">&quot;失败&quot;</span>)<br>	&#125;<br>	comsole<span class="hljs-selector-class">.log</span>(<span class="hljs-string">&#x27;成功&#x27;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>createWriteStream流式写入</p>
-<p>语法：fs.createWriteStream(path[,options])</p>
-<p>参数说明：</p>
-<p>path文件路径</p>
-<p>options选项配置（可选）</p>
-<p>返回值：Object</p>
-<p>代码示例：</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">let</span> <span class="hljs-keyword">ws</span> = fs.createWriteStream(<span class="hljs-string">&#x27;./观书有感.txt&#x27;</span>)<br>//写入数据到流<br><span class="hljs-keyword">ws</span>.<span class="hljs-keyword">write</span>(<span class="hljs-string">&#x27;哈哈哈哈&#x27;</span>)<br><span class="hljs-keyword">ws</span>.<span class="hljs-keyword">write</span>(<span class="hljs-string">&#x27;啦啦啦啦&#x27;</span>)<br><span class="hljs-keyword">ws</span>.end()<br></code></pre></td></tr></table></figure>
-
-<p>程序打开一个文件是需要消耗资源的，流式写入可以减少打开关闭文件的次数。流式写入方式适用于 大文件写入或者频繁写入的场景，<code>writeFile</code>适合于 写入频率较低的场景</p>
-<p>文件读取：文件读取顾名思义，就是通过程序从文件中取出其中的数据，我们可以使用如下几种方式：</p>
-<p><img src="image/node/1682426823556.png" alt="1682426823556"></p>
-<p>readFile异步读取</p>
-<p> <strong>语法</strong> : <code>fs.readFile(path[, options], callback)</code></p>
-<p> <strong>参数说明</strong> ：</p>
-<ul>
-<li>path 文件路径</li>
-<li>options 选项配置</li>
-<li>callback 回调函数</li>
-</ul>
-<p><strong>返 回 值 ：</strong> <code>undefined</code></p>
-<p>代码示例：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 导入 fs 模块</span><br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-string">&#x27;uft-8&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-
-
-
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">const rs = fs.createReadStream(<span class="hljs-string">&#x27;../资料/高考加油.mp4&#x27;</span>)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>,chunk=&gt;&#123;<br><br>&#125;)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>,<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>例题：复制文件</p>
-<figure class="highlight livescript"><table><tr><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> rs = fs.createReadStream(<span class="hljs-string">&#x27;../资料/高考加油.mp4&#x27;</span>)<br><span class="hljs-keyword">const</span> ws = fs.createWriteStream(<span class="hljs-string">&#x27;../资料/高考加油复制.mp4&#x27;</span>,)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>,chunk=&gt;&#123;<br>    ws.write(chunk)<br>&#125;)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>,()=&gt;&#123;<br>    console.log(<span class="hljs-string">&#x27;完成&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>重命名文件（也可用于更换文件目录）</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">rename</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;./论语.txt&#x27;</span>,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>删除文件方法1（也可用于删除目录）</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">fs.rm(<span class="hljs-string">&#x27;./哈哈.txt&#x27;</span>,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>删除文件方法2</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">unlink</span>(<span class="hljs-string">&#x27;./哈哈.txt&#x27;</span>,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<h3 id="对目录的操作"><a href="#对目录的操作" class="headerlink" title="对目录的操作"></a>对目录的操作</h3><p>删除目录</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">const fs = require(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-comment">//不推荐</span><br>fs.rmdir(<span class="hljs-string">&#x27;./a&#x27;</span>,&#123;<span class="hljs-attr">recursive</span>:<span class="hljs-literal">true</span>&#125;,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br><span class="hljs-comment">//推荐</span><br>fs.rm(<span class="hljs-string">&#x27;./a&#x27;</span>,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>新建目录</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">mkdir</span>(<span class="hljs-string">&#x27;./a/b/c&#x27;</span>,&#123;<span class="hljs-attr">recursive</span>:<span class="hljs-literal">true</span>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>读取目录</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">readdir</span>(<span class="hljs-string">&#x27;../资料&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>拼接路径</p>
-<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">const fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>const <span class="hljs-built_in">path</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>// console.<span class="hljs-built_in">log</span>(__dirname + <span class="hljs-string">&#x27;/论语.txt&#x27;</span>);<br>console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">path</span>.resolve(__dirname,<span class="hljs-string">&#x27;./论语.txt&#x27;</span>));<br></code></pre></td></tr></table></figure>
-
-<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>服务器和浏览器会分别产生响应报文和请求报文，请求报文通常由请求行，请求头和请求体构成</p>
-<p>请求行：url，中文名称“统一资源定位符”，用于定位服务器中的资源，url标准形式为“协议名+主机名+端口+路径+字符串参数”</p>
-<p><img src="image/node/1681300653595.png" alt="1681300653595"></p>
-<p>获取请求头和响应头</p>
-<p><img src="image/node/1681384551111.png" alt="1681384551111"></p>
-<p>url绝对路径：</p>
-<p><img src="image/node/1681473900053.png" alt="1681473900053"></p>
-<p>相对路径：</p>
-<p><img src="image/node/1681473967322.png" alt="1681473967322"></p>
-<p><img src="image/node/1681475952698.png" alt="1681475952698"></p>
-<p><img src="image/node/1682256697178.png" alt="1682256697178"></p>
-<p><img src="image/node/1682328681037.png" alt="1682328681037"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>箭头函数与普通函数this指向的问题</title>
-    <url>/2023/02/20/this%E6%8C%87%E5%90%91/</url>
-    <content><![CDATA[<p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p>
-<span id="more"></span>
-
-
-<p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>中软国际笔试加一面（前端实习）</title>
-    <url>/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/</url>
-    <content><![CDATA[<p>笔试（十五题）：</p>
-<p>1、说几个未知宽高元素水平垂直居中的方法。</p>
-<p>2、说一下computed和whtch的区别。</p>
-<p>3、前端存储方式。</p>
-<p>4、什么是跨域，如何解决跨域。</p>
-<p>5、Vue的生命周期，数据在哪个周期加载。</p>
-<p>6、JS数据类型有哪些。</p>
-<p>7、什么是闭包。</p>
-<p>8、数组去重。</p>
-<p>9、实现判断后端请求的函数。</p>
-<p>10、建立一个包含10个10-100的数组并排序。</p>
-<p>11、字符串比对。</p>
-<p>12、组件通信的方式。</p>
-<p>13、说下mixins</p>
-<p>还有两个题目忘记了</p>
-<p>笔试完直接一面了，问了下项目，问了下前面题目答案没写全的，十来分钟，第一次面试，题目还是挺简单的，但是没有好好背八股，肯定是无了。算法也只会几个排序。但是第一次面试对自己的收获还是挺大的，没有想象的这么难。接下来就好好背八股，写下算法题。大厂不抱希望，希望能进稍微好点的公司实习。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>尚品汇项目难点亮点</title>
-    <url>/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h3><p>获取路由信息:$route（只可以读取路由信息，如果要进行路由操作需要用$$router进行)；在项目中，我们有些页面需要展示Footer组件内容，有些页面不需要展示Footer组件内容，我通过在路由信息中添加meta元素，再由页面通过读取meta元素配合v-if控制是否展示。路由跳转有两种方式：声明式导航（<code>&lt;router-view&gt;</code>和 <code>&lt;router-link&gt;</code>搭配）和编程式导航（this.$router.push()或$this.router.replace()）。在项目中，我们重写了push方法和replace方法，为什么需要重写，这是因为在编程式导航时，我们多次点击跳转时，会抛出异常，我们可以在push方法参数中传入成功的回调和失败的回调函数解决，但是在项目中我们多次用到编程式导航，所以选择重写。声明式导航不会报错，因为声明式导航内部已经解决这个问题。</p>
-<h3 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h3><p>防抖节流：lodash</p>
-<p>轮播图:swiper</p>
-<p>uuid:临时id（面试不用说这个，不合业务逻辑）</p>
-<p>页面假数据：mokejs</p>
-<h3 id="home主页"><a href="#home主页" class="headerlink" title="home主页"></a>home主页</h3><p>三级路由</p>
-<h3 id="搜索页面"><a href="#搜索页面" class="headerlink" title="搜索页面"></a>搜索页面</h3><h3 id="购物车业务"><a href="#购物车业务" class="headerlink" title="购物车业务"></a>购物车业务</h3><h3 id="登录注册"><a href="#登录注册" class="headerlink" title="登录注册"></a>登录注册</h3><h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><p>在项目中，我用到了前置路由守卫，用于判断用户是否登录，如果登录，则不许用户回到登录页面，如果用户未登录，则不许进入购物车页面。路由守卫有三个参数，第一个参数from是跳转前路径，第二个参数to是跳转后路径，第三个参数next方法是跳转方法。</p>
-<h3 id="项目难点"><a href="#项目难点" class="headerlink" title="项目难点"></a>项目难点</h3><p>(1)、在路由跳转使用编程式导航时，我设置点击搜索进入搜索页，当我一次点击多下时，控制台会抛出异常，我开始不明白为什么，后面查到当点击多次时，当push方法内部检查到跳转路由没有变化时，会抛出一个失败的Promise，这里解决方式有两种，第一种是每次使用push方法时在push方法中添加两个箭头函数作为成功和失败的回调。第二种是重写push和replace方法。</p>
-<p>(2)、在做轮播图时，刚开始将new Swiper放在mounted中，但是请求是异步的，new Swiper时数据可能还没有获取到，解决办法，将new Swiper放在watch监听里，并将immediate设置为true</p>
-<h3 id="项目亮点"><a href="#项目亮点" class="headerlink" title="项目亮点"></a>项目亮点</h3><p>封装分页器组件，需要的数据：一页展示多少条数据，总共有多少条数据，连续页数，当前是第几页</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>JS常见方法或对象</title>
-    <url>/2023/03/09/%E5%B8%B8%E8%A7%81API/</url>
-    <content><![CDATA[<p>sort():排序方法，可有参数也可无参数，无参数是按照字符集顺序进行排序。</p>
-<p>filter(()=&gt;{}}):过滤函数，根据箭头函数返回的boolean值决定是否保留该元素。要说的是，箭头函数中第一个参数为数组值，第二个参数为索引值。</p>
-<p>forEach(()=&gt;{}):遍历数组，想想可不可以不新增变量，直接通过此方法实现数组元素全部加1，注意，并不可行，此函数并不会改变原数组，所以正确操作应该是新定义一个空数组，在forEach循环遍历时将元素加1并push进新数组。</p>
-<p>map(()=&gt;{}):此方法会创建一个新数组，新数组由老数组中每个元素都调用一次提供后的函数返回值组成。</p>
-<p>new Set(arr):Set对象允许你存任意类型的唯一值，强烈推荐使用此对象进行数组去重。</p>
-<p>Math:此对象常用于取整或形成随机数，想形成num1到num2范围的随机数，记住公式Math.floor(Math.random() * (num2 - num1 + 1) + num1)</p>
-<p>join:此方法用于拼接字符串。</p>
-<p>split:将字符串转为数组。</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>第一周任务</title>
-    <url>/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/</url>
-    <content><![CDATA[<h3 id="第一天工作安排"><a href="#第一天工作安排" class="headerlink" title="第一天工作安排"></a>第一天工作安排</h3><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png" alt="1683552602215"></p>
-<h4 id="第一天任务完成答案："><a href="#第一天任务完成答案：" class="headerlink" title="第一天任务完成答案："></a>第一天任务完成答案：</h4><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552737235.png" alt="1683552737235"></p>
-<p>克隆仓库：</p>
-<p><code>git clone 仓库名</code></p>
-<p>创建个人新分支</p>
-<p><code>git checkout -b 分支名   //创建并切换本地分支</code></p>
-<p>更改文件</p>
-<p>推送到远程分支</p>
-<p><code>git push origin 本地分支名：远程分支名   //有参数可以用</code></p>
-<p>合并远程分支</p>
-<p><code>git merge 分支名称   //会有合并冲突</code></p>
-<p>解决合并冲突</p>
-<p>1、找到代码进行更改</p>
-<p>2、<code>git add .</code></p>
-<p>3、<code>git commit -m &quot; 注释&quot;</code></p>
-<h3 id="第二和第三天工作安排"><a href="#第二和第三天工作安排" class="headerlink" title="第二和第三天工作安排"></a>第二和第三天工作安排</h3><p>这两天做了一个登录界面并实现了一些交互。</p>
-<p>页面如下：<a href="https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/%E4%BA%91%E5%8F%B7?node-id=31:5633" title="设计稿">https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/云号?node-id=31%3A5633</a></p>
-<p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683788178152.png" alt="1683788178152"></p>
-<ul>
-<li>要求<ul>
-<li>遵循开发规范</li>
-<li>完成静态页面开发</li>
-<li>可参考原代码，不要照抄</li>
-<li>不使用ipu-开头的className</li>
-<li>不使用Mobile和IpuMobile对象</li>
-<li>所有消息提示，调用this.$util.modal.toast(message)提示，如手机号码不正确（原工程看，输入不规范的消息是在页面里显示文字）</li>
-</ul>
-</li>
-<li>完成页面交互<ul>
-<li>点击第一个输入框后的小图标，显示弹框</li>
-<li>验证码输入框，在点击获取获取验证码后才可编辑输入</li>
-<li>点获取验证码，验证手机号格式正确后，才发送验证码</li>
-<li>发送验证码后，发送验证码60s倒计时，倒计时内不可再点击</li>
-<li>点击登录，验证手机号，验证码已输入，并勾选同意隐私协议，调用登录接口进行登录</li>
-<li>登录成功后，提示登录成功，并保存登录手机号，下次进入登录页面时，手机输入框显示最近登录成功的手机号</li>
-<li>点击’《云号APP用户隐私政策》’进入路由名称为’PrivacyPolicy’页面</li>
-</ul>
-</li>
-<li>接口及参数说明<br>工程中定义了接口模拟<br>import { subnumManageApi, accountManageApi } from ‘../../api’<br>// 获取验证码接口，只能给13112341234的手机发送短信<br>accountManageApi.getMessageCode({phone：’手机号’})<br>// 调用登录接口，手机号只能为13112341234，验证码只能为123456<br>accountManageApi.login({‘phone’:’13112341234’, code::’123456’})</li>
-</ul>
-<h4 id="移动端样式差异"><a href="#移动端样式差异" class="headerlink" title="移动端样式差异"></a>移动端样式差异</h4><ul>
-<li><p>适配vw + rem</p>
-</li>
-<li><p>切图使用2倍图，图片为展示尺寸2倍，尽量使用长宽相等切图</p>
-</li>
-<li><p>适配宽度范围</p>
-<ul>
-<li>320~480自适应范围</li>
-<li>小于320，按320尺寸展示</li>
-<li>大于480尺寸，按480尺寸时显示</li>
-</ul>
-</li>
-<li><p>0.5px边框：不能直接定义0.5px边框，可能不显示，一般使用伪元素定义1px边框，0.5倍缩放</p>
-</li>
-<li><p>设计稿页面上一般有手机系统工具栏区域，h5界面是不处理这个区域，考虑边距时要减掉这块的高度</p>
-<h4 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h4></li>
-<li><p>知道了在vue项目中进行移动端适配（之前都是写html页面）</p>
-</li>
-<li><p>了解了一些开发上面的规范，命名规范还有文件夹功能</p>
-</li>
-<li><p>感觉很棒，很久没有写过css了，重新温习了一遍</p>
-<p>写页面应该尽量做到如下：</p>
-<p>尽量自适应<br>少使用绝对定位：根据边距来确定位置<br>少用固定尺寸<br>宽度百分百不要再定义<br>相同样式复用</p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>测试属性（判断属性是否在对象中）</title>
-    <url>/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p>
-<span id="more"></span>
-
-<h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p>
-<p>let o = { x: 1}</p>
-<p>“x” in o               //true</p>
-<p>“y” in o              //false</p>
-<p>“toString” in o          //true (继承属性)</p>
-<h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p>
-<p>let o = { x: 1}</p>
-<p>o.hasOwnProperty(“x”)              //true</p>
-<h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
-<h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
 ]]></content>
   </entry>
 </search>
