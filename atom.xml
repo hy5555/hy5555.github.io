@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>黄异的博客</title>
+  <title>Yellow One</title>
   
   
   <link href="https://github.com/hy5555/hy5555.github.io.git/atom.xml" rel="self"/>
@@ -273,35 +273,6 @@
       
     <summary type="html">&lt;h3 id=&quot;Vuex是什么&quot;&gt;&lt;a href=&quot;#Vuex是什么&quot; class=&quot;headerlink&quot; title=&quot;Vuex是什么&quot;&gt;&lt;/a&gt;Vuex是什么&lt;/h3&gt;&lt;p&gt;概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行</summary>
       
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>利用Hexo搭建个人博客</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/</id>
-    <published>2023-02-03T05:59:25.615Z</published>
-    <updated>2023-06-16T02:56:54.936Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs subunit">categories:- 博客搭建<br><span class="hljs-keyword">tags:</span>- 博客搭建<br></code></pre></td></tr></table></figure><p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，命名为Hexo</p><p>在Hexo目录下打开命令行窗口，执行以下指令：</p><p><code>    npm install hexo-cli -g</code></p><p><code>    hexo init blog</code></p><p><code>    cd blog</code></p><p><code>    npm install</code></p><p><code>    hexo server</code></p><p>此时你打开本地4000端口，已经可以发现属于你的博客了。</p><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><span id="more"></span><p>将文件打包生成静态资源，执行以下命令，将会生成public文件夹，里面存放静态资源，后续将博客部署到github上时，上传的也是静态文件（不直接更改里面的代码）。</p><p><code>hexo g</code></p><h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p><a href="https://hexo.io/themes/">主题(hexo.io)</a></p><p>在上面找到自己喜欢的主题并进入主题给出的github界面，那里会教你安装使用对应主题。</p><h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p><p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p><p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;figure class=&quot;highlight subunit&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs subunit&quot;&gt;categories:- 博客搭建&lt;br&gt;&lt;span class=&quot;hljs-keyword&quot;&gt;tags:&lt;/span&gt;- 博客搭建&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-
-&lt;p&gt;本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！&lt;/p&gt;
-&lt;h3 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h3&gt;&lt;p&gt;需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）&lt;/p&gt;
-&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;p&gt;新建一个文件夹，命名为Hexo&lt;/p&gt;
-&lt;p&gt;在Hexo目录下打开命令行窗口，执行以下指令：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    npm install hexo-cli -g&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    hexo init blog&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    cd blog&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    npm install&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    hexo server&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;此时你打开本地4000端口，已经可以发现属于你的博客了。&lt;/p&gt;
-&lt;h3 id=&quot;打包&quot;&gt;&lt;a href=&quot;#打包&quot; class=&quot;headerlink&quot; title=&quot;打包&quot;&gt;&lt;/a&gt;打包&lt;/h3&gt;</summary>
     
     
     
