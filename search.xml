@@ -16,6 +16,9 @@
 <p>这个还是值得想一想的，现在看来我去到亚信可能最好的收获就是收获了一段实习经历，学习收获我个人认为并没有很大，但是还是丰富了我的经验。所以我也得想想，如果问到我实习，我应该怎么回答。</p>
 <p>以上就是一些想法，并没有一个具体的时间规划。</p>
 ]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
       <tags>
         <tag>Work</tag>
       </tags>
@@ -191,9 +194,6 @@
 <p>代码示例：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 导入 fs 模块</span><br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-string">&#x27;uft-8&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br></code></pre></td></tr></table></figure>
 
-
-
-
 <figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">const rs = fs.createReadStream(<span class="hljs-string">&#x27;../资料/高考加油.mp4&#x27;</span>)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>,chunk=&gt;&#123;<br><br>&#125;)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>,<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>&#125;)<br></code></pre></td></tr></table></figure>
 
 <p>例题：复制文件</p>
@@ -289,6 +289,12 @@
 <p>还有两个题目忘记了</p>
 <p>笔试完直接一面了，问了下项目，问了下前面题目答案没写全的，十来分钟，第一次面试，题目还是挺简单的，但是没有好好背八股，肯定是无了。算法也只会几个排序。但是第一次面试对自己的收获还是挺大的，没有想象的这么难。接下来就好好背八股，写下算法题。大厂不抱希望，希望能进稍微好点的公司实习。</p>
 ]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>Work</tag>
+      </tags>
   </entry>
   <entry>
     <title>TypeScript基础</title>
@@ -555,7 +561,6 @@
     <content><![CDATA[<p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p>
 <span id="more"></span>
 
-
 <p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>
 ]]></content>
   </entry>
@@ -572,7 +577,6 @@
 <p>（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。</p>
 <p>（4）原型的总结：</p>
 <span id="more"></span>
-
 
 <ul>
 <li>所有引用类型都有一个 <code>__proto__</code>(隐式原型)属性，属性值是一个普通的对象</li>
@@ -599,6 +603,12 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
 <p>6）JavaScript的原型是为了实现对象间的联系，解决构造函数无法数据共享而引入的一个属性，而原型链是一个实现对象间联系即继承的主要方法</p>
 <p>原文链接：<a href="https://www.php.cn/js-tutorial-462738.html">js的原型和原型链是什么-js教程-PHP中文网</a></p>
 ]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Study</tag>
+      </tags>
   </entry>
   <entry>
     <title>关于Vuex的学习</title>

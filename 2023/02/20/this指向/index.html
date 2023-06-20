@@ -24,7 +24,7 @@
 <meta property="og:description" content="箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-20T12:17:09.653Z">
-<meta property="article:modified_time" content="2023-02-20T12:44:23.044Z">
+<meta property="article:modified_time" content="2023-06-20T13:46:00.095Z">
 <meta property="article:author" content="Yellow One">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -291,7 +291,6 @@
                 
                 <p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p>
 <span id="more"></span>
-
 
 <p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>
 
