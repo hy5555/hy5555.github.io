@@ -248,6 +248,12 @@
 <p>(2)、在做轮播图时，刚开始将new Swiper放在mounted中，但是请求是异步的，new Swiper时数据可能还没有获取到，解决办法，将new Swiper放在watch监听里，并将immediate设置为true</p>
 <h3 id="项目亮点"><a href="#项目亮点" class="headerlink" title="项目亮点"></a>项目亮点</h3><p>封装分页器组件，需要的数据：一页展示多少条数据，总共有多少条数据，连续页数，当前是第几页</p>
 ]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>Project</tag>
+      </tags>
   </entry>
   <entry>
     <title>Less学习</title>
@@ -528,6 +534,12 @@
 <h3 id="校验登录"><a href="#校验登录" class="headerlink" title="校验登录"></a>校验登录</h3><p>项目中运用ElementUI，写下登录相应的规则（rules）。给登录按钮绑定方法，在方法里调用validata函数，判断用户名和密码是否通过正则表达式设定的规则。ElementUI中也有自带的校验方法。在项目中，校验方法进行了模块化。同时对axios进行了二次封装。</p>
 <p>token是一种 <strong>身份验证的机制</strong> ，初始时用户提交账号数据给服务端，服务端采用一定的策略生成一个字符串（token），token字符串中包含了少量的用户信息，并且有一定的期限。在项目里，我在发送请求前获取token（存储在浏览器本地），将其作为请求响应头。在每次请求后更新token。</p>
 ]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>Project</tag>
+      </tags>
   </entry>
   <entry>
     <title>Vue3</title>
