@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vue2生命周期详解</title>
+    <url>/2023/06/25/Vue2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Study</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>秋招前规划</title>
     <url>/2023/06/20/%E7%A7%8B%E6%8B%9B%E5%89%8D%E8%A7%84%E5%88%92/</url>
     <content><![CDATA[<p>今天是6月20号，学校刚刚考完最后一门，该谋划一下接下来两个月的事情了。我总是感到焦虑，期望自己找到一个还不错的工作，所以我想在未来的两个月让自己过得充实，以此缓解这种焦虑。以下是我的规划，可能之后会不断更新和改正，主要针对技术，面试题还有项目以及算法。</p>
@@ -273,6 +284,7 @@
 <p>Math:此对象常用于取整或形成随机数，想形成num1到num2范围的随机数，记住公式Math.floor(Math.random() * (num2 - num1 + 1) + num1)</p>
 <p>join:此方法用于拼接字符串。</p>
 <p>split:将字符串转为数组。</p>
+<p>structedClone(value):HTML5中新出现的深拷贝函数，如果输入值的一部分不可序列化，则会报错。</p>
 ]]></content>
       <categories>
         <category>学习</category>
@@ -627,14 +639,6 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
       <tags>
         <tag>Study</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>关于Vuex的学习</title>
-    <url>/2023/02/08/Vuex/</url>
-    <content><![CDATA[<h3 id="Vuex是什么"><a href="#Vuex是什么" class="headerlink" title="Vuex是什么"></a>Vuex是什么</h3><p>概念：专门在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。</p>
-<p>github地址：<a href="http://github.com/vuejs/vuex">http://github.com/vuejs/vuex</a></p>
-<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p><a href="https://juejin.cn/post/7013325675129995272">vue中使用vuex(超详细) - 掘金 (juejin.cn)</a></p>
-]]></content>
   </entry>
   <entry>
     <title>利用Hexo搭建个人博客</title>
