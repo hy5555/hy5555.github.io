@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>易易城项目</title>
+    <link href="/2023/07/02/%E6%98%93%E6%98%93%E5%9F%8E%E9%A1%B9%E7%9B%AE/"/>
+    <url>/2023/07/02/%E6%98%93%E6%98%93%E5%9F%8E%E9%A1%B9%E7%9B%AE/</url>
+    
+    <content type="html"><![CDATA[<p>搭建项目前准备</p><p>vue3 + vite 本地环境搭建：<br>准备：事先准备好node环境，一般node环境配置完成之后npm版本也相应存在。<br>注意：vite需要node.js版本 &gt;= 12.0.0</p><p>一、搭建项目</p><p>新建项目</p><p>① 运行创建项目命令：命令行输入 npm create vite@latest<br><code>npm create vite@latest</code></p><p>②输入项目名称：在弹出的 Project name 行可自行写创建的vue3项目名称</p><p>③选择前端框架： 选择vue</p><p>④选择项目类型： 选择JavaScript</p><p>⑤创建完毕，根据提示依次执行命令即可完成项目运行。</p><p>二、引入相关插件</p><p>1、引入element-plus</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">npm install <span class="hljs-keyword">element</span>-plus <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure><p>在main.js中加入如下代码</p><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> ElementPlus <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-plus&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;element-plus/dist/index.css&#x27;</span><br><span class="hljs-keyword">import</span> locale <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;element-plus/lib/locale/lang/zh-cn&quot;</span>;<span class="hljs-comment">//使element-plus文字为中文</span><br>pp.use(ElementPlus, &#123;locale&#125;)<br></code></pre></td></tr></table></figure><p>2、引入axios</p><p>运行 <code>npm install axios</code><br>在src目录下新增request.js文件，文件内部配置请求拦截以及响应拦截操作。<br>后续在各请求接口文件内部引入 request.js 文件，并使用。</p><p><code>import request from &#39;@/request&#39;</code></p><p>3、引入vue-router</p><p>运行 <code>npm install vue-router@4 --save</code>。<br>src文件夹下创建router文件夹，router文件夹下创建 index.js  文件。<br>index.js文件内部引入项目路由。<br>并在 main.js 文件内引入 index.js  文件<br><code>import router from &#39;@/router&#39;</code><br><code>app.use(router)</code></p><p>4、引入scss</p><p>项目中有原来给到的css文件，但是我们在修改样式时还是用scss来进行修改</p><p><code>npm install node-sass sass-loader --save-dev</code></p><p>需要自己新建一个文件，路径为 <code>@/assets/style/main.scss</code></p><p>在 vite.config.js 中配置 scss 的全局变量 使用</p><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs haxe">export <span class="hljs-keyword">default</span> defineConfig(&#123;<br>  plugins: <span class="hljs-type"></span>[vue()],<br>  resolve: <span class="hljs-type"></span>&#123;<br>    alias: <span class="hljs-type"></span>&#123;<br>      <span class="hljs-string">&#x27;@&#x27;</span>: <span class="hljs-type">fileURLToPath</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">URL</span>(<span class="hljs-string">&#x27;./src&#x27;</span>, <span class="hljs-keyword">import</span>.meta.url))<br>    &#125;<br>  &#125;,<br>  <span class="hljs-comment">// 上面是默认已存在的  css: &#123;</span><br>    <span class="hljs-comment">// css预处理器</span><br>    preprocessorOptions: <span class="hljs-type"></span>&#123;<br>      scss: <span class="hljs-type"></span>&#123;<br>        <span class="hljs-comment">// 引入 mixin.scss 这样就可以在全局中使用 mixin.scss中预定义的变量了</span><br>        <span class="hljs-comment">// 给导入的路径最后加上 ;</span><br>        additionalData: <span class="hljs-type"></span>&#x27;@<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@/assets/style/main.scss&quot;</span>;<span class="hljs-string">&#x27;</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  &#125;&#125;)</span><br></code></pre></td></tr></table></figure><p>三、开发</p><p>1、页面和功能</p><p>本项目开发首页，登录页，注册页，修改密码页，个人信息页，修改密码页，上传商品页，购物车页，结算页，产品页，具体产品页共十一个页面，包含搜索商品、上传商品，登录、注册，修改密码，切换用户，选取商品规格加入购物车，添加删除修改收货地址等功能。</p><p>2、项目亮点</p><p>项目比较简单，我通过封装一些组件，比如导航栏，底部导航和头部信息，很好的实现了组件复用，减少了代码量，有一些功能相近的地方，我也实现了弹框表单复用，比如修改地址和新增地址，我用了同一个表单。同时使用路由懒加载，使得加载速度变快。对axios进行了二次封装，减少了代码重复。</p><p>3、项目难点</p><p>难点好像都是自己创造的，后面补</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>项目</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>项目</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vue2生命周期详解</title>
     <link href="/2023/06/25/Vue2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
     <url>/2023/06/25/Vue2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
