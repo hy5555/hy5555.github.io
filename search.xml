@@ -1,6 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>尚医通项目</title>
+    <url>/2023/07/17/%E5%B0%9A%E5%8C%BB%E9%80%9A/</url>
+    <content><![CDATA[<p>搭建项目前准备</p>
+<p>vue3 + vite 本地环境搭建：<br>准备：事先准备好node环境，一般node环境配置完成之后npm版本也相应存在。<br>注意：vite需要node.js版本 &gt;= 16.0.0</p>
+<p>一、搭建项目</p>
+<p>新建项目</p>
+<p>① 运行创建项目命令：命令行输入 npm create vite@latest<br><code>npm create vite@latest</code></p>
+<p>②输入项目名称：在弹出的 Project name 行可自行写创建的vue3项目名称</p>
+<p>③选择前端框架： 选择vue</p>
+<p>④选择项目类型： 选择TypeScript</p>
+<p>⑤创建完毕，根据提示依次执行命令即可完成项目运行。</p>
+<p><img src="image/%E5%B0%9A%E5%8C%BB%E9%80%9A/1689602295602.png" alt="1689602295602"></p>
+<p>设置浏览器自动打开：</p>
+<p>找到 package.json 配置文件!</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;dev&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vite --open&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;build&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vue-tsc &amp;&amp; vite build&quot;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;preview&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vite preview&quot;</span><br> <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br></code></pre></td></tr></table></figure>
+
+<p>src别名的配置：</p>
+<p>找到 vite.config.ts 配置文件。</p>
+<p><strong>如果红色语法提示请安装@types/node 是 TypeScript 的一个声明文件包，用于描述 Node.js 核心模块和常用的第三方库的类型信息</strong></p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">import</span> &#123; defineConfig &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vite&#x27;</span><br><span class="hljs-keyword">import</span> vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@vitejs/plugin-vue&#x27;</span><br><span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;path&#x27;</span>;<br><span class="hljs-regexp">// https://</span>vitejs.dev<span class="hljs-regexp">/config/</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> defineConfig(&#123;<br> plugins: [vue()],<br> resolve: &#123;<br>  alias: &#123;<br>   <span class="hljs-string">&quot;@&quot;</span>: path.resolve(__dirname, <span class="hljs-string">&#x27;src&#x27;</span>)<br>  &#125;<br> &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>找到 <code>tsconfig.json</code>配置文件,找到配置项 compilerOptions 添加配置,这一步的作用是让 IDE 可以对路径进行智能提示</p>
+<figure class="highlight prolog"><table><tr><td class="code"><pre><code class="hljs prolog"><span class="hljs-string">&quot;baseUrl&quot;</span>: <span class="hljs-string">&quot;.&quot;</span>,<br>  <span class="hljs-string">&quot;paths&quot;</span>: &#123;<br>   <span class="hljs-string">&quot;@/&quot;</span>: [<span class="hljs-string">&quot;src/&quot;</span>]<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<p>在npm网站中找到reset.scss文件，复制，在src目录下新建style文件夹，新建reset.scss文件，将代码复制过去，在main.js中引入该文件，实现应用样式重置,会报错，此时执行cnpm i sass。</p>
+<p>在项目页面中，顶部和底部都是一样的，封装为组件，写在components下，</p>
+<p>二、引入相关插件</p>
+<p>1、引入element-plus</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver">npm install <span class="hljs-keyword">element</span>-plus <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure>
+
+<p>在main.js中加入如下代码</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> ElementPlus <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-plus&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;element-plus/dist/index.css&#x27;</span><br><span class="hljs-keyword">import</span> locale <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;element-plus/lib/locale/lang/zh-cn&quot;</span>;<span class="hljs-comment">//使element-plus文字为中文</span><br>pp.use(ElementPlus, &#123;locale&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>2、引入axios</p>
+<p>运行 <code>npm install axios</code><br>在src目录下新增request.js文件，文件内部配置请求拦截以及响应拦截操作。<br>后续在各请求接口文件内部引入 request.js 文件，并使用。</p>
+<p><code>import request from &#39;@/request&#39;</code></p>
+<p>3、引入vue-router</p>
+<p>运行 <code>npm install vue-router@4 --save</code>。<br>src文件夹下创建router文件夹，router文件夹下创建 index.js  文件。<br>index.js文件内部引入项目路由。<br>并在 main.js 文件内引入 index.js  文件<br><code>import router from &#39;@/router&#39;</code><br><code>app.use(router)</code></p>
+<p>4、引入scss</p>
+<p>项目中有原来给到的css文件，但是我们在修改样式时还是用scss来进行修改</p>
+<p><code>npm install node-sass sass-loader --save-dev</code></p>
+<p>需要自己新建一个文件，路径为 <code>@/assets/style/main.scss</code></p>
+<p>在 vite.config.js 中配置 scss 的全局变量 使用</p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><code class="hljs haxe">export <span class="hljs-keyword">default</span> defineConfig(&#123;<br>  plugins: <span class="hljs-type"></span>[vue()],<br>  resolve: <span class="hljs-type"></span>&#123;<br>    alias: <span class="hljs-type"></span>&#123;<br>      <span class="hljs-string">&#x27;@&#x27;</span>: <span class="hljs-type">fileURLToPath</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">URL</span>(<span class="hljs-string">&#x27;./src&#x27;</span>, <span class="hljs-keyword">import</span>.meta.url))<br>    &#125;<br>  &#125;,<br>  <span class="hljs-comment">// 上面是默认已存在的  css: &#123;</span><br>    <span class="hljs-comment">// css预处理器</span><br>    preprocessorOptions: <span class="hljs-type"></span>&#123;<br>      scss: <span class="hljs-type"></span>&#123;<br>        <span class="hljs-comment">// 引入 mixin.scss 这样就可以在全局中使用 mixin.scss中预定义的变量了</span><br>        <span class="hljs-comment">// 给导入的路径最后加上 ;</span><br>        additionalData: <span class="hljs-type"></span>&#x27;@<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@/assets/style/main.scss&quot;</span>;<span class="hljs-string">&#x27;</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  &#125;&#125;)</span><br></code></pre></td></tr></table></figure>
+
+<p>5、移动端适配</p>
+<p>6、引入router</p>
+<p>7、安装Element Plus</p>
+<p><code>npm i element-plus</code></p>
+<p>三、开发</p>
+<p>1、页面和功能</p>
+<p>本项目开发首页，登录页，注册页，修改密码页，个人信息页，修改密码页，上传商品页，购物车页，结算页，产品页，具体产品页共十一个页面，包含搜索商品、上传商品，登录、注册，修改密码，切换用户，选取商品规格加入购物车，添加删除修改收货地址等功能。</p>
+<p>2、项目亮点</p>
+<p>项目比较简单，我通过封装一些组件，比如导航栏，底部导航和头部信息，很好的实现了组件复用，减少了代码量，有一些功能相近的地方，我也实现了弹框表单复用，比如修改地址和新增地址，我用了同一个表单。同时使用路由懒加载，使得加载速度变快。对axios进行了二次封装，减少了代码重复。</p>
+<p>3、项目难点</p>
+<p>难点好像都是自己创造的，后面补</p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>易易城项目</title>
     <url>/2023/07/02/%E6%98%93%E6%98%93%E5%9F%8E%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<p>搭建项目前准备</p>
