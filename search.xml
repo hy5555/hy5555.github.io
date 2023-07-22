@@ -48,6 +48,7 @@
 
 <p>5、移动端适配</p>
 <p>6、引入router</p>
+<p>在src下新建</p>
 <p>7、安装Element Plus</p>
 <p><code>npm i element-plus</code></p>
 <p>三、开发</p>
