@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>后端传数据流前端处理问题</title>
+    <url>/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>今天遇见一个业务需求，在前端页面中有这样一个功能，点击下载图标，实现下载文件功能，后端接口返回的数据格式是二进制流。且数据格式与其他接口有所区别（其他接口数据在response.data.data中，这个接口数据在response.data中）。所以我需要解决两个点，1、数据格式处理，因为同事在响应拦截器中进行处理了，返回给接口封装函数的数据就是response.data.data，所以我在用那个传文件接口的时候加了一个请求头“file:true”，然后在响应拦截器中进行判断，如果响应体中存在此属性，则返回response.data,否则返回response.data.data。2、处理二进制流文件，首先时按照网上常规的方法进行，</p>
+<figure class="highlight qml"><table><tr><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure>
+
+<p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p>
+<p><img src="image/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/1690374690217.png" alt="1690374690217"></p>
+<p>然后就成功解决了。</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术记录</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>尚医通项目</title>
     <url>/2023/07/17/%E5%B0%9A%E5%8C%BB%E9%80%9A/</url>
     <content><![CDATA[<p>搭建项目前准备</p>
@@ -48,9 +65,16 @@
 
 <p>5、移动端适配</p>
 <p>6、引入router</p>
-<p>在src下新建</p>
+<p>在src下新建文件夹router,建立index.ts文件，进行配置，在main.js中进行引入</p>
 <p>7、安装Element Plus</p>
 <p><code>npm i element-plus</code></p>
+<p>在main.js中进行引入，并将语言配置为中文</p>
+<p>8、安装axios</p>
+<p><code>npm i axios</code></p>
+<p>新建util文件夹，建立request.js文件，对axios进行二次封装</p>
+<p>axios二次封装：</p>
+<p>1、利用axios的请求响应拦截器，对请求响应的结果进行一个统一的处理，请求拦截器一般可以在请求头中携带公共的token参数，响应拦截器可以简化服务器返回的数据，处理http网络错误</p>
+<p>2、可以设置基础路径，超时时间的设置</p>
 <p>三、开发</p>
 <p>1、页面和功能</p>
 <p>本项目开发首页，登录页，注册页，修改密码页，个人信息页，修改密码页，上传商品页，购物车页，结算页，产品页，具体产品页共十一个页面，包含搜索商品、上传商品，登录、注册，修改密码，切换用户，选取商品规格加入购物车，添加删除修改收货地址等功能。</p>
