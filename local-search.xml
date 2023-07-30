@@ -4,11 +4,36 @@
   
   
   <entry>
+    <title>Vue3组件通信方式</title>
+    <link href="/2023/07/30/Vue3%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/"/>
+    <url>/2023/07/30/Vue3%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Study</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>基础知识</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>后端传数据流前端处理问题</title>
     <link href="/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/"/>
     <url>/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/</url>
     
-    <content type="html"><![CDATA[<p>今天遇见一个业务需求，在前端页面中有这样一个功能，点击下载图标，实现下载文件功能，后端接口返回的数据格式是二进制流。且数据格式与其他接口有所区别（其他接口数据在response.data.data中，这个接口数据在response.data中）。所以我需要解决两个点，1、数据格式处理，因为同事在响应拦截器中进行处理了，返回给接口封装函数的数据就是response.data.data，所以我在用那个传文件接口的时候加了一个请求头“file:true”，然后在响应拦截器中进行判断，如果响应体中存在此属性，则返回response.data,否则返回response.data.data。2、处理二进制流文件，首先时按照网上常规的方法进行，</p><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure><p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p><p><img src="image/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/1690374690217.png" alt="1690374690217"></p><p>然后就成功解决了。</p>]]></content>
+    <content type="html"><![CDATA[<p>今天遇见一个业务需求，在前端页面中有这样一个功能，点击下载图标，实现下载文件功能，后端接口返回的数据格式是二进制流。且数据格式与其他接口有所区别（其他接口数据在response.data.data中，这个接口数据在response.data中）。所以我需要解决两个点，1、数据格式处理，因为同事在响应拦截器中进行处理了，返回给接口封装函数的数据就是response.data.data，所以我在用那个传文件接口的时候加了一个请求头“file:true”，然后在响应拦截器中进行判断，如果响应体中存在此属性，则返回response.data,否则返回response.data.data。2、处理二进制流文件，首先时按照网上常规的方法进行，</p><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure><p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p><p><img src="image/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/1690374690217.png" alt="1690374690217"></p><p>然后就成功解决了。</p><ul><li><code>responseType: &#39;arraybuffer&#39;</code> 表示希望将响应数据以二进制数组（ArrayBuffer）的形式返回，而不是默认的字符串或 JSON 格式。适用于需要处理二进制数据（例如图片、音频、视频等）的情况。</li></ul>]]></content>
     
     
     <categories>
@@ -301,6 +326,18 @@
     <content type="html"><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p><span id="more"></span><h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p><p>let o = { x: 1}</p><p>“x” in o               //true</p><p>“y” in o              //false</p><p>“toString” in o          //true (继承属性)</p><h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p><p>let o = { x: 1}</p><p>o.hasOwnProperty(“x”)              //true</p><h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p><h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>]]></content>
     
     
+    <categories>
+      
+      <category>知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>基础知识</tag>
+      
+    </tags>
     
   </entry>
   

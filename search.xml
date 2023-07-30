@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vue3组件通信方式</title>
+    <url>/2023/07/30/Vue3%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Study</category>
+      </categories>
+      <tags>
+        <tag>基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>后端传数据流前端处理问题</title>
     <url>/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>今天遇见一个业务需求，在前端页面中有这样一个功能，点击下载图标，实现下载文件功能，后端接口返回的数据格式是二进制流。且数据格式与其他接口有所区别（其他接口数据在response.data.data中，这个接口数据在response.data中）。所以我需要解决两个点，1、数据格式处理，因为同事在响应拦截器中进行处理了，返回给接口封装函数的数据就是response.data.data，所以我在用那个传文件接口的时候加了一个请求头“file:true”，然后在响应拦截器中进行判断，如果响应体中存在此属性，则返回response.data,否则返回response.data.data。2、处理二进制流文件，首先时按照网上常规的方法进行，</p>
@@ -9,6 +20,9 @@
 <p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p>
 <p><img src="image/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/1690374690217.png" alt="1690374690217"></p>
 <p>然后就成功解决了。</p>
+<ul>
+<li><code>responseType: &#39;arraybuffer&#39;</code> 表示希望将响应数据以二进制数组（ArrayBuffer）的形式返回，而不是默认的字符串或 JSON 格式。适用于需要处理二进制数据（例如图片、音频、视频等）的情况。</li>
+</ul>
 ]]></content>
       <categories>
         <category>技术</category>
@@ -720,6 +734,12 @@
 <h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
 <h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
 ]]></content>
+      <categories>
+        <category>知识</category>
+      </categories>
+      <tags>
+        <tag>基础知识</tag>
+      </tags>
   </entry>
   <entry>
     <title>箭头函数与普通函数this指向的问题</title>
