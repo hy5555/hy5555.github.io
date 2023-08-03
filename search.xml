@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vue3插槽</title>
+    <url>/2023/08/03/Vue3%E6%8F%92%E6%A7%BD/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>知识</category>
+      </categories>
+      <tags>
+        <tag>基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue3组件通信方式</title>
     <url>/2023/07/30/Vue3%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/</url>
     <content><![CDATA[<h4 id="1、props"><a href="#1、props" class="headerlink" title="1、props"></a>1、props</h4><p>Vue2和Vue3均有，用于父组件给子组件传值，在子组件中不能对该值进行修改，会有警告。</p>
@@ -43,7 +54,7 @@
 <h4 id="9、插槽"><a href="#9、插槽" class="headerlink" title="9、插槽"></a>9、插槽</h4><p>分为默认插槽，具名插槽和作用域插槽，作用域插槽可以用来传递数据</p>
 ]]></content>
       <categories>
-        <category>Study</category>
+        <category>知识</category>
       </categories>
       <tags>
         <tag>基础知识</tag>
@@ -56,6 +67,7 @@
 <figure class="highlight qml"><table><tr><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure>
 
 <p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p>
+<p><img src="image/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/1690722830235.png" alt="1690722830235"></p>
 <p>然后就成功解决了。</p>
 <ul>
 <li><code>responseType: &#39;arraybuffer&#39;</code> 表示希望将响应数据以二进制数组（ArrayBuffer）的形式返回，而不是默认的字符串或 JSON 格式。适用于需要处理二进制数据（例如图片、音频、视频等）的情况。</li>

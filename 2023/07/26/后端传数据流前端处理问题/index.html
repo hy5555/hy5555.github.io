@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="Yellow One">
 <meta property="og:description" content="今天遇见一个业务需求，在前端页面中有这样一个功能，点击下载图标，实现下载文件功能，后端接口返回的数据格式是二进制流。且数据格式与其他接口有所区别（其他接口数据在response.data.data中，这个接口数据在response.data中）。所以我需要解决两个点，1、数据格式处理，因为同事在响应拦截器中进行处理了，返回给接口封装函数的数据就是response.data.data，所以我在用那个">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://github.com/hy5555/hy5555.github.io.git/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/image/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/1690722830235.png">
 <meta property="article:published_time" content="2023-07-26T12:05:33.896Z">
-<meta property="article:modified_time" content="2023-07-30T13:13:46.548Z">
+<meta property="article:modified_time" content="2023-07-30T13:15:28.921Z">
 <meta property="article:author" content="Yellow One">
 <meta property="article:tag" content="技术记录">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://github.com/hy5555/hy5555.github.io.git/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/image/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/1690722830235.png">
   
   
   
@@ -294,6 +296,7 @@
 <figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure>
 
 <p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p>
+<p><img src="image/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/1690722830235.png" srcset="/img/loading.gif" lazyload alt="1690722830235"></p>
 <p>然后就成功解决了。</p>
 <ul>
 <li><code>responseType: &#39;arraybuffer&#39;</code> 表示希望将响应数据以二进制数组（ArrayBuffer）的形式返回，而不是默认的字符串或 JSON 格式。适用于需要处理二进制数据（例如图片、音频、视频等）的情况。</li>
