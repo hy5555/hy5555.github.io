@@ -16,22 +16,22 @@
   <meta name="author" content="Yellow One">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Vue中插槽的作用是占位，使得在使用组件时可以动态地插入内容，使组件的结构更加灵活。在Vue中有三种插槽，默认插槽，具名插槽和作用域插槽。下面先看三种插槽的使用方法。 使用方法1234567891011&#x2F;&#x2F;子组件&lt;template&gt;    &lt;div&gt;        &#x2F;&#x2F;默认插槽        &lt;slot&gt;&lt;&#x2F;slot&gt;        &#x2F;&#x2F;具名插槽">
+    <meta name="description" content="1、在完成林大优选项目时，获取一级下拉框数据并渲染到选择框时，下拉框数据总是显示无数据，但是在开发者工具中又显示下拉框数据有值，困扰了我好一会儿。 部分代码如下 1234567891011121314151617181920212223&#x2F;&#x2F;html&lt;el-select v-model&#x3D;&quot;c1&quot; placeholder&#x3D;&quot;请选择&quot;&gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue3插槽">
-<meta property="og:url" content="https://github.com/hy5555/hy5555.github.io.git/2023/08/03/Vue3%E6%8F%92%E6%A7%BD/index.html">
+<meta property="og:title" content="项目遇见的问题">
+<meta property="og:url" content="https://github.com/hy5555/hy5555.github.io.git/2023/08/11/%E9%A1%B9%E7%9B%AE%E9%9A%BE%E7%82%B9/index.html">
 <meta property="og:site_name" content="Yellow One">
-<meta property="og:description" content="Vue中插槽的作用是占位，使得在使用组件时可以动态地插入内容，使组件的结构更加灵活。在Vue中有三种插槽，默认插槽，具名插槽和作用域插槽。下面先看三种插槽的使用方法。 使用方法1234567891011&#x2F;&#x2F;子组件&lt;template&gt;    &lt;div&gt;        &#x2F;&#x2F;默认插槽        &lt;slot&gt;&lt;&#x2F;slot&gt;        &#x2F;&#x2F;具名插槽">
+<meta property="og:description" content="1、在完成林大优选项目时，获取一级下拉框数据并渲染到选择框时，下拉框数据总是显示无数据，但是在开发者工具中又显示下拉框数据有值，困扰了我好一会儿。 部分代码如下 1234567891011121314151617181920212223&#x2F;&#x2F;html&lt;el-select v-model&#x3D;&quot;c1&quot; placeholder&#x3D;&quot;请选择&quot;&gt;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-08-03T06:06:16.334Z">
-<meta property="article:modified_time" content="2023-08-03T06:13:37.345Z">
+<meta property="article:published_time" content="2023-08-11T03:18:25.849Z">
+<meta property="article:modified_time" content="2023-08-11T03:31:40.027Z">
 <meta property="article:author" content="Yellow One">
-<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Vue3插槽 - Yellow One</title>
+  <title>项目遇见的问题 - Yellow One</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Vue3插槽"></span>
+            <span id="subtitle" data-typed-text="项目遇见的问题"></span>
           
         </div>
 
@@ -224,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-08-03 14:06" pubdate>
-          2023年8月3日 下午
+        <time datetime="2023-08-11 11:18" pubdate>
+          2023年8月11日 上午
         </time>
       </span>
     
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          925 字
+          1k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          8 分钟
+          9 分钟
         
       </span>
     
@@ -285,20 +285,23 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Vue3插槽</h1>
+            <h1 style="display: none">项目遇见的问题</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Vue中插槽的作用是占位，使得在使用组件时可以动态地插入内容，使组件的结构更加灵活。在Vue中有三种插槽，默认插槽，具名插槽和作用域插槽。下面先看三种插槽的使用方法。</p>
-<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml">//子组件<br><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>        //默认插槽<br>        <span class="hljs-tag">&lt;<span class="hljs-name">slot</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span><br>        //具名插槽<br>        <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;content&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span><br>        //作用域插槽<br>        <span class="hljs-tag">&lt;<span class="hljs-name">slot</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;newcontent&quot;</span> <span class="hljs-attr">:age</span>=<span class="hljs-string">&quot;18&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">slot</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br></code></pre></td></tr></table></figure>
+                <p>1、在完成林大优选项目时，获取一级下拉框数据并渲染到选择框时，下拉框数据总是显示无数据，但是在开发者工具中又显示下拉框数据有值，困扰了我好一会儿。</p>
+<p>部分代码如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><br><span class="hljs-comment">//html</span><br>&lt;el-select v-model=<span class="hljs-string">&quot;c1&quot;</span> placeholder=<span class="hljs-string">&quot;请选择&quot;</span>&gt;<br>                        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">el-option</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in c1Arr&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item?.id&quot;</span> <span class="hljs-attr">:label</span>=<span class="hljs-string">&quot;item?.name&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;item?.id&quot;</span> /&gt;</span></span><br>                &lt;/el-select&gt;<br><br><span class="hljs-comment">//js</span><br><span class="hljs-comment">//一级分类数组</span><br><span class="hljs-keyword">let</span> c1Arr = <span class="hljs-title function_">reactive</span>([])<br><span class="hljs-comment">//一级选择框的值</span><br><span class="hljs-keyword">let</span> c1 = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br><span class="hljs-comment">//获取一级分类方法</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">getC1</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">reqC1</span>()<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);<br>    <span class="hljs-keyword">if</span> (res.<span class="hljs-property">code</span> == <span class="hljs-number">200</span>) &#123;<br>        c1Arr.<span class="hljs-property">value</span> = res.<span class="hljs-property">data</span><br>        c1.<span class="hljs-property">value</span> = c1Arr[<span class="hljs-number">0</span>]?.<span class="hljs-property">name</span><br>    &#125;<br>&#125;<br><span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> [<br>    <span class="hljs-title function_">getC1</span>()<br>])<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight handlebars"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">//父组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">Child</span>&gt;</span></span><br><span class="language-xml">  //默认插槽</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>我是内容1<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">    //具名插槽</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">content</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>我是内容2<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    //作用域插槽</span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">newcontent</span>=<span class="hljs-string">&quot;slotProps&quot;</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">slotProps.age</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">Child</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-<p>默认插槽是最基本的插槽形式，用于接收组件内部的内容并将其插入到组件模板中指定的位置。当组件没有使用具名插槽或作用域插槽时，默认插槽会起作用。</p>
-<p>具名插槽允许组件定义多个插槽，并通过指定插槽的名称来选择将内容插入到哪个插槽中。这样可以更灵活地控制组件内部的内容布局和组织。</p>
-<p>作用域插槽允许组件将数据传递给插槽内容，使得插槽内部可以使用组件的数据。通过在插槽中使用特殊的语法，可以将组件的数据作为插槽的参数传递给插槽内容，从而实现更高级的组件交互和复用。</p>
-<h4 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h4><p>插槽本质上是函数执行，创建结点插入到插槽所在区域。</p>
+<p>解决：不断思考，最后想会不会是ref和reactive定义响应式数据由区别的原因，因为我之前完成公司项目的时候就是用的ref没有问题，但是我现在用reactive就出现了问题。在查阅官方文档后，我发现了问题，在官方文档中对于reactive有这样一段话：</p>
+<p><code>reactive()</code> API 有一些局限性：</p>
+<ol>
+<li><strong>有限的值类型</strong> ：它只能用于对象类型 (对象、数组和如 <code>Map</code>、<code>Set</code> 这样的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections">集合类型</a>)。它不能持有如 <code>string</code>、<code>number</code> 或 <code>boolean</code> 这样的<a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive">原始类型</a>。</li>
+<li><strong>不能替换整个对象</strong> ：由于 Vue 的响应式跟踪是通过属性访问实现的，因此我们必须始终保持对响应式对象的相同引用。这意味着我们不能轻易地“替换”响应式对象，因为这样的话与第一个引用的响应性连接将丢失。</li>
+<li><strong>对解构操作不友好</strong> ：当我们将响应式对象的原始类型属性解构为本地变量时，或者将该属性传递给函数时，我们将丢失响应性连接。</li>
+</ol>
+<p>上面第二点中，在整个过程中，reactive声明的对象需要保持引用地址不变。所以在上面代码中，我们可以不用reactive声明，改用ref，解决问题。</p>
 
                 
               </div>
@@ -317,7 +320,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%9F%A5%E8%AF%86/" class="category-chain-item">知识</a>
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
   
   
 
@@ -332,7 +335,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">#基础知识</a>
+        <a href="/tags/%E9%A1%B9%E7%9B%AE/">#项目</a>
       
     </div>
   
@@ -344,8 +347,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Vue3插槽</div>
-      <div>https://github.com/hy5555/hy5555.github.io.git/2023/08/03/Vue3插槽/</div>
+      <div>项目遇见的问题</div>
+      <div>https://github.com/hy5555/hy5555.github.io.git/2023/08/11/项目难点/</div>
     </div>
     <div class="license-meta">
       
@@ -357,7 +360,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年8月3日</div>
+          <div>2023年8月11日</div>
         </div>
       
       
@@ -389,18 +392,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/08/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Vue面试题">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue面试题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/30/Vue3%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/" title="Vue3组件通信方式">
-                        <span class="hidden-mobile">Vue3组件通信方式</span>
+                      <a href="/2023/08/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" title="Vue面试题">
+                        <span class="hidden-mobile">Vue面试题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
