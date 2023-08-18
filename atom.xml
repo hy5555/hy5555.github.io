@@ -185,31 +185,6 @@
   </entry>
   
   <entry>
-    <title>秋招前规划</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/06/20/%E7%A7%8B%E6%8B%9B%E5%89%8D%E8%A7%84%E5%88%92/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/06/20/%E7%A7%8B%E6%8B%9B%E5%89%8D%E8%A7%84%E5%88%92/</id>
-    <published>2023-06-20T08:29:56.000Z</published>
-    <updated>2023-06-20T13:43:39.659Z</updated>
-    
-    <content type="html"><![CDATA[<p>今天是6月20号，学校刚刚考完最后一门，该谋划一下接下来两个月的事情了。我总是感到焦虑，期望自己找到一个还不错的工作，所以我想在未来的两个月让自己过得充实，以此缓解这种焦虑。以下是我的规划，可能之后会不断更新和改正，主要针对技术，面试题还有项目以及算法。</p><p>一、技术</p><p>目前掌握的技术栈还是太普通了，前端三件套以及Vue，秋招时应该所有的前端求职者都会这些，所有应该还要继续学一些技术栈，学什么了？React?uniapp?我觉得只是需要掌握更多的技术，无论深度或者广度，这都会让你更加的有优势，目前打算学习uniapp，然后做一个小程序。此外其实之前学过的技术，就通过背面试题和做项目来复习，配合书籍和网上的博客，学到现在，我觉得要对技术保持热爱，才有充足的动力去学。</p><p>二、面试题</p><p>面试题应该是大头了，对于秋招来说极其重要，面试主要考察的也就是这个。这个平常就是闲下来就看面试题，在离职后每天抽两个或者三个小时来记面试题。获取面试题的方式就通过文件和牛客，给自己定个目标吧，每次记的面试题记录下来题目，隔一段时间（一天或者一周）来写一篇帖子总结一下，不记录下来之后遇见又会觉得自己刚遇见这题。</p><p>三、算法</p><p>反复刷，目前的目标就是刷完那一百道，为什么要刷，通过笔试是一方面，还有一方面是可以锻炼到自己的思维，这个平常自己要做好总结，比如二叉树一般递归就能搞定。工作时每天晚上抽时间来刷，离职后每天抽两到三个小时来做算法题。</p><p>四、项目</p><p>项目问题还是挺大的，现在的项目不太行，还有打算自己做，暂时其实也没有想好要做什么，但是至少在这两个月需要做至少一个好的项目出来，还是有点难度的，尽量在这几天思考好。</p><p>五、实习经历</p><p>这个还是值得想一想的，现在看来我去到亚信可能最好的收获就是收获了一段实习经历，学习收获我个人认为并没有很大，但是还是丰富了我的经验。所以我也得想想，如果问到我实习，我应该怎么回答。</p><p>以上就是一些想法，并没有一个具体的时间规划。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;今天是6月20号，学校刚刚考完最后一门，该谋划一下接下来两个月的事情了。我总是感到焦虑，期望自己找到一个还不错的工作，所以我想在未来的两个月让自己过得充实，以此缓解这种焦虑。以下是我的规划，可能之后会不断更新和改正，主要针对技术，面试题还有项目以及算法。&lt;/p&gt;
-&lt;p&gt;一、</summary>
-      
-    
-    
-    
-    <category term="工作" scheme="https://github.com/hy5555/hy5555.github.io.git/categories/%E5%B7%A5%E4%BD%9C/"/>
-    
-    
-    <category term="Work" scheme="https://github.com/hy5555/hy5555.github.io.git/tags/Work/"/>
-    
-  </entry>
-  
-  <entry>
     <title>第一周任务</title>
     <link href="https://github.com/hy5555/hy5555.github.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/"/>
     <id>https://github.com/hy5555/hy5555.github.io.git/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/</id>
@@ -472,6 +447,35 @@
     
     
     <category term="Study" scheme="https://github.com/hy5555/hy5555.github.io.git/tags/Study/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用Hexo搭建个人博客</title>
+    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/"/>
+    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/</id>
+    <published>2023-02-03T05:59:25.615Z</published>
+    <updated>2023-06-20T08:16:05.224Z</updated>
+    
+    <content type="html"><![CDATA[<p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，命名为Hexo</p><p>在Hexo目录下打开命令行窗口，执行以下指令：</p><p><code>    npm install hexo-cli -g</code></p><p><code>    hexo init blog</code></p><p><code>    cd blog</code></p><p><code>    npm install</code></p><p><code>    hexo server</code></p><p>此时你打开本地4000端口，已经可以发现属于你的博客了。</p><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><span id="more"></span><p>将文件打包生成静态资源，执行以下命令，将会生成public文件夹，里面存放静态资源，后续将博客部署到github上时，上传的也是静态文件（不直接更改里面的代码）。</p><p><code>hexo g</code></p><h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p><a href="https://hexo.io/themes/">主题(hexo.io)</a></p><p>在上面找到自己喜欢的主题并进入主题给出的github界面，那里会教你安装使用对应主题。</p><h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p><p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p><p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！&lt;/p&gt;
+&lt;h3 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h3&gt;&lt;p&gt;需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）&lt;/p&gt;
+&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;p&gt;新建一个文件夹，命名为Hexo&lt;/p&gt;
+&lt;p&gt;在Hexo目录下打开命令行窗口，执行以下指令：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    npm install hexo-cli -g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    hexo init blog&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    cd blog&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    npm install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;    hexo server&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;此时你打开本地4000端口，已经可以发现属于你的博客了。&lt;/p&gt;
+&lt;h3 id=&quot;打包&quot;&gt;&lt;a href=&quot;#打包&quot; class=&quot;headerlink&quot; title=&quot;打包&quot;&gt;&lt;/a&gt;打包&lt;/h3&gt;</summary>
+    
+    
+    
+    <category term="Hexo" scheme="https://github.com/hy5555/hy5555.github.io.git/categories/Hexo/"/>
+    
     
   </entry>
   
