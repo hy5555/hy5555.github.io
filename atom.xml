@@ -6,7 +6,7 @@
   <link href="https://github.com/hy5555/hy5555.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/hy5555/hy5555.github.io.git/"/>
-  <updated>2023-08-11T03:31:40.027Z</updated>
+  <updated>2023-09-05T10:12:15.348Z</updated>
   <id>https://github.com/hy5555/hy5555.github.io.git/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ES6 module和CommonJS的区别</title>
+    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/09/05/ES%20Module%E5%92%8CCommonJS%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>https://github.com/hy5555/hy5555.github.io.git/2023/09/05/ES%20Module%E5%92%8CCommonJS%E7%9A%84%E5%8C%BA%E5%88%AB/</id>
+    <published>2023-09-05T09:50:31.810Z</published>
+    <updated>2023-09-05T10:12:15.348Z</updated>
+    
+    <content type="html"><![CDATA[<p>这两种都是JavaScript模块化方案。在一些地方上面有些区别。</p><h3 id="1、ES6-module是编译时导出接口，CommonJS是运行时导出对象。"><a href="#1、ES6-module是编译时导出接口，CommonJS是运行时导出对象。" class="headerlink" title="1、ES6 module是编译时导出接口，CommonJS是运行时导出对象。"></a>1、ES6 module是编译时导出接口，CommonJS是运行时导出对象。</h3><p>通俗一点可以这样讲，ES6 module导入的模块是引用，而CommonJS导入的模块是一个新的对象（当然CommonJS也可以使导入的模块是引用）。</p><h3 id="2、ES6-module是静态语法，CommonJS是动态语法。"><a href="#2、ES6-module是静态语法，CommonJS是动态语法。" class="headerlink" title="2、ES6 module是静态语法，CommonJS是动态语法。"></a>2、ES6 module是静态语法，CommonJS是动态语法。</h3><p>ES6 module是静态语法，所以import必须写在顶部。引入的模块参数不能是变量，必须是字符串，这样打包工具能够静态分析出依赖关系。由于CommonJS是动态的，所以不好分析依赖关系。</p><h3 id="3、ES6-module支持异步。"><a href="#3、ES6-module支持异步。" class="headerlink" title="3、ES6 module支持异步。"></a>3、ES6 module支持异步。</h3><p>ES6 module支持异步，CommonJS不支持异步。这也是ES6 module可以替代CommonJS，而CommonJS不能替代ES6 module的理由。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;这两种都是JavaScript模块化方案。在一些地方上面有些区别。&lt;/p&gt;
+&lt;h3 id=&quot;1、ES6-module是编译时导出接口，CommonJS是运行时导出对象。&quot;&gt;&lt;a href=&quot;#1、ES6-module是编译时导出接口，CommonJS是运行时导出对象。&quot; c</summary>
+      
+    
+    
+    
+    <category term="知识" scheme="https://github.com/hy5555/hy5555.github.io.git/categories/%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="基础知识" scheme="https://github.com/hy5555/hy5555.github.io.git/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
   
   <entry>
     <title>项目遇见的问题</title>
@@ -299,9 +324,9 @@
     <link href="https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/"/>
     <id>https://github.com/hy5555/hy5555.github.io.git/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/</id>
     <published>2023-03-09T11:02:27.676Z</published>
-    <updated>2023-06-20T13:44:03.997Z</updated>
+    <updated>2023-09-04T02:46:00.998Z</updated>
     
-    <content type="html"><![CDATA[<p>笔试（十五题）：</p><p>1、说几个未知宽高元素水平垂直居中的方法。</p><p>2、说一下computed和whtch的区别。</p><p>3、前端存储方式。</p><p>4、什么是跨域，如何解决跨域。</p><p>5、Vue的生命周期，数据在哪个周期加载。</p><p>6、JS数据类型有哪些。</p><p>7、什么是闭包。</p><p>8、数组去重。</p><p>9、实现判断后端请求的函数。</p><p>10、建立一个包含10个10-100的数组并排序。</p><p>11、字符串比对。</p><p>12、组件通信的方式。</p><p>13、说下mixins</p><p>还有两个题目忘记了</p><p>笔试完直接一面了，问了下项目，问了下前面题目答案没写全的，十来分钟，第一次面试，题目还是挺简单的，但是没有好好背八股，肯定是无了。算法也只会几个排序。但是第一次面试对自己的收获还是挺大的，没有想象的这么难。接下来就好好背八股，写下算法题。大厂不抱希望，希望能进稍微好点的公司实习。</p>]]></content>
+    <content type="html"><![CDATA[<p>笔试（十五题）：</p><p>1、说几个未知宽高元素水平垂直居中的方法。</p><p>2、说一下computed和whtch的区别。</p><p>3、前端存储方式。</p><p>4、什么是跨域，如何解决跨域。</p><p>5、Vue的生命周期，数据在哪个周期加载。</p><p>6、JS数据类型有哪些。</p><p>7、什么是闭包。</p><p>8、数组去重。</p><p>9、实现判断后端请求的函数。</p><p>10、建立一个包含10个10-100的数组并排序。</p><p>11、字符串比对。</p><p>12、组件通信的方式。</p><p>13、说下mixins</p><p>还有两个题目忘记了</p>]]></content>
     
     
       
@@ -447,35 +472,6 @@
     
     
     <category term="Study" scheme="https://github.com/hy5555/hy5555.github.io.git/tags/Study/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用Hexo搭建个人博客</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/03/hello-world/</id>
-    <published>2023-02-03T05:59:25.615Z</published>
-    <updated>2023-06-20T08:16:05.224Z</updated>
-    
-    <content type="html"><![CDATA[<p>本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！</p><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>新建一个文件夹，命名为Hexo</p><p>在Hexo目录下打开命令行窗口，执行以下指令：</p><p><code>    npm install hexo-cli -g</code></p><p><code>    hexo init blog</code></p><p><code>    cd blog</code></p><p><code>    npm install</code></p><p><code>    hexo server</code></p><p>此时你打开本地4000端口，已经可以发现属于你的博客了。</p><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><span id="more"></span><p>将文件打包生成静态资源，执行以下命令，将会生成public文件夹，里面存放静态资源，后续将博客部署到github上时，上传的也是静态文件（不直接更改里面的代码）。</p><p><code>hexo g</code></p><h3 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h3><p><a href="https://hexo.io/themes/">主题(hexo.io)</a></p><p>在上面找到自己喜欢的主题并进入主题给出的github界面，那里会教你安装使用对应主题。</p><h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>部署博客到远端github(参考以下两篇文章)</p><p><a href="https://blog.csdn.net/MarkeyMark/article/details/108179312"> 免费部署个人博客到远端GitHub（输密码有问题看下面博客）</a></p><p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;本来打算在开学前做一个项目准备实习，在找项目的过程中发现别人的学习博客，觉得很酷，所以自己也想做一个，做完之后总结一下搭建过程，并将此博客作为个人学习记录博客！&lt;/p&gt;
-&lt;h3 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h3&gt;&lt;p&gt;需要在电脑上安装git和node.js（应至少为 Node.js 10.13，建议为 12.0 或更高版本）&lt;/p&gt;
-&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;p&gt;新建一个文件夹，命名为Hexo&lt;/p&gt;
-&lt;p&gt;在Hexo目录下打开命令行窗口，执行以下指令：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    npm install hexo-cli -g&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    hexo init blog&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    cd blog&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    npm install&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;    hexo server&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;此时你打开本地4000端口，已经可以发现属于你的博客了。&lt;/p&gt;
-&lt;h3 id=&quot;打包&quot;&gt;&lt;a href=&quot;#打包&quot; class=&quot;headerlink&quot; title=&quot;打包&quot;&gt;&lt;/a&gt;打包&lt;/h3&gt;</summary>
-    
-    
-    
-    <category term="Hexo" scheme="https://github.com/hy5555/hy5555.github.io.git/categories/Hexo/"/>
-    
     
   </entry>
   
