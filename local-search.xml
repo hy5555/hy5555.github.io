@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>CSS继承属性</title>
+    <link href="/2023/09/06/CSS%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7/"/>
+    <url>/2023/09/06/CSS%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7/</url>
+    
+    <content type="html"><![CDATA[<p>CSS的部分属性是可以继承的，搞清楚哪些是继承属性可以让我们在书写项目时减少代码量和解析时间。</p><h3 id="可继承属性"><a href="#可继承属性" class="headerlink" title="可继承属性"></a>可继承属性</h3><h4 id="1、字体属性"><a href="#1、字体属性" class="headerlink" title="1、字体属性"></a>1、字体属性</h4><p>font-weight 、font-size 、font-family 、 font-style、…</p><h4 id="2、文本属性"><a href="#2、文本属性" class="headerlink" title="2、文本属性"></a>2、文本属性</h4><p>line-height、text-align、text-indent、color、…</p><p>有些也是不能继承的，如text-shadow</p><h4 id="3、可见属性"><a href="#3、可见属性" class="headerlink" title="3、可见属性"></a>3、可见属性</h4><p>visibility</p><h4 id="4、表格布局属性"><a href="#4、表格布局属性" class="headerlink" title="4、表格布局属性"></a>4、表格布局属性</h4><p>list-style…</p><h4 id="5、光标属性"><a href="#5、光标属性" class="headerlink" title="5、光标属性"></a>5、光标属性</h4><p>cursor</p><p>不可继承属性</p><p>1、盒子模型的属性</p><p>margin、padding、border…</p><p>2、背景属性</p><p>background…</p><p>3、定位属性</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>知识</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>基础知识</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ES6 module和CommonJS的区别</title>
     <link href="/2023/09/05/ES%20Module%E5%92%8CCommonJS%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
     <url>/2023/09/05/ES%20Module%E5%92%8CCommonJS%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
