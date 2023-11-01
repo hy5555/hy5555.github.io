@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>git常规使用</title>
+    <url>/2023/10/11/git%E5%B8%B8%E8%A7%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>每一个文件无非两种状态，已跟踪和未跟踪</p>
+<p>获取git仓库的两种方式，git init初始化一个仓库以及git clone克隆一个仓库</p>
+<p>git status查看各个文件状态</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS继承属性</title>
     <url>/2023/09/06/CSS%E7%BB%A7%E6%89%BF%E5%B1%9E%E6%80%A7/</url>
     <content><![CDATA[<p>CSS的部分属性是可以继承的，搞清楚哪些是继承属性可以让我们在书写项目时减少代码量和解析时间。</p>
@@ -16,9 +30,10 @@
 <p>2、背景属性</p>
 <p>background…</p>
 <p>3、定位属性</p>
+<p>position</p>
 ]]></content>
       <categories>
-        <category>知识</category>
+        <category>学习</category>
       </categories>
       <tags>
         <tag>基础知识</tag>
@@ -33,29 +48,64 @@
 <h3 id="3、ES6-module支持异步。"><a href="#3、ES6-module支持异步。" class="headerlink" title="3、ES6 module支持异步。"></a>3、ES6 module支持异步。</h3><p>ES6 module支持异步，CommonJS不支持异步。这也是ES6 module可以替代CommonJS，而CommonJS不能替代ES6 module的理由。</p>
 ]]></content>
       <categories>
-        <category>知识</category>
+        <category>学习</category>
       </categories>
       <tags>
         <tag>基础知识</tag>
       </tags>
   </entry>
   <entry>
-    <title>Vue2生命周期详解</title>
-    <url>/2023/06/25/Vue2%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
-    <content><![CDATA[]]></content>
+    <title>项目遇见的问题</title>
+    <url>/2023/08/11/%E9%A1%B9%E7%9B%AE%E9%9A%BE%E7%82%B9/</url>
+    <content><![CDATA[<p>1、在完成林大优选项目时，获取一级下拉框数据并渲染到选择框时，下拉框数据总是显示无数据，但是在开发者工具中又显示下拉框数据有值，困扰了我好一会儿。</p>
+<p>部分代码如下</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><br><span class="hljs-comment">//html</span><br>&lt;el-select v-model=<span class="hljs-string">&quot;c1&quot;</span> placeholder=<span class="hljs-string">&quot;请选择&quot;</span>&gt;<br>                        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">el-option</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in c1Arr&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item?.id&quot;</span> <span class="hljs-attr">:label</span>=<span class="hljs-string">&quot;item?.name&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;item?.id&quot;</span> /&gt;</span></span><br>                &lt;/el-select&gt;<br><br><span class="hljs-comment">//js</span><br><span class="hljs-comment">//一级分类数组</span><br><span class="hljs-keyword">let</span> c1Arr = <span class="hljs-title function_">reactive</span>([])<br><span class="hljs-comment">//一级选择框的值</span><br><span class="hljs-keyword">let</span> c1 = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br><span class="hljs-comment">//获取一级分类方法</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">getC1</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">reqC1</span>()<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);<br>    <span class="hljs-keyword">if</span> (res.<span class="hljs-property">code</span> == <span class="hljs-number">200</span>) &#123;<br>        c1Arr.<span class="hljs-property">value</span> = res.<span class="hljs-property">data</span><br>        c1.<span class="hljs-property">value</span> = c1Arr[<span class="hljs-number">0</span>]?.<span class="hljs-property">name</span><br>    &#125;<br>&#125;<br><span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> [<br>    <span class="hljs-title function_">getC1</span>()<br>])<br></code></pre></td></tr></table></figure>
+
+<p>解决：不断思考，最后想会不会是ref和reactive定义响应式数据由区别的原因，因为我之前完成公司项目的时候就是用的ref没有问题，但是我现在用reactive就出现了问题。在查阅官方文档后，我发现了问题，在官方文档中对于reactive有这样一段话：</p>
+<p><code>reactive()</code> API 有一些局限性：</p>
+<ol>
+<li><strong>有限的值类型</strong> ：它只能用于对象类型 (对象、数组和如 <code>Map</code>、<code>Set</code> 这样的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections">集合类型</a>)。它不能持有如 <code>string</code>、<code>number</code> 或 <code>boolean</code> 这样的<a href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive">原始类型</a>。</li>
+<li><strong>不能替换整个对象</strong> ：由于 Vue 的响应式跟踪是通过属性访问实现的，因此我们必须始终保持对响应式对象的相同引用。这意味着我们不能轻易地“替换”响应式对象，因为这样的话与第一个引用的响应性连接将丢失。</li>
+<li><strong>对解构操作不友好</strong> ：当我们将响应式对象的原始类型属性解构为本地变量时，或者将该属性传递给函数时，我们将丢失响应性连接。</li>
+</ol>
+<p>上面第二点中，在整个过程中，reactive声明的对象需要保持引用地址不变。所以在上面代码中，我们可以不用reactive声明，改用ref，解决问题。</p>
+]]></content>
       <categories>
-        <category>学习</category>
+        <category>项目</category>
       </categories>
       <tags>
-        <tag>Study</tag>
+        <tag>项目</tag>
       </tags>
   </entry>
   <entry>
-    <title>Less学习</title>
-    <url>/2023/03/14/Less/</url>
-    <content><![CDATA[<p>是一门预编译语言</p>
-<p><a href="https://juejin.cn/post/6844903520441729037#comment">学习Less-看这篇就够了 - 掘金 (juejin.cn)</a></p>
+    <title>Vue面试题</title>
+    <url>/2023/08/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="1、Vue实例挂载的过程中发生了什么？"><a href="#1、Vue实例挂载的过程中发生了什么？" class="headerlink" title="1、Vue实例挂载的过程中发生了什么？"></a>1、Vue实例挂载的过程中发生了什么？</h3><p>是什么？</p>
+<p>Vue实例挂载过程是指将Vue实例与DOM元素关联起来的过程。</p>
+<p>发生了什么？</p>
+<p>1、初始化数据（props，methods，data）。</p>
+<p>2、Vue会将模板编译成渲染函数，这样可以将数据动态地渲染到视图中。</p>
+<p>3、Vue根据渲染函数生成虚拟DOM。</p>
+<p>4、新旧虚拟DOM会进行对比，进行更新。</p>
+<p>5、将最新的虚拟DOM挂载到指定的元素上。</p>
+<h3 id="2、v-if和v-for的优先级是什么？"><a href="#2、v-if和v-for的优先级是什么？" class="headerlink" title="2、v-if和v-for的优先级是什么？"></a>2、v-if和v-for的优先级是什么？</h3><p>结论：在Vue2中，v-for优先级高于v-if，在Vue3中，v-if优先级高于v-for。</p>
+<p>使用：不建议v-for和v-if同时使用，在Vue2中同时使用，由于v-for优先级高，所以无论v-if表达式是true还是false，标签都会被渲染后再进行条件判断。在Vue3中同时使用，由于v-if优先级高，v-if不能访问v-for中的变量，有时会影响我们使用。</p>
+<p>建议：有同时使用的需要时，可以在元素外面加入一层temlate标签。</p>
+<h3 id="3、为什么Vue中data属性是一个函数而不是一个对象。"><a href="#3、为什么Vue中data属性是一个函数而不是一个对象。" class="headerlink" title="3、为什么Vue中data属性是一个函数而不是一个对象。"></a>3、为什么Vue中data属性是一个函数而不是一个对象。</h3><p>防止每个组件实例对象共用一个data，使用函数，使得每个组件实例对象的data是一份单独的拷贝。</p>
+<h3 id="4、Vue2和Vue3响应式原理"><a href="#4、Vue2和Vue3响应式原理" class="headerlink" title="4、Vue2和Vue3响应式原理"></a>4、Vue2和Vue3响应式原理</h3><p>在Vue2中，利用的是原生JS下边的Object.defineProperty()来进行数据劫持，通过里面的getter和setter方法来进行数据的查看和修改。</p>
+<p>Vue2响应式数据实现的缺陷：1、无法监听对象的新增和删除属性。2、无法监听数组方法，当监听的下标对应数据发生改变。</p>
+<p>在Vue3中，对于对象类型的数据，是通过Proxy，创建一个对象的代理，实现数据的响应式。</p>
+<h3 id="5、组件和插件有什么区别？"><a href="#5、组件和插件有什么区别？" class="headerlink" title="5、组件和插件有什么区别？"></a>5、组件和插件有什么区别？</h3><p>概念：组件：在Vue中，每个.vue文件都可以视作一个组件，组件就是把图形、非图形的各种逻辑抽象为一个统一的概念来进行开发的模式。</p>
+<p>插件：通常为Vue添加全局功能。</p>
+<p>区别：1、编写模式不同</p>
+<p>2、使用方法不同</p>
 ]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
+      </tags>
   </entry>
   <entry>
     <title>Vue3插槽</title>
@@ -71,56 +121,410 @@
 <h4 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h4><p>插槽本质上是函数执行，创建结点插入到插槽所在区域。</p>
 ]]></content>
       <categories>
-        <category>知识</category>
+        <category>学习</category>
       </categories>
       <tags>
         <tag>基础知识</tag>
       </tags>
   </entry>
   <entry>
-    <title>原型和原型链</title>
-    <url>/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
-    <content><![CDATA[<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型：是一个对象模板，通俗意义上的理解就是一个类。</p>
-<p>（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享原型的所有属性和方法。</p>
-<p>例：Person.prototype.sayHello() = function(){</p>
-<pre><code class="hljs">console.log(&quot;你好&quot;)
+    <title>Vue3组件通信方式</title>
+    <url>/2023/07/30/Vue3%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[<h4 id="1、props"><a href="#1、props" class="headerlink" title="1、props"></a>1、props</h4><p>Vue2和Vue3均有，用于父组件给子组件传值，在子组件中不能对该值进行修改，会有警告。</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">//父组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Son</span> <span class="hljs-attr">::info</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Son</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> <span class="hljs-title class_">Son</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;路径&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> &#123;ref&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> info = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;Yellow one&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">//子组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span> </span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">info</span>&#125;&#125;</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> props = <span class="hljs-title function_">defineProps</span>([<span class="hljs-string">&#x27;info&#x27;</span>])</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2、自定义事件"><a href="#2、自定义事件" class="headerlink" title="2、自定义事件"></a>2、自定义事件</h4><p>用于子组件给父组件传值</p>
+<figure class="highlight dust"><table><tr><td class="code"><pre><code class="hljs dust"><span class="language-xml">//父组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Son</span> @<span class="hljs-attr">xxx</span> = <span class="hljs-string">&quot;getXXX&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Son</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> <span class="hljs-title class_">Son</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;路径&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> </span></span><span class="hljs-template-variable">&#123;ref&#125;</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> <span class="hljs-title function_">getXXX</span> = (<span class="hljs-params">a,b</span>)=&gt;</span></span><span class="hljs-template-variable">&#123;</span><br><span class="hljs-template-variable">        console.log(a)</span><br><span class="hljs-template-variable">    &#125;</span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">//子组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span> = <span class="hljs-string">$emit(</span>&#x27;<span class="hljs-attr">getXXX</span>&#x27;,<span class="hljs-attr">a</span>,<span class="hljs-attr">b</span>)&gt;</span>我是按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> $emit = <span class="hljs-title function_">defineEmits</span>([<span class="hljs-string">&#x27;getXXX&#x27;</span>])</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>值得注意的是，在Vue2中，我们在自定义组件标签里面写click等原生事件时，需要在后面加修饰符native，因为在默认情况下，父组件无法监听子组件的原生DOM事件，而native修饰符允许你在自定义组件中绑定原生事件。在Vue3中，不需要使用此修饰符，父组件会直接当成原生事件，但是如果你在子组件中引入了click自定义事件，这时父组件不会将click当成原生事件，而是自定义事件。在编码的过程中，我们命名一般避免使用原生事件的名字，以免造成不必要的误解。</p>
+<h4 id="3、provide和inject"><a href="#3、provide和inject" class="headerlink" title="3、provide和inject"></a>3、provide和inject</h4><p>在Vue3中，取消了全局事件总线的使用，跨组件通信使用provide和inject</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 父组件</span><br><span class="hljs-keyword">import</span> &#123; provide &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> sharedData = <span class="hljs-string">&#x27;Hello, World!&#x27;</span>;<br>  <br>    <span class="hljs-title function_">provide</span>(<span class="hljs-string">&#x27;myData&#x27;</span>, sharedData); <span class="hljs-comment">// 提供名为&#x27;myData&#x27;的数据</span><br>  <br>    <span class="hljs-keyword">return</span> &#123;&#125;;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 子组件A</span><br><span class="hljs-keyword">import</span> &#123; inject &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> myData = <span class="hljs-title function_">inject</span>(<span class="hljs-string">&#x27;myData&#x27;</span>); <span class="hljs-comment">// 接收名为&#x27;myData&#x27;的数据</span><br>  <br>    <span class="hljs-comment">// 使用myData</span><br>  <br>    <span class="hljs-keyword">return</span> &#123;&#125;;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 子组件B</span><br><span class="hljs-keyword">import</span> &#123; inject &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> myData = <span class="hljs-title function_">inject</span>(<span class="hljs-string">&#x27;myData&#x27;</span>); <span class="hljs-comment">// 接收名为&#x27;myData&#x27;的数据</span><br>  <br>    <span class="hljs-comment">// 使用myData</span><br>  <br>    <span class="hljs-keyword">return</span> &#123;&#125;;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4、v-model"><a href="#4、v-model" class="headerlink" title="4、v-model"></a>4、v-model</h4><p>这个是一个语法糖，用于场景在数据在父组件，但是改变数据的按钮在子组件，父组件在自定义子组件标签里面使用v-model,比如</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Son</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;num&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Son</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight dart"><table><tr><td class="code"><pre><code class="hljs dart">&lt;Son :<span class="hljs-built_in">num</span>=<span class="hljs-string">&quot;num&quot;</span> <span class="hljs-meta">@update</span>:<span class="hljs-built_in">num</span> = <span class="hljs-string">&quot;updateNum&quot;</span>&gt;&lt;/Son&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="5、useAttrs方法"><a href="#5、useAttrs方法" class="headerlink" title="5、useAttrs方法"></a>5、useAttrs方法</h4><p>在Vue3中，可以使用useAttrs方法进行父子组件通信（父传子），这个方法常用于进行组件的二次封装。</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">// 子组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handleClick&quot;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">attrs.text</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; useAttrs &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> attrs = <span class="hljs-title function_">useAttrs</span>();</span></span><br><span class="language-javascript"><span class="language-xml">  </span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleClick</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      attrs.<span class="hljs-title function_">onClick</span>(); <span class="hljs-comment">// 调用父组件传递的onClick方法</span></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">  </span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      attrs,</span></span><br><span class="language-javascript"><span class="language-xml">      handleClick</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">// 父组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">child-component</span> <span class="hljs-attr">text</span>=<span class="hljs-string">&quot;Click me&quot;</span> <span class="hljs-attr">:onClick</span>=<span class="hljs-string">&quot;handleClick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">child-component</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> <span class="hljs-title class_">ChildComponent</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./ChildComponent.vue&#x27;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">components</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title class_">ChildComponent</span></span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  </span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">handleClick</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 处理点击事件</span></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id="6、ref"><a href="#6、ref" class="headerlink" title="6、ref"></a>6、ref</h4><p>ref也可以作为组件间的一种通信方式</p>
+<figure class="highlight dust"><table><tr><td class="code"><pre><code class="hljs dust"><span class="language-xml">//父组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Son</span> <span class="hljs-attr">:ref</span>=<span class="hljs-string">&quot;son&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Son</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> </span></span><span class="hljs-template-variable">&#123;ref&#125;</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> <span class="hljs-title class_">Son</span> <span class="hljs-keyword">from</span> 路径</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> son = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">//子组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  </span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> </span></span><span class="hljs-template-variable">&#123;ref&#125;</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> a = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;Yellow one&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">defineExport</span>(</span></span><span class="hljs-template-variable">&#123;</span><br><span class="hljs-template-variable">        a</span><br><span class="hljs-template-variable">    &#125;</span><span class="language-xml">)</span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id="7、-parent"><a href="#7、-parent" class="headerlink" title="7、$parent"></a>7、$parent</h4><pre><code class="hljs">$parent可以获取到父节点
 </code></pre>
-<p>}</p>
-<p>（2）严格模式下，原型的属性和方法还是会被原型实例所共享的。</p>
-<p>（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。</p>
-<p>（4）原型的总结：</p>
+<h4 id="8、pinia"><a href="#8、pinia" class="headerlink" title="8、pinia"></a>8、pinia</h4><p>在 Vue 3 中，可以使用 Pinia 来实现状态管理。Pinia 是一个基于 Vue 3 的新一代状态管理库，它提供了一种简单、直观且易于使用的方式来管理应用程序的状态。</p>
+<p>下面是使用 Pinia 的简要步骤：</p>
+<p>安装 Pinia：<br><code>npm install pinia</code><br>创建一个 Pinia 实例并定义状态：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createPinia &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span>;<br><br><span class="hljs-keyword">const</span> pinia = <span class="hljs-title function_">createPinia</span>();<br><br><span class="hljs-comment">// 注册一个 store</span><br><span class="hljs-keyword">const</span> store = pinia.<span class="hljs-title function_">createStore</span>(&#123;<br>  <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;counter&#x27;</span>,<br>  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> (&#123;<br>    <span class="hljs-attr">count</span>: <span class="hljs-number">0</span><br>  &#125;),<br>  <span class="hljs-attr">actions</span>: &#123;<br>    <span class="hljs-title function_">increment</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">count</span>++;<br>    &#125;,<br>    <span class="hljs-title function_">decrement</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">count</span>--;<br>    &#125;<br>  &#125;<br>&#125;);<br><br><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> pinia;<br></code></pre></td></tr></table></figure>
+
+<p>在应用程序的入口处挂载 Pinia：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span>;<br><span class="hljs-keyword">import</span> pinia <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./pinia&#x27;</span>;<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>);<br>app.<span class="hljs-title function_">use</span>(pinia);<br>app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>在组件中使用 Pinia 状态：</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Count: </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">$store.counter.count</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;$store.counter.increment()&quot;</span>&gt;</span>Increment<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;$store.counter.decrement()&quot;</span>&gt;</span>Decrement<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; defineComponent &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;CounterComponent&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">&#125;);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
+
+<p>在上面的示例中，我们创建了一个名为 counter 的 store，它具有一个名为 count 的状态和两个操作函数 increment 和 decrement。然后，在组件中使用 $store 来访问和调用 store 中的状态和操作。</p>
+<p>Pinia 提供了一种非常直观和简单的方式来管理应用程序的状态，同时也遵循 Vue 3 的响应式原理。它可以与其他 Vue 生态系统库（如 Vue Router、Vuex）以及 TypeScript 紧密集成，提供更好的开发体验。</p>
+<h4 id="9、插槽"><a href="#9、插槽" class="headerlink" title="9、插槽"></a>9、插槽</h4><p>分为默认插槽，具名插槽和作用域插槽，作用域插槽可以用来传递数据</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>后端传数据流前端处理问题</title>
+    <url>/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<figure class="highlight qml"><table><tr><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure>
+
+<p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p>
+<figure class="highlight oxygene"><table><tr><td class="code"><pre><code class="hljs oxygene"><span class="hljs-comment">//下载快照</span><br>downloadSnapshot(name<br><span class="hljs-comment">&#123;</span><br><span class="hljs-comment">return request(&#123;</span><br><span class="hljs-comment">url:/api/v2/snapshot/download?target=$&#123;name&#125;</span>,<br><span class="hljs-keyword">method</span>:<span class="hljs-string">&#x27;post&#x27;</span>,<br>file: <span class="hljs-keyword">true</span>,<br>responseType: <span class="hljs-string">&#x27;arraybuffer&#x27;</span>,<br>headers: <span class="hljs-comment">&#123; &#x27;Content-Type&#x27;: &#x27;multipart/form-data&#x27;)</span><br></code></pre></td></tr></table></figure>
+
+<p>然后就成功解决了。</p>
+<ul>
+<li><code>responseType: &#39;arraybuffer&#39;</code> 表示希望将响应数据以二进制数组（ArrayBuffer）的形式返回，而不是默认的字符串或 JSON 格式。适用于需要处理二进制数据（例如图片、音频、视频等）的情况。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>技术记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>易易城项目</title>
+    <url>/2023/07/02/%E6%98%93%E6%98%93%E5%9F%8E%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<p>搭建项目前准备</p>
+<p>vue3 + vite 本地环境搭建：<br>准备：事先准备好node环境，一般node环境配置完成之后npm版本也相应存在。<br>注意：vite需要node.js版本 &gt;= 12.0.0</p>
+<p>一、搭建项目</p>
+<p>新建项目</p>
+<p>① 运行创建项目命令：命令行输入 npm create vite@latest<br><code>npm create vite@latest</code></p>
+<p>②输入项目名称：在弹出的 Project name 行可自行写创建的vue3项目名称</p>
+<p>③选择前端框架： 选择vue</p>
+<p>④选择项目类型： 选择JavaScript</p>
+<p>⑤创建完毕，根据提示依次执行命令即可完成项目运行。</p>
+<p>二、引入相关插件</p>
+<p>1、引入element-plus</p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver">npm install <span class="hljs-keyword">element</span>-plus <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure>
+
+<p>在main.js中加入如下代码</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> ElementPlus <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-plus&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;element-plus/dist/index.css&#x27;</span><br><span class="hljs-keyword">import</span> locale <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;element-plus/lib/locale/lang/zh-cn&quot;</span>;<span class="hljs-comment">//使element-plus文字为中文</span><br>pp.use(ElementPlus, &#123;locale&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>2、引入axios</p>
+<p>运行 <code>npm install axios</code><br>在src目录下新增request.js文件，文件内部配置请求拦截以及响应拦截操作。<br>后续在各请求接口文件内部引入 request.js 文件，并使用。</p>
+<p><code>import request from &#39;@/request&#39;</code></p>
+<p>3、引入vue-router</p>
+<p>运行 <code>npm install vue-router@4 --save</code>。<br>src文件夹下创建router文件夹，router文件夹下创建 index.js  文件。<br>index.js文件内部引入项目路由。<br>并在 main.js 文件内引入 index.js  文件<br><code>import router from &#39;@/router&#39;</code><br><code>app.use(router)</code></p>
+<p>4、引入scss</p>
+<p>项目中有原来给到的css文件，但是我们在修改样式时还是用scss来进行修改</p>
+<p><code>npm install node-sass sass-loader --save-dev</code></p>
+<p>需要自己新建一个文件，路径为 <code>@/assets/style/main.scss</code></p>
+<p>在 vite.config.js 中配置 scss 的全局变量 使用</p>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><code class="hljs haxe">export <span class="hljs-keyword">default</span> defineConfig(&#123;<br>  plugins: <span class="hljs-type"></span>[vue()],<br>  resolve: <span class="hljs-type"></span>&#123;<br>    alias: <span class="hljs-type"></span>&#123;<br>      <span class="hljs-string">&#x27;@&#x27;</span>: <span class="hljs-type">fileURLToPath</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">URL</span>(<span class="hljs-string">&#x27;./src&#x27;</span>, <span class="hljs-keyword">import</span>.meta.url))<br>    &#125;<br>  &#125;,<br>  <span class="hljs-comment">// 上面是默认已存在的  css: &#123;</span><br>    <span class="hljs-comment">// css预处理器</span><br>    preprocessorOptions: <span class="hljs-type"></span>&#123;<br>      scss: <span class="hljs-type"></span>&#123;<br>        <span class="hljs-comment">// 引入 mixin.scss 这样就可以在全局中使用 mixin.scss中预定义的变量了</span><br>        <span class="hljs-comment">// 给导入的路径最后加上 ;</span><br>        additionalData: <span class="hljs-type"></span>&#x27;@<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@/assets/style/main.scss&quot;</span>;<span class="hljs-string">&#x27;</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  &#125;&#125;)</span><br></code></pre></td></tr></table></figure>
+
+<p>三、开发</p>
+<p>1、页面和功能</p>
+<p>本项目开发首页，登录页，注册页，修改密码页，个人信息页，修改密码页，上传商品页，购物车页，结算页，产品页，具体产品页共十一个页面，包含搜索商品、上传商品，登录、注册，修改密码，切换用户，选取商品规格加入购物车，添加删除修改收货地址等功能。</p>
+<p>2、项目亮点</p>
+<p>项目比较简单，我通过封装一些组件，比如导航栏，底部导航和头部信息，很好的实现了组件复用，减少了代码量，有一些功能相近的地方，我也实现了弹框表单复用，比如修改地址和新增地址，我用了同一个表单。同时使用路由懒加载，使得加载速度变快。对axios进行了二次封装，减少了代码重复。</p>
+<p>3、项目难点</p>
+<p>难点好像都是自己创造的，后面补</p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>项目</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第一周任务</title>
+    <url>/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/</url>
+    <content><![CDATA[<h3 id="第一天工作安排"><a href="#第一天工作安排" class="headerlink" title="第一天工作安排"></a>第一天工作安排</h3><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png" alt="1683552602215"></p>
+<h4 id="第一天任务完成答案："><a href="#第一天任务完成答案：" class="headerlink" title="第一天任务完成答案："></a>第一天任务完成答案：</h4><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552737235.png" alt="1683552737235"></p>
+<p>克隆仓库：</p>
+<p><code>git clone 仓库名</code></p>
+<p>创建个人新分支</p>
+<p><code>git checkout -b 分支名   //创建并切换本地分支</code></p>
+<p>更改文件</p>
+<p>推送到远程分支</p>
+<p><code>git push origin 本地分支名：远程分支名   //有参数可以用</code></p>
+<p>合并远程分支</p>
+<p><code>git merge 分支名称   //会有合并冲突</code></p>
+<p>解决合并冲突</p>
+<p>1、找到代码进行更改</p>
+<p>2、<code>git add .</code></p>
+<p>3、<code>git commit -m &quot; 注释&quot;</code></p>
+<h3 id="第二和第三天工作安排"><a href="#第二和第三天工作安排" class="headerlink" title="第二和第三天工作安排"></a>第二和第三天工作安排</h3><p>这两天做了一个登录界面并实现了一些交互。</p>
+<p>页面如下：<a href="https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/%E4%BA%91%E5%8F%B7?node-id=31:5633" title="设计稿">https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/云号?node-id=31%3A5633</a></p>
+<p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683788178152.png" alt="1683788178152"></p>
+<ul>
+<li>要求<ul>
+<li>遵循开发规范</li>
+<li>完成静态页面开发</li>
+<li>可参考原代码，不要照抄</li>
+<li>不使用ipu-开头的className</li>
+<li>不使用Mobile和IpuMobile对象</li>
+<li>所有消息提示，调用this.$util.modal.toast(message)提示，如手机号码不正确（原工程看，输入不规范的消息是在页面里显示文字）</li>
+</ul>
+</li>
+<li>完成页面交互<ul>
+<li>点击第一个输入框后的小图标，显示弹框</li>
+<li>验证码输入框，在点击获取获取验证码后才可编辑输入</li>
+<li>点获取验证码，验证手机号格式正确后，才发送验证码</li>
+<li>发送验证码后，发送验证码60s倒计时，倒计时内不可再点击</li>
+<li>点击登录，验证手机号，验证码已输入，并勾选同意隐私协议，调用登录接口进行登录</li>
+<li>登录成功后，提示登录成功，并保存登录手机号，下次进入登录页面时，手机输入框显示最近登录成功的手机号</li>
+<li>点击’《云号APP用户隐私政策》’进入路由名称为’PrivacyPolicy’页面</li>
+</ul>
+</li>
+<li>接口及参数说明<br>工程中定义了接口模拟<br>import { subnumManageApi, accountManageApi } from ‘../../api’<br>// 获取验证码接口，只能给13112341234的手机发送短信<br>accountManageApi.getMessageCode({phone：’手机号’})<br>// 调用登录接口，手机号只能为13112341234，验证码只能为123456<br>accountManageApi.login({‘phone’:’13112341234’, code::’123456’})</li>
+</ul>
+<h4 id="移动端样式差异"><a href="#移动端样式差异" class="headerlink" title="移动端样式差异"></a>移动端样式差异</h4><ul>
+<li><p>适配vw + rem</p>
+</li>
+<li><p>切图使用2倍图，图片为展示尺寸2倍，尽量使用长宽相等切图</p>
+</li>
+<li><p>适配宽度范围</p>
+<ul>
+<li>320~480自适应范围</li>
+<li>小于320，按320尺寸展示</li>
+<li>大于480尺寸，按480尺寸时显示</li>
+</ul>
+</li>
+<li><p>0.5px边框：不能直接定义0.5px边框，可能不显示，一般使用伪元素定义1px边框，0.5倍缩放</p>
+</li>
+<li><p>设计稿页面上一般有手机系统工具栏区域，h5界面是不处理这个区域，考虑边距时要减掉这块的高度</p>
+<h4 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h4></li>
+<li><p>知道了在vue项目中进行移动端适配（之前都是写html页面）</p>
+</li>
+<li><p>了解了一些开发上面的规范，命名规范还有文件夹功能</p>
+</li>
+<li><p>感觉很棒，很久没有写过css了，重新温习了一遍</p>
+<p>写页面应该尽量做到如下：</p>
+<p>尽量自适应<br>少使用绝对定位：根据边距来确定位置<br>少用固定尺寸<br>宽度百分百不要再定义<br>相同样式复用</p>
+</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Node.js</title>
+    <url>/2023/04/09/node/</url>
+    <content><![CDATA[<p>Node.js不是一门编程语言，是一个应用程序，是一个软件。</p>
+<p>Node.js不能使用BOM和DOM中的API，可以使用定时器和cosole.log</p>
+<p>Node.js的顶级对象为global，浏览器的顶级对象为window</p>
 <span id="more"></span>
 
-<ul>
-<li>所有引用类型都有一个 <code>__proto__</code>(隐式原型)属性，属性值是一个普通的对象</li>
-<li>所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</li>
-<li>所有引用类型的 <code>__proto__</code>属性指向它构造函数的prototype</li>
-</ul>
-<p>（5）函数的原型prototype：函数才有prototype，prototype是一个对象，指向了当前构造函数的引用地址。</p>
-<pre><code class="hljs">prototype是一个对象，指向当前构造函数的引用地址，与构造函数有关。
+<h3 id="一、Buffer"><a href="#一、Buffer" class="headerlink" title="一、Buffer"></a>一、Buffer</h3><p>概念：Buffer是一个类似于数组的对象，用于固定长度的字节序列。其本质是一段内存空间，专门用来处理二进制数据。</p>
+<p>特点：1、Buffer大小固定且无法调整</p>
+<pre><code class="hljs">2、Buffer性能较好，可以直接对计算机内存进行操作
 
-__proto__是实例化对象中的一个属性，也是一个对象，指向prototype这个对象，与实例化对象有关。
+3、每个元素的大小为1byte
 </code></pre>
-<p>（6）函数的原型对象__proto__：所有对象都有__proto__属性， 当用构造函数实例化（new）一个对象时，会将新对象的__proto__属性指向 构造函数的prototype。</p>
-<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a><strong>原型链</strong></h3><p>1）原型链：原型链是原型对象创建过程的历史记录，当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的 <code>__proto__</code>中查找，这样一层一层向上查找就会形成一个链式结构</p>
-<p>2）原型设计的问题：当查找一个对象的属性时，JavaScript 会根据原型链向上遍历对象的原型，直到找到给定名称的属性为止，直到到达原型链的顶部仍然没有找到指定的属性，就会返回 undefined</p>
-<p>也可以理解为原型链继承时查找属性的过程是先查找自身属性，当自身属性不存在时，会在原型链中逐级查找</p>
-<p>3）hasOwnProperty 函数：可以用来检查对象自身是否含有某个属性，返回值是布尔值，当属性不存在时不会向上查找对象原型链，hasOwnProperty是 JavaScript 中唯一一个处理属性但是不查找原型链的函数</p>
-<p>4）getOwnPropertyNames 函数：可以获取对象所有的自身属性，返回值是由对象自身属性名称组成的数组，同样不会向上查找对象原型链</p>
-<p>5）原型链的小结：</p>
+<p>使用</p>
+<p>创建：</p>
+<p>1、Buffer.alloc()</p>
+<figure class="highlight tap"><table><tr><td class="code"><pre><code class="hljs tap">//创建一个长度为10字节的Buffer，相当于申请了10字节的内存空间<br>let buf_1 = Buffer.alloc(10)<br>//结果为&lt;Buffer<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00&gt;<br></code></pre></td></tr></table></figure>
+
+<p>2、Buffer.allocUnsafe()</p>
+<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">//创建了一个长度为10的Buffer，buffer中可能存在旧数据，可能会影响执行结果，所以叫unsafe，但是效率比alloc更高</span><br><span class="hljs-keyword">let</span> buf_2 = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Buffer</span>.</span></span>alloc<span class="hljs-constructor">Unsafe(10)</span><br></code></pre></td></tr></table></figure>
+
+<p>3、Buffer.from()</p>
+<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-comment">//通过字符串创建Buffer</span><br><span class="hljs-keyword">let</span> buf_3 = Buffer.<span class="hljs-keyword">from</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-comment">//通过数组创建Buffer</span><br><span class="hljs-keyword">let</span> buf_4 = Buffer.<span class="hljs-keyword">from</span>([<span class="hljs-number">105</span>,<span class="hljs-number">108</span>,<span class="hljs-number">111</span>,<span class="hljs-number">118</span>,<span class="hljs-number">101</span>,<span class="hljs-number">121</span>,<span class="hljs-number">111</span>,<span class="hljs-number">117</span>])<br></code></pre></td></tr></table></figure>
+
+<pre><code class="hljs">Buffer与字符串的转化
+</code></pre>
+<p>我们可以借助toString方法将Buffer转为字符串</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">let</span> buf_4 = Buffer.from([<span class="hljs-number">105</span>,<span class="hljs-number">108</span>,<span class="hljs-number">111</span>,<span class="hljs-number">118</span>,<span class="hljs-number">101</span>,<span class="hljs-number">121</span>,<span class="hljs-number">111</span>,<span class="hljs-number">117</span>])<br><span class="hljs-attribute">console</span>.log(buf_4.toString())//=&gt;iloveyou<br></code></pre></td></tr></table></figure>
+
+<p>Buffer的读写</p>
+<p>Buffer可以直接通过[]的方式对数据进行处理。</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">let buf_3 = Buffer<span class="hljs-selector-class">.from</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-comment">//读取</span><br>cosole<span class="hljs-selector-class">.log</span>(buf_3<span class="hljs-selector-attr">[1]</span>)<span class="hljs-comment">//=&gt;101</span><br><span class="hljs-comment">//修改</span><br>buf_3<span class="hljs-selector-attr">[1]</span> = <span class="hljs-number">97</span><br><span class="hljs-comment">//查看字符串结果</span><br>console<span class="hljs-selector-class">.log</span>(buf_3<span class="hljs-selector-class">.toString</span>())<span class="hljs-comment">//=&gt;hello</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<p>1、如果修改的数值超过255，则超过8位数据会被舍弃</p>
+<p>2、一个utf-8的字符一般占3个字节</p>
+<h3 id="二、fs模块"><a href="#二、fs模块" class="headerlink" title="二、fs模块"></a>二、fs模块</h3><p>fs全称为file system，称之为文件系统，是Node.js中的内置模块，可以对计算机中的磁盘进行操作。</p>
+<p>本章节会介绍如下几个操作：</p>
+<p>1、文件写入</p>
+<p>2、文件读取</p>
+<p>3、文件移动和重命名</p>
+<p>4、文件删除</p>
+<p>5、文件夹操作</p>
+<p>6、查看资源状态</p>
+<h4 id="1、文件写入"><a href="#1、文件写入" class="headerlink" title="1、文件写入"></a>1、文件写入</h4><p>文件写入就是将数据保存在文件中</p>
+<p><img src="image/node/1682425154825.png" alt="1682425154825"></p>
+<p>writeFile异步写入</p>
+<p>语法：fs.writeFile(file,data[,options],callback)</p>
+<p>参数说明：</p>
+<p>file文件名</p>
+<p>data待写入的数据</p>
+<p>options选项设置（可选）</p>
+<p>callback写入回调</p>
+<p>返回值：undefined</p>
+<p>代码示例：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//require是Node.js环境中的‘全局’变量，用来导入模块</span><br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-comment">//将[三人行，必有我师焉]写入到当前文件夹下的[座右铭.txt]文件中</span><br>fs.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;三人行，则必有我师！&#x27;</span>,&#123;<span class="hljs-attr">flag</span>:<span class="hljs-string">&#x27;a&#x27;</span>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>writeFileSync同步写入</p>
+<p>语法：fs.writeFileSync(file,data[,options])</p>
+<p>参数与fs.writeFile大体一致，只是没有callback参数</p>
+<p>返回值:undefined</p>
+<p>代码示例：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">fs<span class="hljs-selector-class">.writeFileSync</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;三人行，则必有我师！&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>Node.js中的磁盘操作是由其他线程完成的，结果的处理有两种模式;</p>
+<p>1、同步处理JavaScript主线程会等待其线程的执行结果，然后再继续执行主线程的代码，效率较低</p>
+<p>2、异步处理JavaScript主线程不会等待其线程的执行结果，直接执行后续的的主线程代码，效率较低</p>
+<p>appendFile/appendFileSync追加写入</p>
+<p>appendFile作用是在文件尾部追加内容，语法和writeFile语法完全一样。</p>
+<p>语法：</p>
+<p>fs.appendFile(file,data[,options],callback)</p>
+<p>fs.appendFileSync(file,data[,options])</p>
+<p>返回值：二者都为undefined</p>
+<p>示例代码：</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">fs<span class="hljs-selector-class">.append</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;则其善者而从之，其不善者而改之。&#x27;</span>,err=&gt;&#123;<br>	<span class="hljs-built_in">if</span>(err)&#123;<br>	sonsole<span class="hljs-selector-class">.log</span>(<span class="hljs-string">&quot;失败&quot;</span>)<br>	&#125;<br>	comsole<span class="hljs-selector-class">.log</span>(<span class="hljs-string">&#x27;成功&#x27;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>createWriteStream流式写入</p>
+<p>语法：fs.createWriteStream(path[,options])</p>
+<p>参数说明：</p>
+<p>path文件路径</p>
+<p>options选项配置（可选）</p>
+<p>返回值：Object</p>
+<p>代码示例：</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">let</span> <span class="hljs-keyword">ws</span> = fs.createWriteStream(<span class="hljs-string">&#x27;./观书有感.txt&#x27;</span>)<br>//写入数据到流<br><span class="hljs-keyword">ws</span>.<span class="hljs-keyword">write</span>(<span class="hljs-string">&#x27;哈哈哈哈&#x27;</span>)<br><span class="hljs-keyword">ws</span>.<span class="hljs-keyword">write</span>(<span class="hljs-string">&#x27;啦啦啦啦&#x27;</span>)<br><span class="hljs-keyword">ws</span>.end()<br></code></pre></td></tr></table></figure>
+
+<p>程序打开一个文件是需要消耗资源的，流式写入可以减少打开关闭文件的次数。流式写入方式适用于 大文件写入或者频繁写入的场景，<code>writeFile</code>适合于 写入频率较低的场景</p>
+<p>文件读取：文件读取顾名思义，就是通过程序从文件中取出其中的数据，我们可以使用如下几种方式：</p>
+<p><img src="image/node/1682426823556.png" alt="1682426823556"></p>
+<p>readFile异步读取</p>
+<p> <strong>语法</strong> : <code>fs.readFile(path[, options], callback)</code></p>
+<p> <strong>参数说明</strong> ：</p>
 <ul>
-<li>一直往上层查找，直到到null还没有找到，则返回undefined</li>
-<li><code>Object.prototype.__proto__ === null</code></li>
-<li>所有从原型或更高级原型中的得到、执行的方法，其中的this在执行时，指向当前这个触发事件执行的对象</li>
+<li>path 文件路径</li>
+<li>options 选项配置</li>
+<li>callback 回调函数</li>
 </ul>
-<p>6）JavaScript的原型是为了实现对象间的联系，解决构造函数无法数据共享而引入的一个属性，而原型链是一个实现对象间联系即继承的主要方法</p>
-<p>原文链接：<a href="https://www.php.cn/js-tutorial-462738.html">js的原型和原型链是什么-js教程-PHP中文网</a></p>
+<p><strong>返 回 值 ：</strong> <code>undefined</code></p>
+<p>代码示例：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 导入 fs 模块</span><br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-string">&#x27;uft-8&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">const rs = fs.createReadStream(<span class="hljs-string">&#x27;../资料/高考加油.mp4&#x27;</span>)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>,chunk=&gt;&#123;<br><br>&#125;)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>,<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>例题：复制文件</p>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> rs = fs.createReadStream(<span class="hljs-string">&#x27;../资料/高考加油.mp4&#x27;</span>)<br><span class="hljs-keyword">const</span> ws = fs.createWriteStream(<span class="hljs-string">&#x27;../资料/高考加油复制.mp4&#x27;</span>,)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>,chunk=&gt;&#123;<br>    ws.write(chunk)<br>&#125;)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>,()=&gt;&#123;<br>    console.log(<span class="hljs-string">&#x27;完成&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>重命名文件（也可用于更换文件目录）</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">rename</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;./论语.txt&#x27;</span>,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>删除文件方法1（也可用于删除目录）</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">fs.rm(<span class="hljs-string">&#x27;./哈哈.txt&#x27;</span>,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>删除文件方法2</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">unlink</span>(<span class="hljs-string">&#x27;./哈哈.txt&#x27;</span>,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h3 id="对目录的操作"><a href="#对目录的操作" class="headerlink" title="对目录的操作"></a>对目录的操作</h3><p>删除目录</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">const fs = require(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-comment">//不推荐</span><br>fs.rmdir(<span class="hljs-string">&#x27;./a&#x27;</span>,&#123;<span class="hljs-attr">recursive</span>:<span class="hljs-literal">true</span>&#125;,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br><span class="hljs-comment">//推荐</span><br>fs.rm(<span class="hljs-string">&#x27;./a&#x27;</span>,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>新建目录</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">mkdir</span>(<span class="hljs-string">&#x27;./a/b/c&#x27;</span>,&#123;<span class="hljs-attr">recursive</span>:<span class="hljs-literal">true</span>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>读取目录</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">readdir</span>(<span class="hljs-string">&#x27;../资料&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<p>拼接路径</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">const fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>const <span class="hljs-built_in">path</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>// console.<span class="hljs-built_in">log</span>(__dirname + <span class="hljs-string">&#x27;/论语.txt&#x27;</span>);<br>console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">path</span>.resolve(__dirname,<span class="hljs-string">&#x27;./论语.txt&#x27;</span>));<br></code></pre></td></tr></table></figure>
+
+<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>服务器和浏览器会分别产生响应报文和请求报文，请求报文通常由请求行，请求头和请求体构成</p>
+<p>请求行：url，中文名称“统一资源定位符”，用于定位服务器中的资源，url标准形式为“协议名+主机名+端口+路径+字符串参数”</p>
+<p><img src="image/node/1681300653595.png" alt="1681300653595"></p>
+<p>获取请求头和响应头</p>
+<p><img src="image/node/1681384551111.png" alt="1681384551111"></p>
+<p>url绝对路径：</p>
+<p><img src="image/node/1681473900053.png" alt="1681473900053"></p>
+<p>相对路径：</p>
+<p><img src="image/node/1681473967322.png" alt="1681473967322"></p>
+<p><img src="image/node/1681475952698.png" alt="1681475952698"></p>
+<p><img src="image/node/1682256697178.png" alt="1682256697178"></p>
+<p><img src="image/node/1682328681037.png" alt="1682328681037"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>尚品汇项目难点亮点</title>
+    <url>/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h3><p>获取路由信息:$route（只可以读取路由信息，如果要进行路由操作需要用$$router进行)；在项目中，我们有些页面需要展示Footer组件内容，有些页面不需要展示Footer组件内容，我通过在路由信息中添加meta元素，再由页面通过读取meta元素配合v-if控制是否展示。路由跳转有两种方式：声明式导航（<code>&lt;router-view&gt;</code>和 <code>&lt;router-link&gt;</code>搭配）和编程式导航（this.$router.push()或$this.router.replace()）。在项目中，我们重写了push方法和replace方法，为什么需要重写，这是因为在编程式导航时，我们多次点击跳转时，会抛出异常，我们可以在push方法参数中传入成功的回调和失败的回调函数解决，但是在项目中我们多次用到编程式导航，所以选择重写。声明式导航不会报错，因为声明式导航内部已经解决这个问题。</p>
+<h3 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h3><p>防抖节流：lodash</p>
+<p>轮播图:swiper</p>
+<p>uuid:临时id（面试不用说这个，不合业务逻辑）</p>
+<p>页面假数据：mokejs</p>
+<h3 id="home主页"><a href="#home主页" class="headerlink" title="home主页"></a>home主页</h3><p>三级路由</p>
+<h3 id="搜索页面"><a href="#搜索页面" class="headerlink" title="搜索页面"></a>搜索页面</h3><h3 id="购物车业务"><a href="#购物车业务" class="headerlink" title="购物车业务"></a>购物车业务</h3><h3 id="登录注册"><a href="#登录注册" class="headerlink" title="登录注册"></a>登录注册</h3><h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><p>在项目中，我用到了前置路由守卫，用于判断用户是否登录，如果登录，则不许用户回到登录页面，如果用户未登录，则不许进入购物车页面。路由守卫有三个参数，第一个参数from是跳转前路径，第二个参数to是跳转后路径，第三个参数next方法是跳转方法。</p>
+<h3 id="项目难点"><a href="#项目难点" class="headerlink" title="项目难点"></a>项目难点</h3><p>(1)、在路由跳转使用编程式导航时，我设置点击搜索进入搜索页，当我一次点击多下时，控制台会抛出异常，我开始不明白为什么，后面查到当点击多次时，当push方法内部检查到跳转路由没有变化时，会抛出一个失败的Promise，这里解决方式有两种，第一种是每次使用push方法时在push方法中添加两个箭头函数作为成功和失败的回调。第二种是重写push和replace方法。</p>
+<p>(2)、在做轮播图时，刚开始将new Swiper放在mounted中，但是请求是异步的，new Swiper时数据可能还没有获取到，解决办法，将new Swiper放在watch监听里，并将immediate设置为true</p>
+<h3 id="项目亮点"><a href="#项目亮点" class="headerlink" title="项目亮点"></a>项目亮点</h3><p>封装分页器组件，需要的数据：一页展示多少条数据，总共有多少条数据，连续页数，当前是第几页</p>
+]]></content>
+      <categories>
+        <category>项目</category>
+      </categories>
+      <tags>
+        <tag>Project</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Less学习</title>
+    <url>/2023/03/14/Less/</url>
+    <content><![CDATA[<p>是一门预编译语言</p>
+<p><a href="https://juejin.cn/post/6844903520441729037#comment">学习Less-看这篇就够了 - 掘金 (juejin.cn)</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>JS常见方法或对象</title>
+    <url>/2023/03/09/%E5%B8%B8%E8%A7%81API/</url>
+    <content><![CDATA[<p>sort():排序方法，注意是直接修改原数组,可有参数也可无参数，无参数是按照字符集顺序进行排序。</p>
+<p>filter(()=&gt;{}}):过滤函数，返回一个新数组，根据箭头函数返回的boolean值决定是否保留该元素。要说的是，箭头函数中第一个参数为数组值，第二个参数为索引值。</p>
+<p>forEach(()=&gt;{}):遍历数组，想想可不可以不新增变量，直接通过此方法实现数组元素全部加1，注意，并不可行，此函数并不会改变原数组，所以正确操作应该是新定义一个空数组，在forEach循环遍历时将元素加1并push进新数组。</p>
+<p>map(()=&gt;{}):此方法会创建一个新数组，新数组由老数组中每个元素都调用一次提供后的函数返回值组成。</p>
+<p>new Set(arr):Set对象允许你存任意类型的唯一值，强烈推荐使用此对象进行数组去重。</p>
+<p>Math:此对象常用于取整或形成随机数，想形成num1到num2范围的随机数，记住公式Math.floor(Math.random() * (num2 - num1 + 1) + num1)</p>
+<p>join:此方法用于拼接字符串。</p>
+<p>split:将字符串转为数组。</p>
+<p>structedClone(value):HTML5中新出现的深拷贝函数，如果输入值的一部分不可序列化，则会报错。</p>
 ]]></content>
       <categories>
         <category>学习</category>
       </categories>
       <tags>
         <tag>Study</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>中软国际笔试加一面（前端实习）</title>
+    <url>/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/</url>
+    <content><![CDATA[<p>笔试（十五题）：</p>
+<p>1、说几个未知宽高元素水平垂直居中的方法。</p>
+<p>2、说一下computed和whtch的区别。</p>
+<p>3、前端存储方式。</p>
+<p>4、什么是跨域，如何解决跨域。</p>
+<p>5、Vue的生命周期，数据在哪个周期加载。</p>
+<p>6、JS数据类型有哪些。</p>
+<p>7、什么是闭包。</p>
+<p>8、数组去重。</p>
+<p>9、实现判断后端请求的函数。</p>
+<p>10、建立一个包含10个10-100的数组并排序。</p>
+<p>11、字符串比对。</p>
+<p>12、组件通信的方式。</p>
+<p>13、说下mixins</p>
+<p>还有两个题目忘记了</p>
+]]></content>
+      <categories>
+        <category>工作</category>
+      </categories>
+      <tags>
+        <tag>Work</tag>
       </tags>
   </entry>
   <entry>
@@ -321,93 +725,6 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
 ]]></content>
   </entry>
   <entry>
-    <title>Vue3组件通信方式</title>
-    <url>/2023/07/30/Vue3%E7%BB%84%E4%BB%B6%E9%97%B4%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<h4 id="1、props"><a href="#1、props" class="headerlink" title="1、props"></a>1、props</h4><p>Vue2和Vue3均有，用于父组件给子组件传值，在子组件中不能对该值进行修改，会有警告。</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">//父组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Son</span> <span class="hljs-attr">::info</span>=<span class="hljs-string">&quot;info&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Son</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> <span class="hljs-title class_">Son</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;路径&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> &#123;ref&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> info = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;Yellow one&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"></span><br><span class="language-xml">//子组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span> </span><span class="hljs-template-variable">&#123;&#123;<span class="hljs-name">info</span>&#125;&#125;</span><span class="language-xml"> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> props = <span class="hljs-title function_">defineProps</span>([<span class="hljs-string">&#x27;info&#x27;</span>])</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-<h4 id="2、自定义事件"><a href="#2、自定义事件" class="headerlink" title="2、自定义事件"></a>2、自定义事件</h4><p>用于子组件给父组件传值</p>
-<figure class="highlight dust"><table><tr><td class="code"><pre><code class="hljs dust"><span class="language-xml">//父组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Son</span> @<span class="hljs-attr">xxx</span> = <span class="hljs-string">&quot;getXXX&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Son</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> <span class="hljs-title class_">Son</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;路径&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> </span></span><span class="hljs-template-variable">&#123;ref&#125;</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> <span class="hljs-title function_">getXXX</span> = (<span class="hljs-params">a,b</span>)=&gt;</span></span><span class="hljs-template-variable">&#123;</span><br><span class="hljs-template-variable">        console.log(a)</span><br><span class="hljs-template-variable">    &#125;</span><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">//子组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span> = <span class="hljs-string">$emit(</span>&#x27;<span class="hljs-attr">getXXX</span>&#x27;,<span class="hljs-attr">a</span>,<span class="hljs-attr">b</span>)&gt;</span>我是按钮<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> $emit = <span class="hljs-title function_">defineEmits</span>([<span class="hljs-string">&#x27;getXXX&#x27;</span>])</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-<p>值得注意的是，在Vue2中，我们在自定义组件标签里面写click等原生事件时，需要在后面加修饰符native，因为在默认情况下，父组件无法监听子组件的原生DOM事件，而native修饰符允许你在自定义组件中绑定原生事件。在Vue3中，不需要使用此修饰符，父组件会直接当成原生事件，但是如果你在子组件中引入了click自定义事件，这时父组件不会将click当成原生事件，而是自定义事件。在编码的过程中，我们命名一般避免使用原生事件的名字，以免造成不必要的误解。</p>
-<h4 id="3、provide和inject"><a href="#3、provide和inject" class="headerlink" title="3、provide和inject"></a>3、provide和inject</h4><p>在Vue3中，取消了全局事件总线的使用，跨组件通信使用provide和inject</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 父组件</span><br><span class="hljs-keyword">import</span> &#123; provide &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> sharedData = <span class="hljs-string">&#x27;Hello, World!&#x27;</span>;<br>  <br>    <span class="hljs-title function_">provide</span>(<span class="hljs-string">&#x27;myData&#x27;</span>, sharedData); <span class="hljs-comment">// 提供名为&#x27;myData&#x27;的数据</span><br>  <br>    <span class="hljs-keyword">return</span> &#123;&#125;;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 子组件A</span><br><span class="hljs-keyword">import</span> &#123; inject &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> myData = <span class="hljs-title function_">inject</span>(<span class="hljs-string">&#x27;myData&#x27;</span>); <span class="hljs-comment">// 接收名为&#x27;myData&#x27;的数据</span><br>  <br>    <span class="hljs-comment">// 使用myData</span><br>  <br>    <span class="hljs-keyword">return</span> &#123;&#125;;<br>  &#125;<br>&#125;<br><br><span class="hljs-comment">// 子组件B</span><br><span class="hljs-keyword">import</span> &#123; inject &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">const</span> myData = <span class="hljs-title function_">inject</span>(<span class="hljs-string">&#x27;myData&#x27;</span>); <span class="hljs-comment">// 接收名为&#x27;myData&#x27;的数据</span><br>  <br>    <span class="hljs-comment">// 使用myData</span><br>  <br>    <span class="hljs-keyword">return</span> &#123;&#125;;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="4、v-model"><a href="#4、v-model" class="headerlink" title="4、v-model"></a>4、v-model</h4><p>这个是一个语法糖，用于场景在数据在父组件，但是改变数据的按钮在子组件，父组件在自定义子组件标签里面使用v-model,比如</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Son</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;num&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Son</span>&gt;</span><br></code></pre></td></tr></table></figure>
-
-<p>等价于</p>
-<figure class="highlight dart"><table><tr><td class="code"><pre><code class="hljs dart">&lt;Son :<span class="hljs-built_in">num</span>=<span class="hljs-string">&quot;num&quot;</span> <span class="hljs-meta">@update</span>:<span class="hljs-built_in">num</span> = <span class="hljs-string">&quot;updateNum&quot;</span>&gt;&lt;/Son&gt;<br></code></pre></td></tr></table></figure>
-
-<h4 id="5、useAttrs方法"><a href="#5、useAttrs方法" class="headerlink" title="5、useAttrs方法"></a>5、useAttrs方法</h4><p>在Vue3中，可以使用useAttrs方法进行父子组件通信（父传子），这个方法常用于进行组件的二次封装。</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="language-xml">// 子组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;handleClick&quot;</span>&gt;</span></span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">attrs.text</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; useAttrs &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">setup</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> attrs = <span class="hljs-title function_">useAttrs</span>();</span></span><br><span class="language-javascript"><span class="language-xml">  </span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">function</span> <span class="hljs-title function_">handleClick</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      attrs.<span class="hljs-title function_">onClick</span>(); <span class="hljs-comment">// 调用父组件传递的onClick方法</span></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">  </span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      attrs,</span></span><br><span class="language-javascript"><span class="language-xml">      handleClick</span></span><br><span class="language-javascript"><span class="language-xml">    &#125;;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">// 父组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">child-component</span> <span class="hljs-attr">text</span>=<span class="hljs-string">&quot;Click me&quot;</span> <span class="hljs-attr">:onClick</span>=<span class="hljs-string">&quot;handleClick&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">child-component</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> <span class="hljs-title class_">ChildComponent</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./ChildComponent.vue&#x27;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">components</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title class_">ChildComponent</span></span></span><br><span class="language-javascript"><span class="language-xml">  &#125;,</span></span><br><span class="language-javascript"><span class="language-xml">  </span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">methods</span>: &#123;</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">handleClick</span>(<span class="hljs-params"></span>) &#123;</span></span><br><span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 处理点击事件</span></span></span><br><span class="language-javascript"><span class="language-xml">    &#125;</span></span><br><span class="language-javascript"><span class="language-xml">  &#125;</span></span><br><span class="language-javascript"><span class="language-xml">&#125;</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-<h4 id="6、ref"><a href="#6、ref" class="headerlink" title="6、ref"></a>6、ref</h4><p>ref也可以作为组件间的一种通信方式</p>
-<figure class="highlight dust"><table><tr><td class="code"><pre><code class="hljs dust"><span class="language-xml">//父组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">Son</span> <span class="hljs-attr">:ref</span>=<span class="hljs-string">&quot;son&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Son</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> </span></span><span class="hljs-template-variable">&#123;ref&#125;</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> <span class="hljs-title class_">Son</span> <span class="hljs-keyword">from</span> 路径</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> son = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml">//子组件</span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  </span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">setup</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">import</span> </span></span><span class="hljs-template-variable">&#123;ref&#125;</span><span class="language-xml"><span class="language-javascript"> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">const</span> a = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;Yellow one&#x27;</span>)</span></span><br><span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">defineExport</span>(</span></span><span class="hljs-template-variable">&#123;</span><br><span class="hljs-template-variable">        a</span><br><span class="hljs-template-variable">    &#125;</span><span class="language-xml">)</span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-<h4 id="7、-parent"><a href="#7、-parent" class="headerlink" title="7、$parent"></a>7、$parent</h4><pre><code class="hljs">$parent可以获取到父节点
-</code></pre>
-<h4 id="8、pinia"><a href="#8、pinia" class="headerlink" title="8、pinia"></a>8、pinia</h4><p>在 Vue 3 中，可以使用 Pinia 来实现状态管理。Pinia 是一个基于 Vue 3 的新一代状态管理库，它提供了一种简单、直观且易于使用的方式来管理应用程序的状态。</p>
-<p>下面是使用 Pinia 的简要步骤：</p>
-<p>安装 Pinia：<br><code>npm install pinia</code><br>创建一个 Pinia 实例并定义状态：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createPinia &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;pinia&#x27;</span>;<br><br><span class="hljs-keyword">const</span> pinia = <span class="hljs-title function_">createPinia</span>();<br><br><span class="hljs-comment">// 注册一个 store</span><br><span class="hljs-keyword">const</span> store = pinia.<span class="hljs-title function_">createStore</span>(&#123;<br>  <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;counter&#x27;</span>,<br>  <span class="hljs-attr">state</span>: <span class="hljs-function">() =&gt;</span> (&#123;<br>    <span class="hljs-attr">count</span>: <span class="hljs-number">0</span><br>  &#125;),<br>  <span class="hljs-attr">actions</span>: &#123;<br>    <span class="hljs-title function_">increment</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">count</span>++;<br>    &#125;,<br>    <span class="hljs-title function_">decrement</span>(<span class="hljs-params"></span>) &#123;<br>      <span class="hljs-variable language_">this</span>.<span class="hljs-property">count</span>--;<br>    &#125;<br>  &#125;<br>&#125;);<br><br><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> pinia;<br></code></pre></td></tr></table></figure>
-
-<p>在应用程序的入口处挂载 Pinia：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123; createApp &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;<br><span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span>;<br><span class="hljs-keyword">import</span> pinia <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./pinia&#x27;</span>;<br><br><span class="hljs-keyword">const</span> app = <span class="hljs-title function_">createApp</span>(<span class="hljs-title class_">App</span>);<br>app.<span class="hljs-title function_">use</span>(pinia);<br>app.<span class="hljs-title function_">mount</span>(<span class="hljs-string">&#x27;#app&#x27;</span>);<br></code></pre></td></tr></table></figure>
-
-<p>在组件中使用 Pinia 状态：</p>
-<figure class="highlight handlebars"><table><tr><td class="code"><pre><code class="hljs handlebars"><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Count: </span><span class="hljs-template-variable">&#123;&#123; <span class="hljs-name">$store.counter.count</span> &#125;&#125;</span><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;$store.counter.increment()&quot;</span>&gt;</span>Increment<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;$store.counter.decrement()&quot;</span>&gt;</span>Decrement<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span><br><span class="language-xml"></span><br><span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; defineComponent &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>;</span></span><br><span class="language-javascript"><span class="language-xml"></span></span><br><span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineComponent</span>(&#123;</span></span><br><span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;CounterComponent&#x27;</span></span></span><br><span class="language-javascript"><span class="language-xml">&#125;);</span></span><br><span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-<p>在上面的示例中，我们创建了一个名为 counter 的 store，它具有一个名为 count 的状态和两个操作函数 increment 和 decrement。然后，在组件中使用 $store 来访问和调用 store 中的状态和操作。</p>
-<p>Pinia 提供了一种非常直观和简单的方式来管理应用程序的状态，同时也遵循 Vue 3 的响应式原理。它可以与其他 Vue 生态系统库（如 Vue Router、Vuex）以及 TypeScript 紧密集成，提供更好的开发体验。</p>
-<h4 id="9、插槽"><a href="#9、插槽" class="headerlink" title="9、插槽"></a>9、插槽</h4><p>分为默认插槽，具名插槽和作用域插槽，作用域插槽可以用来传递数据</p>
-]]></content>
-      <categories>
-        <category>知识</category>
-      </categories>
-      <tags>
-        <tag>基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue3</title>
-    <url>/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>
-    <content><![CDATA[<h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><p>setup配置项是vue3中新添加的配置项，组件所用到的数据、方法等等均放在此配置项中。setup返回值有两种，一种是返回对象，还有一种是返回自定义渲染模板（render函数）。在vue3中使用setup无疑比vue2更接近原生JS。</p>
-<h3 id="ref和reactive"><a href="#ref和reactive" class="headerlink" title="ref和reactive"></a>ref和reactive</h3><p>ref和reactive是两个函数，使用时需要引入，ref函数用来定义基本数据类型，reactive函数用来定义复杂数据类型，使其数据成为响应式。在vue2中，通过Object.defineProperty()函数中的set和get方法来实现数据劫持，在删除属性和添加属性上有一定的不便之处，在vue3中通过这两个函数可以解决这个问题。ref定义的值获取通过xxx.value获取。</p>
-<h3 id="computed函数"><a href="#computed函数" class="headerlink" title="computed函数"></a>computed函数</h3><p>使用前需要引入，写入setup中</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Vue面试题</title>
-    <url>/2023/08/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<h3 id="1、Vue实例挂载的过程中发生了什么？"><a href="#1、Vue实例挂载的过程中发生了什么？" class="headerlink" title="1、Vue实例挂载的过程中发生了什么？"></a>1、Vue实例挂载的过程中发生了什么？</h3><p>是什么？</p>
-<p>Vue实例挂载过程是指将Vue实例与DOM元素关联起来的过程。</p>
-<p>发生了什么？</p>
-<p>1、初始化数据（props，methods，data）。</p>
-<p>2、Vue会将模板编译成渲染函数，这样可以将数据动态地渲染到视图中。</p>
-<p>3、Vue根据渲染函数生成虚拟DOM。</p>
-<p>4、新旧虚拟DOM会进行对比，进行更新。</p>
-<p>5、将最新的虚拟DOM挂载到指定的元素上。</p>
-<h3 id="2、v-if和v-for的优先级是什么？"><a href="#2、v-if和v-for的优先级是什么？" class="headerlink" title="2、v-if和v-for的优先级是什么？"></a>2、v-if和v-for的优先级是什么？</h3><p>结论：在Vue2中，v-for优先级高于v-if，在Vue3中，v-if优先级高于v-for。</p>
-<p>使用：不建议v-for和v-if同时使用，在Vue2中同时使用，由于v-for优先级高，所以无论v-if表达式是true还是false，标签都会被渲染后再进行条件判断。在Vue3中同时使用，由于v-if优先级高，v-if不能访问v-for中的变量，有时会影响我们使用。</p>
-<p>建议：有同时使用的需要时，可以在元素外面加入一层temlate标签。</p>
-<h3 id="3、为什么Vue中data属性是一个函数而不是一个对象。"><a href="#3、为什么Vue中data属性是一个函数而不是一个对象。" class="headerlink" title="3、为什么Vue中data属性是一个函数而不是一个对象。"></a>3、为什么Vue中data属性是一个函数而不是一个对象。</h3><p>防止每个组件实例对象共用一个data，使用函数，使得每个组件实例对象的data是一份单独的拷贝。</p>
-<h3 id="4、Vue2和Vue3响应式原理"><a href="#4、Vue2和Vue3响应式原理" class="headerlink" title="4、Vue2和Vue3响应式原理"></a>4、Vue2和Vue3响应式原理</h3><p>在Vue2中，利用的是原生JS下边的Object.defineProperty()来进行数据劫持，通过里面的getter和setter方法来进行数据的查看和修改。</p>
-<p>Vue2响应式数据实现的缺陷：1、无法监听对象的新增和删除属性。2、无法监听数组方法，当监听的下标对应数据发生改变。</p>
-<p>在Vue3中，对于对象类型的数据，是通过Proxy，创建一个对象的代理，实现数据的响应式。</p>
-<h3 id="5、组件和插件有什么区别？"><a href="#5、组件和插件有什么区别？" class="headerlink" title="5、组件和插件有什么区别？"></a>5、组件和插件有什么区别？</h3><p>概念：组件：在Vue中，每个.vue文件都可以视作一个组件，组件就是把图形、非图形的各种逻辑抽象为一个统一的概念来进行开发的模式。</p>
-<p>插件：通常为Vue添加全局功能。</p>
-<p>区别：1、编写模式不同</p>
-<p>2、使用方法不同</p>
-]]></content>
-      <categories>
-        <category>面试</category>
-      </categories>
-      <tags>
-        <tag>面试</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue项目</title>
     <url>/2023/02/25/Vue%E9%A1%B9%E7%9B%AE/</url>
     <content><![CDATA[<h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3><h4 id="ElementUI引入及使用"><a href="#ElementUI引入及使用" class="headerlink" title="ElementUI引入及使用"></a>ElementUI引入及使用</h4><p><a href="https://element.eleme.cn/#/zh-CN/component/color">官网 | Element</a></p>
@@ -450,6 +767,38 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
       </tags>
   </entry>
   <entry>
+    <title>Vue3</title>
+    <url>/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/</url>
+    <content><![CDATA[<h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><p>setup配置项是vue3中新添加的配置项，组件所用到的数据、方法等等均放在此配置项中。setup返回值有两种，一种是返回对象，还有一种是返回自定义渲染模板（render函数）。在vue3中使用setup无疑比vue2更接近原生JS。</p>
+<h3 id="ref和reactive"><a href="#ref和reactive" class="headerlink" title="ref和reactive"></a>ref和reactive</h3><p>ref和reactive是两个函数，使用时需要引入，ref函数用来定义基本数据类型，reactive函数用来定义复杂数据类型，使其数据成为响应式。在vue2中，通过Object.defineProperty()函数中的set和get方法来实现数据劫持，在删除属性和添加属性上有一定的不便之处，在vue3中通过这两个函数可以解决这个问题。ref定义的值获取通过xxx.value获取。</p>
+<h3 id="computed函数"><a href="#computed函数" class="headerlink" title="computed函数"></a>computed函数</h3><p>使用前需要引入，写入setup中</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>测试属性（判断属性是否在对象中）</title>
+    <url>/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</url>
+    <content><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p>
+<span id="more"></span>
+
+<h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p>
+<p>let o = { x: 1}</p>
+<p>“x” in o               //true</p>
+<p>“y” in o              //false</p>
+<p>“toString” in o          //true (继承属性)</p>
+<h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p>
+<p>let o = { x: 1}</p>
+<p>o.hasOwnProperty(“x”)              //true</p>
+<h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
+<h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>基础知识</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>箭头函数与普通函数this指向的问题</title>
     <url>/2023/02/20/this%E6%8C%87%E5%90%91/</url>
     <content><![CDATA[<p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p>
@@ -457,6 +806,52 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
 
 <p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>原型和原型链</title>
+    <url>/2023/02/11/01%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/</url>
+    <content><![CDATA[<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型：是一个对象模板，通俗意义上的理解就是一个类。</p>
+<p>（1）原型是定义了一些公用的属性和方法，利用原型创建出来的新对象实例会共享原型的所有属性和方法。</p>
+<p>例：Person.prototype.sayHello() = function(){</p>
+<pre><code class="hljs">console.log(&quot;你好&quot;)
+</code></pre>
+<p>}</p>
+<p>（2）严格模式下，原型的属性和方法还是会被原型实例所共享的。</p>
+<p>（3）通过原型创建的新对象实例是相互独立的，为新对象实例添加的方法只有该实例拥有这个方法，其它实例是没有这个方法的。</p>
+<p>（4）原型的总结：</p>
+<span id="more"></span>
+
+<ul>
+<li>所有引用类型都有一个 <code>__proto__</code>(隐式原型)属性，属性值是一个普通的对象</li>
+<li>所有函数都有一个prototype(原型)属性，属性值是一个普通的对象</li>
+<li>所有引用类型的 <code>__proto__</code>属性指向它构造函数的prototype</li>
+</ul>
+<p>（5）函数的原型prototype：函数才有prototype，prototype是一个对象，指向了当前构造函数的引用地址。</p>
+<pre><code class="hljs">prototype是一个对象，指向当前构造函数的引用地址，与构造函数有关。
+
+__proto__是实例化对象中的一个属性，也是一个对象，指向prototype这个对象，与实例化对象有关。
+</code></pre>
+<p>（6）函数的原型对象__proto__：所有对象都有__proto__属性， 当用构造函数实例化（new）一个对象时，会将新对象的__proto__属性指向 构造函数的prototype。</p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a><strong>原型链</strong></h3><p>1）原型链：原型链是原型对象创建过程的历史记录，当访问一个对象的某个属性时，会先在这个对象本身属性上查找，如果没有找到，则会去它的__proto__隐式原型上查找，即它的构造函数的prototype，如果还没有找到就会再在构造函数的prototype的 <code>__proto__</code>中查找，这样一层一层向上查找就会形成一个链式结构</p>
+<p>2）原型设计的问题：当查找一个对象的属性时，JavaScript 会根据原型链向上遍历对象的原型，直到找到给定名称的属性为止，直到到达原型链的顶部仍然没有找到指定的属性，就会返回 undefined</p>
+<p>也可以理解为原型链继承时查找属性的过程是先查找自身属性，当自身属性不存在时，会在原型链中逐级查找</p>
+<p>3）hasOwnProperty 函数：可以用来检查对象自身是否含有某个属性，返回值是布尔值，当属性不存在时不会向上查找对象原型链，hasOwnProperty是 JavaScript 中唯一一个处理属性但是不查找原型链的函数</p>
+<p>4）getOwnPropertyNames 函数：可以获取对象所有的自身属性，返回值是由对象自身属性名称组成的数组，同样不会向上查找对象原型链</p>
+<p>5）原型链的小结：</p>
+<ul>
+<li>一直往上层查找，直到到null还没有找到，则返回undefined</li>
+<li><code>Object.prototype.__proto__ === null</code></li>
+<li>所有从原型或更高级原型中的得到、执行的方法，其中的this在执行时，指向当前这个触发事件执行的对象</li>
+</ul>
+<p>6）JavaScript的原型是为了实现对象间的联系，解决构造函数无法数据共享而引入的一个属性，而原型链是一个实现对象间联系即继承的主要方法</p>
+<p>原文链接：<a href="https://www.php.cn/js-tutorial-462738.html">js的原型和原型链是什么-js教程-PHP中文网</a></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Study</tag>
+      </tags>
   </entry>
   <entry>
     <title>利用Hexo搭建个人博客</title>
@@ -482,399 +877,7 @@ __proto__是实例化对象中的一个属性，也是一个对象，指向proto
 <p><a href="https://blog.csdn.net/qq_50840738/article/details/125087816">解决第一篇博客的问题</a></p>
 ]]></content>
       <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>后端传数据流前端处理问题</title>
-    <url>/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>今天遇见一个业务需求，在前端页面中有这样一个功能，点击下载图标，实现下载文件功能，后端接口返回的数据格式是二进制流。且数据格式与其他接口有所区别（其他接口数据在response.data.data中，这个接口数据在response.data中）。所以我需要解决两个点，1、数据格式处理，因为同事在响应拦截器中进行处理了，返回给接口封装函数的数据就是response.data.data，所以我在用那个传文件接口的时候加了一个请求头“file:true”，然后在响应拦截器中进行判断，如果响应体中存在此属性，则返回response.data,否则返回response.data.data。2、处理二进制流文件，首先时按照网上常规的方法进行，</p>
-<figure class="highlight qml"><table><tr><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure>
-
-<p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p>
-<figure class="highlight oxygene"><table><tr><td class="code"><pre><code class="hljs oxygene"><span class="hljs-comment">//下载快照</span><br>downloadSnapshot(name<br><span class="hljs-comment">&#123;</span><br><span class="hljs-comment">return request(&#123;</span><br><span class="hljs-comment">url:/api/v2/snapshot/download?target=$&#123;name&#125;</span>,<br><span class="hljs-keyword">method</span>:<span class="hljs-string">&#x27;post&#x27;</span>,<br>file: <span class="hljs-keyword">true</span>,<br>responseType: <span class="hljs-string">&#x27;arraybuffer&#x27;</span>,<br>headers: <span class="hljs-comment">&#123; &#x27;Content-Type&#x27;: &#x27;multipart/form-data&#x27;)</span><br></code></pre></td></tr></table></figure>
-
-<p>然后就成功解决了。</p>
-<ul>
-<li><code>responseType: &#39;arraybuffer&#39;</code> 表示希望将响应数据以二进制数组（ArrayBuffer）的形式返回，而不是默认的字符串或 JSON 格式。适用于需要处理二进制数据（例如图片、音频、视频等）的情况。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>技术记录</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JS常见方法或对象</title>
-    <url>/2023/03/09/%E5%B8%B8%E8%A7%81API/</url>
-    <content><![CDATA[<p>sort():排序方法，注意是直接修改原数组,可有参数也可无参数，无参数是按照字符集顺序进行排序。</p>
-<p>filter(()=&gt;{}}):过滤函数，返回一个新数组，根据箭头函数返回的boolean值决定是否保留该元素。要说的是，箭头函数中第一个参数为数组值，第二个参数为索引值。</p>
-<p>forEach(()=&gt;{}):遍历数组，想想可不可以不新增变量，直接通过此方法实现数组元素全部加1，注意，并不可行，此函数并不会改变原数组，所以正确操作应该是新定义一个空数组，在forEach循环遍历时将元素加1并push进新数组。</p>
-<p>map(()=&gt;{}):此方法会创建一个新数组，新数组由老数组中每个元素都调用一次提供后的函数返回值组成。</p>
-<p>new Set(arr):Set对象允许你存任意类型的唯一值，强烈推荐使用此对象进行数组去重。</p>
-<p>Math:此对象常用于取整或形成随机数，想形成num1到num2范围的随机数，记住公式Math.floor(Math.random() * (num2 - num1 + 1) + num1)</p>
-<p>join:此方法用于拼接字符串。</p>
-<p>split:将字符串转为数组。</p>
-<p>structedClone(value):HTML5中新出现的深拷贝函数，如果输入值的一部分不可序列化，则会报错。</p>
-]]></content>
-      <categories>
         <category>学习</category>
       </categories>
-      <tags>
-        <tag>Study</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Node.js</title>
-    <url>/2023/04/09/node/</url>
-    <content><![CDATA[<p>Node.js不是一门编程语言，是一个应用程序，是一个软件。</p>
-<p>Node.js不能使用BOM和DOM中的API，可以使用定时器和cosole.log</p>
-<p>Node.js的顶级对象为global，浏览器的顶级对象为window</p>
-<span id="more"></span>
-
-<h3 id="一、Buffer"><a href="#一、Buffer" class="headerlink" title="一、Buffer"></a>一、Buffer</h3><p>概念：Buffer是一个类似于数组的对象，用于固定长度的字节序列。其本质是一段内存空间，专门用来处理二进制数据。</p>
-<p>特点：1、Buffer大小固定且无法调整</p>
-<pre><code class="hljs">2、Buffer性能较好，可以直接对计算机内存进行操作
-
-3、每个元素的大小为1byte
-</code></pre>
-<p>使用</p>
-<p>创建：</p>
-<p>1、Buffer.alloc()</p>
-<figure class="highlight tap"><table><tr><td class="code"><pre><code class="hljs tap">//创建一个长度为10字节的Buffer，相当于申请了10字节的内存空间<br>let buf_1 = Buffer.alloc(10)<br>//结果为&lt;Buffer<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00<span class="hljs-number"> 00 </span>00&gt;<br></code></pre></td></tr></table></figure>
-
-<p>2、Buffer.allocUnsafe()</p>
-<figure class="highlight reasonml"><table><tr><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">//创建了一个长度为10的Buffer，buffer中可能存在旧数据，可能会影响执行结果，所以叫unsafe，但是效率比alloc更高</span><br><span class="hljs-keyword">let</span> buf_2 = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Buffer</span>.</span></span>alloc<span class="hljs-constructor">Unsafe(10)</span><br></code></pre></td></tr></table></figure>
-
-<p>3、Buffer.from()</p>
-<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-comment">//通过字符串创建Buffer</span><br><span class="hljs-keyword">let</span> buf_3 = Buffer.<span class="hljs-keyword">from</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-comment">//通过数组创建Buffer</span><br><span class="hljs-keyword">let</span> buf_4 = Buffer.<span class="hljs-keyword">from</span>([<span class="hljs-number">105</span>,<span class="hljs-number">108</span>,<span class="hljs-number">111</span>,<span class="hljs-number">118</span>,<span class="hljs-number">101</span>,<span class="hljs-number">121</span>,<span class="hljs-number">111</span>,<span class="hljs-number">117</span>])<br></code></pre></td></tr></table></figure>
-
-<pre><code class="hljs">Buffer与字符串的转化
-</code></pre>
-<p>我们可以借助toString方法将Buffer转为字符串</p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">let</span> buf_4 = Buffer.from([<span class="hljs-number">105</span>,<span class="hljs-number">108</span>,<span class="hljs-number">111</span>,<span class="hljs-number">118</span>,<span class="hljs-number">101</span>,<span class="hljs-number">121</span>,<span class="hljs-number">111</span>,<span class="hljs-number">117</span>])<br><span class="hljs-attribute">console</span>.log(buf_4.toString())//=&gt;iloveyou<br></code></pre></td></tr></table></figure>
-
-<p>Buffer的读写</p>
-<p>Buffer可以直接通过[]的方式对数据进行处理。</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">let buf_3 = Buffer<span class="hljs-selector-class">.from</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br><span class="hljs-comment">//读取</span><br>cosole<span class="hljs-selector-class">.log</span>(buf_3<span class="hljs-selector-attr">[1]</span>)<span class="hljs-comment">//=&gt;101</span><br><span class="hljs-comment">//修改</span><br>buf_3<span class="hljs-selector-attr">[1]</span> = <span class="hljs-number">97</span><br><span class="hljs-comment">//查看字符串结果</span><br>console<span class="hljs-selector-class">.log</span>(buf_3<span class="hljs-selector-class">.toString</span>())<span class="hljs-comment">//=&gt;hello</span><br></code></pre></td></tr></table></figure>
-
-<p>注意：</p>
-<p>1、如果修改的数值超过255，则超过8位数据会被舍弃</p>
-<p>2、一个utf-8的字符一般占3个字节</p>
-<h3 id="二、fs模块"><a href="#二、fs模块" class="headerlink" title="二、fs模块"></a>二、fs模块</h3><p>fs全称为file system，称之为文件系统，是Node.js中的内置模块，可以对计算机中的磁盘进行操作。</p>
-<p>本章节会介绍如下几个操作：</p>
-<p>1、文件写入</p>
-<p>2、文件读取</p>
-<p>3、文件移动和重命名</p>
-<p>4、文件删除</p>
-<p>5、文件夹操作</p>
-<p>6、查看资源状态</p>
-<h4 id="1、文件写入"><a href="#1、文件写入" class="headerlink" title="1、文件写入"></a>1、文件写入</h4><p>文件写入就是将数据保存在文件中</p>
-<p><img src="image/node/1682425154825.png" alt="1682425154825"></p>
-<p>writeFile异步写入</p>
-<p>语法：fs.writeFile(file,data[,options],callback)</p>
-<p>参数说明：</p>
-<p>file文件名</p>
-<p>data待写入的数据</p>
-<p>options选项设置（可选）</p>
-<p>callback写入回调</p>
-<p>返回值：undefined</p>
-<p>代码示例：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">//require是Node.js环境中的‘全局’变量，用来导入模块</span><br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-comment">//将[三人行，必有我师焉]写入到当前文件夹下的[座右铭.txt]文件中</span><br>fs.<span class="hljs-title function_">writeFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;三人行，则必有我师！&#x27;</span>,&#123;<span class="hljs-attr">flag</span>:<span class="hljs-string">&#x27;a&#x27;</span>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>writeFileSync同步写入</p>
-<p>语法：fs.writeFileSync(file,data[,options])</p>
-<p>参数与fs.writeFile大体一致，只是没有callback参数</p>
-<p>返回值:undefined</p>
-<p>代码示例：</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">fs<span class="hljs-selector-class">.writeFileSync</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;三人行，则必有我师！&#x27;</span>)<br></code></pre></td></tr></table></figure>
-
-<p>Node.js中的磁盘操作是由其他线程完成的，结果的处理有两种模式;</p>
-<p>1、同步处理JavaScript主线程会等待其线程的执行结果，然后再继续执行主线程的代码，效率较低</p>
-<p>2、异步处理JavaScript主线程不会等待其线程的执行结果，直接执行后续的的主线程代码，效率较低</p>
-<p>appendFile/appendFileSync追加写入</p>
-<p>appendFile作用是在文件尾部追加内容，语法和writeFile语法完全一样。</p>
-<p>语法：</p>
-<p>fs.appendFile(file,data[,options],callback)</p>
-<p>fs.appendFileSync(file,data[,options])</p>
-<p>返回值：二者都为undefined</p>
-<p>示例代码：</p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><code class="hljs stylus">fs<span class="hljs-selector-class">.append</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;则其善者而从之，其不善者而改之。&#x27;</span>,err=&gt;&#123;<br>	<span class="hljs-built_in">if</span>(err)&#123;<br>	sonsole<span class="hljs-selector-class">.log</span>(<span class="hljs-string">&quot;失败&quot;</span>)<br>	&#125;<br>	comsole<span class="hljs-selector-class">.log</span>(<span class="hljs-string">&#x27;成功&#x27;</span>)<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>createWriteStream流式写入</p>
-<p>语法：fs.createWriteStream(path[,options])</p>
-<p>参数说明：</p>
-<p>path文件路径</p>
-<p>options选项配置（可选）</p>
-<p>返回值：Object</p>
-<p>代码示例：</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">let</span> <span class="hljs-keyword">ws</span> = fs.createWriteStream(<span class="hljs-string">&#x27;./观书有感.txt&#x27;</span>)<br>//写入数据到流<br><span class="hljs-keyword">ws</span>.<span class="hljs-keyword">write</span>(<span class="hljs-string">&#x27;哈哈哈哈&#x27;</span>)<br><span class="hljs-keyword">ws</span>.<span class="hljs-keyword">write</span>(<span class="hljs-string">&#x27;啦啦啦啦&#x27;</span>)<br><span class="hljs-keyword">ws</span>.end()<br></code></pre></td></tr></table></figure>
-
-<p>程序打开一个文件是需要消耗资源的，流式写入可以减少打开关闭文件的次数。流式写入方式适用于 大文件写入或者频繁写入的场景，<code>writeFile</code>适合于 写入频率较低的场景</p>
-<p>文件读取：文件读取顾名思义，就是通过程序从文件中取出其中的数据，我们可以使用如下几种方式：</p>
-<p><img src="image/node/1682426823556.png" alt="1682426823556"></p>
-<p>readFile异步读取</p>
-<p> <strong>语法</strong> : <code>fs.readFile(path[, options], callback)</code></p>
-<p> <strong>参数说明</strong> ：</p>
-<ul>
-<li>path 文件路径</li>
-<li>options 选项配置</li>
-<li>callback 回调函数</li>
-</ul>
-<p><strong>返 回 值 ：</strong> <code>undefined</code></p>
-<p>代码示例：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 导入 fs 模块</span><br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br><br>fs.<span class="hljs-title function_">readFile</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>, <span class="hljs-string">&#x27;uft-8&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">error,data</span>) =&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err) <span class="hljs-keyword">throw</span> err<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data)<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight coffeescript"><table><tr><td class="code"><pre><code class="hljs coffeescript">const rs = fs.createReadStream(<span class="hljs-string">&#x27;../资料/高考加油.mp4&#x27;</span>)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>,chunk=&gt;&#123;<br><br>&#125;)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>,<span class="hljs-function"><span class="hljs-params">()</span>=&gt;</span>&#123;<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>例题：复制文件</p>
-<figure class="highlight livescript"><table><tr><td class="code"><pre><code class="hljs livescript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> rs = fs.createReadStream(<span class="hljs-string">&#x27;../资料/高考加油.mp4&#x27;</span>)<br><span class="hljs-keyword">const</span> ws = fs.createWriteStream(<span class="hljs-string">&#x27;../资料/高考加油复制.mp4&#x27;</span>,)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;data&#x27;</span>,chunk=&gt;&#123;<br>    ws.write(chunk)<br>&#125;)<br>rs.<span class="hljs-literal">on</span>(<span class="hljs-string">&#x27;end&#x27;</span>,()=&gt;&#123;<br>    console.log(<span class="hljs-string">&#x27;完成&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>重命名文件（也可用于更换文件目录）</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">rename</span>(<span class="hljs-string">&#x27;./座右铭.txt&#x27;</span>,<span class="hljs-string">&#x27;./论语.txt&#x27;</span>,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>删除文件方法1（也可用于删除目录）</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">fs.rm(<span class="hljs-string">&#x27;./哈哈.txt&#x27;</span>,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>删除文件方法2</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">unlink</span>(<span class="hljs-string">&#x27;./哈哈.txt&#x27;</span>,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<h3 id="对目录的操作"><a href="#对目录的操作" class="headerlink" title="对目录的操作"></a>对目录的操作</h3><p>删除目录</p>
-<figure class="highlight arcade"><table><tr><td class="code"><pre><code class="hljs arcade">const fs = require(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-comment">//不推荐</span><br>fs.rmdir(<span class="hljs-string">&#x27;./a&#x27;</span>,&#123;<span class="hljs-attr">recursive</span>:<span class="hljs-literal">true</span>&#125;,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br><span class="hljs-comment">//推荐</span><br>fs.rm(<span class="hljs-string">&#x27;./a&#x27;</span>,err=&gt;&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-built_in">console</span>.<span class="hljs-built_in">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>新建目录</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">mkdir</span>(<span class="hljs-string">&#x27;./a/b/c&#x27;</span>,&#123;<span class="hljs-attr">recursive</span>:<span class="hljs-literal">true</span>&#125;,<span class="hljs-function"><span class="hljs-params">err</span>=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>读取目录</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>fs.<span class="hljs-title function_">readdir</span>(<span class="hljs-string">&#x27;../资料&#x27;</span>,<span class="hljs-function">(<span class="hljs-params">err,data</span>)=&gt;</span>&#123;<br>    <span class="hljs-keyword">if</span>(err)&#123;<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;失败！&#x27;</span>);<br>    &#125;<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(data);<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;成功！&#x27;</span>);<br>&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>拼接路径</p>
-<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua">const fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br>const <span class="hljs-built_in">path</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br>// console.<span class="hljs-built_in">log</span>(__dirname + <span class="hljs-string">&#x27;/论语.txt&#x27;</span>);<br>console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">path</span>.resolve(__dirname,<span class="hljs-string">&#x27;./论语.txt&#x27;</span>));<br></code></pre></td></tr></table></figure>
-
-<h3 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h3><p>服务器和浏览器会分别产生响应报文和请求报文，请求报文通常由请求行，请求头和请求体构成</p>
-<p>请求行：url，中文名称“统一资源定位符”，用于定位服务器中的资源，url标准形式为“协议名+主机名+端口+路径+字符串参数”</p>
-<p><img src="image/node/1681300653595.png" alt="1681300653595"></p>
-<p>获取请求头和响应头</p>
-<p><img src="image/node/1681384551111.png" alt="1681384551111"></p>
-<p>url绝对路径：</p>
-<p><img src="image/node/1681473900053.png" alt="1681473900053"></p>
-<p>相对路径：</p>
-<p><img src="image/node/1681473967322.png" alt="1681473967322"></p>
-<p><img src="image/node/1681475952698.png" alt="1681475952698"></p>
-<p><img src="image/node/1682256697178.png" alt="1682256697178"></p>
-<p><img src="image/node/1682328681037.png" alt="1682328681037"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>易易城项目</title>
-    <url>/2023/07/02/%E6%98%93%E6%98%93%E5%9F%8E%E9%A1%B9%E7%9B%AE/</url>
-    <content><![CDATA[<p>搭建项目前准备</p>
-<p>vue3 + vite 本地环境搭建：<br>准备：事先准备好node环境，一般node环境配置完成之后npm版本也相应存在。<br>注意：vite需要node.js版本 &gt;= 12.0.0</p>
-<p>一、搭建项目</p>
-<p>新建项目</p>
-<p>① 运行创建项目命令：命令行输入 npm create vite@latest<br><code>npm create vite@latest</code></p>
-<p>②输入项目名称：在弹出的 Project name 行可自行写创建的vue3项目名称</p>
-<p>③选择前端框架： 选择vue</p>
-<p>④选择项目类型： 选择JavaScript</p>
-<p>⑤创建完毕，根据提示依次执行命令即可完成项目运行。</p>
-<p>二、引入相关插件</p>
-<p>1、引入element-plus</p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><code class="hljs livecodeserver">npm install <span class="hljs-keyword">element</span>-plus <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure>
-
-<p>在main.js中加入如下代码</p>
-<figure class="highlight clean"><table><tr><td class="code"><pre><code class="hljs clean"><span class="hljs-keyword">import</span> ElementPlus <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-plus&#x27;</span><br><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;element-plus/dist/index.css&#x27;</span><br><span class="hljs-keyword">import</span> locale <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;element-plus/lib/locale/lang/zh-cn&quot;</span>;<span class="hljs-comment">//使element-plus文字为中文</span><br>pp.use(ElementPlus, &#123;locale&#125;)<br></code></pre></td></tr></table></figure>
-
-<p>2、引入axios</p>
-<p>运行 <code>npm install axios</code><br>在src目录下新增request.js文件，文件内部配置请求拦截以及响应拦截操作。<br>后续在各请求接口文件内部引入 request.js 文件，并使用。</p>
-<p><code>import request from &#39;@/request&#39;</code></p>
-<p>3、引入vue-router</p>
-<p>运行 <code>npm install vue-router@4 --save</code>。<br>src文件夹下创建router文件夹，router文件夹下创建 index.js  文件。<br>index.js文件内部引入项目路由。<br>并在 main.js 文件内引入 index.js  文件<br><code>import router from &#39;@/router&#39;</code><br><code>app.use(router)</code></p>
-<p>4、引入scss</p>
-<p>项目中有原来给到的css文件，但是我们在修改样式时还是用scss来进行修改</p>
-<p><code>npm install node-sass sass-loader --save-dev</code></p>
-<p>需要自己新建一个文件，路径为 <code>@/assets/style/main.scss</code></p>
-<p>在 vite.config.js 中配置 scss 的全局变量 使用</p>
-<figure class="highlight haxe"><table><tr><td class="code"><pre><code class="hljs haxe">export <span class="hljs-keyword">default</span> defineConfig(&#123;<br>  plugins: <span class="hljs-type"></span>[vue()],<br>  resolve: <span class="hljs-type"></span>&#123;<br>    alias: <span class="hljs-type"></span>&#123;<br>      <span class="hljs-string">&#x27;@&#x27;</span>: <span class="hljs-type">fileURLToPath</span>(<span class="hljs-keyword">new</span> <span class="hljs-type">URL</span>(<span class="hljs-string">&#x27;./src&#x27;</span>, <span class="hljs-keyword">import</span>.meta.url))<br>    &#125;<br>  &#125;,<br>  <span class="hljs-comment">// 上面是默认已存在的  css: &#123;</span><br>    <span class="hljs-comment">// css预处理器</span><br>    preprocessorOptions: <span class="hljs-type"></span>&#123;<br>      scss: <span class="hljs-type"></span>&#123;<br>        <span class="hljs-comment">// 引入 mixin.scss 这样就可以在全局中使用 mixin.scss中预定义的变量了</span><br>        <span class="hljs-comment">// 给导入的路径最后加上 ;</span><br>        additionalData: <span class="hljs-type"></span>&#x27;@<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;@/assets/style/main.scss&quot;</span>;<span class="hljs-string">&#x27;</span><br><span class="hljs-string">      &#125;</span><br><span class="hljs-string">    &#125;</span><br><span class="hljs-string">  &#125;&#125;)</span><br></code></pre></td></tr></table></figure>
-
-<p>三、开发</p>
-<p>1、页面和功能</p>
-<p>本项目开发首页，登录页，注册页，修改密码页，个人信息页，修改密码页，上传商品页，购物车页，结算页，产品页，具体产品页共十一个页面，包含搜索商品、上传商品，登录、注册，修改密码，切换用户，选取商品规格加入购物车，添加删除修改收货地址等功能。</p>
-<p>2、项目亮点</p>
-<p>项目比较简单，我通过封装一些组件，比如导航栏，底部导航和头部信息，很好的实现了组件复用，减少了代码量，有一些功能相近的地方，我也实现了弹框表单复用，比如修改地址和新增地址，我用了同一个表单。同时使用路由懒加载，使得加载速度变快。对axios进行了二次封装，减少了代码重复。</p>
-<p>3、项目难点</p>
-<p>难点好像都是自己创造的，后面补</p>
-]]></content>
-      <categories>
-        <category>项目</category>
-      </categories>
-      <tags>
-        <tag>项目</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>中软国际笔试加一面（前端实习）</title>
-    <url>/2023/03/09/%E4%B8%AD%E8%BD%AF%E5%9B%BD%E9%99%85%E7%AC%94%E8%AF%95%E5%8A%A0%E4%B8%80%E9%9D%A2/</url>
-    <content><![CDATA[<p>笔试（十五题）：</p>
-<p>1、说几个未知宽高元素水平垂直居中的方法。</p>
-<p>2、说一下computed和whtch的区别。</p>
-<p>3、前端存储方式。</p>
-<p>4、什么是跨域，如何解决跨域。</p>
-<p>5、Vue的生命周期，数据在哪个周期加载。</p>
-<p>6、JS数据类型有哪些。</p>
-<p>7、什么是闭包。</p>
-<p>8、数组去重。</p>
-<p>9、实现判断后端请求的函数。</p>
-<p>10、建立一个包含10个10-100的数组并排序。</p>
-<p>11、字符串比对。</p>
-<p>12、组件通信的方式。</p>
-<p>13、说下mixins</p>
-<p>还有两个题目忘记了</p>
-]]></content>
-      <categories>
-        <category>工作</category>
-      </categories>
-      <tags>
-        <tag>Work</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>尚品汇项目难点亮点</title>
-    <url>/2023/04/02/%E5%B0%9A%E5%93%81%E6%B1%87%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h3><p>获取路由信息:$route（只可以读取路由信息，如果要进行路由操作需要用$$router进行)；在项目中，我们有些页面需要展示Footer组件内容，有些页面不需要展示Footer组件内容，我通过在路由信息中添加meta元素，再由页面通过读取meta元素配合v-if控制是否展示。路由跳转有两种方式：声明式导航（<code>&lt;router-view&gt;</code>和 <code>&lt;router-link&gt;</code>搭配）和编程式导航（this.$router.push()或$this.router.replace()）。在项目中，我们重写了push方法和replace方法，为什么需要重写，这是因为在编程式导航时，我们多次点击跳转时，会抛出异常，我们可以在push方法参数中传入成功的回调和失败的回调函数解决，但是在项目中我们多次用到编程式导航，所以选择重写。声明式导航不会报错，因为声明式导航内部已经解决这个问题。</p>
-<h3 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h3><p>防抖节流：lodash</p>
-<p>轮播图:swiper</p>
-<p>uuid:临时id（面试不用说这个，不合业务逻辑）</p>
-<p>页面假数据：mokejs</p>
-<h3 id="home主页"><a href="#home主页" class="headerlink" title="home主页"></a>home主页</h3><p>三级路由</p>
-<h3 id="搜索页面"><a href="#搜索页面" class="headerlink" title="搜索页面"></a>搜索页面</h3><h3 id="购物车业务"><a href="#购物车业务" class="headerlink" title="购物车业务"></a>购物车业务</h3><h3 id="登录注册"><a href="#登录注册" class="headerlink" title="登录注册"></a>登录注册</h3><h3 id="路由守卫"><a href="#路由守卫" class="headerlink" title="路由守卫"></a>路由守卫</h3><p>在项目中，我用到了前置路由守卫，用于判断用户是否登录，如果登录，则不许用户回到登录页面，如果用户未登录，则不许进入购物车页面。路由守卫有三个参数，第一个参数from是跳转前路径，第二个参数to是跳转后路径，第三个参数next方法是跳转方法。</p>
-<h3 id="项目难点"><a href="#项目难点" class="headerlink" title="项目难点"></a>项目难点</h3><p>(1)、在路由跳转使用编程式导航时，我设置点击搜索进入搜索页，当我一次点击多下时，控制台会抛出异常，我开始不明白为什么，后面查到当点击多次时，当push方法内部检查到跳转路由没有变化时，会抛出一个失败的Promise，这里解决方式有两种，第一种是每次使用push方法时在push方法中添加两个箭头函数作为成功和失败的回调。第二种是重写push和replace方法。</p>
-<p>(2)、在做轮播图时，刚开始将new Swiper放在mounted中，但是请求是异步的，new Swiper时数据可能还没有获取到，解决办法，将new Swiper放在watch监听里，并将immediate设置为true</p>
-<h3 id="项目亮点"><a href="#项目亮点" class="headerlink" title="项目亮点"></a>项目亮点</h3><p>封装分页器组件，需要的数据：一页展示多少条数据，总共有多少条数据，连续页数，当前是第几页</p>
-]]></content>
-      <categories>
-        <category>项目</category>
-      </categories>
-      <tags>
-        <tag>Project</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>第一周任务</title>
-    <url>/2023/05/08/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/</url>
-    <content><![CDATA[<h3 id="第一天工作安排"><a href="#第一天工作安排" class="headerlink" title="第一天工作安排"></a>第一天工作安排</h3><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552602215.png" alt="1683552602215"></p>
-<h4 id="第一天任务完成答案："><a href="#第一天任务完成答案：" class="headerlink" title="第一天任务完成答案："></a>第一天任务完成答案：</h4><p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683552737235.png" alt="1683552737235"></p>
-<p>克隆仓库：</p>
-<p><code>git clone 仓库名</code></p>
-<p>创建个人新分支</p>
-<p><code>git checkout -b 分支名   //创建并切换本地分支</code></p>
-<p>更改文件</p>
-<p>推送到远程分支</p>
-<p><code>git push origin 本地分支名：远程分支名   //有参数可以用</code></p>
-<p>合并远程分支</p>
-<p><code>git merge 分支名称   //会有合并冲突</code></p>
-<p>解决合并冲突</p>
-<p>1、找到代码进行更改</p>
-<p>2、<code>git add .</code></p>
-<p>3、<code>git commit -m &quot; 注释&quot;</code></p>
-<h3 id="第二和第三天工作安排"><a href="#第二和第三天工作安排" class="headerlink" title="第二和第三天工作安排"></a>第二和第三天工作安排</h3><p>这两天做了一个登录界面并实现了一些交互。</p>
-<p>页面如下：<a href="https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/%E4%BA%91%E5%8F%B7?node-id=31:5633" title="设计稿">https://www.figma.com/file/G1exX9RoQrZBi1sErGzpBf/云号?node-id=31%3A5633</a></p>
-<p><img src="image/%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BB%BB%E5%8A%A1/1683788178152.png" alt="1683788178152"></p>
-<ul>
-<li>要求<ul>
-<li>遵循开发规范</li>
-<li>完成静态页面开发</li>
-<li>可参考原代码，不要照抄</li>
-<li>不使用ipu-开头的className</li>
-<li>不使用Mobile和IpuMobile对象</li>
-<li>所有消息提示，调用this.$util.modal.toast(message)提示，如手机号码不正确（原工程看，输入不规范的消息是在页面里显示文字）</li>
-</ul>
-</li>
-<li>完成页面交互<ul>
-<li>点击第一个输入框后的小图标，显示弹框</li>
-<li>验证码输入框，在点击获取获取验证码后才可编辑输入</li>
-<li>点获取验证码，验证手机号格式正确后，才发送验证码</li>
-<li>发送验证码后，发送验证码60s倒计时，倒计时内不可再点击</li>
-<li>点击登录，验证手机号，验证码已输入，并勾选同意隐私协议，调用登录接口进行登录</li>
-<li>登录成功后，提示登录成功，并保存登录手机号，下次进入登录页面时，手机输入框显示最近登录成功的手机号</li>
-<li>点击’《云号APP用户隐私政策》’进入路由名称为’PrivacyPolicy’页面</li>
-</ul>
-</li>
-<li>接口及参数说明<br>工程中定义了接口模拟<br>import { subnumManageApi, accountManageApi } from ‘../../api’<br>// 获取验证码接口，只能给13112341234的手机发送短信<br>accountManageApi.getMessageCode({phone：’手机号’})<br>// 调用登录接口，手机号只能为13112341234，验证码只能为123456<br>accountManageApi.login({‘phone’:’13112341234’, code::’123456’})</li>
-</ul>
-<h4 id="移动端样式差异"><a href="#移动端样式差异" class="headerlink" title="移动端样式差异"></a>移动端样式差异</h4><ul>
-<li><p>适配vw + rem</p>
-</li>
-<li><p>切图使用2倍图，图片为展示尺寸2倍，尽量使用长宽相等切图</p>
-</li>
-<li><p>适配宽度范围</p>
-<ul>
-<li>320~480自适应范围</li>
-<li>小于320，按320尺寸展示</li>
-<li>大于480尺寸，按480尺寸时显示</li>
-</ul>
-</li>
-<li><p>0.5px边框：不能直接定义0.5px边框，可能不显示，一般使用伪元素定义1px边框，0.5倍缩放</p>
-</li>
-<li><p>设计稿页面上一般有手机系统工具栏区域，h5界面是不处理这个区域，考虑边距时要减掉这块的高度</p>
-<h4 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h4></li>
-<li><p>知道了在vue项目中进行移动端适配（之前都是写html页面）</p>
-</li>
-<li><p>了解了一些开发上面的规范，命名规范还有文件夹功能</p>
-</li>
-<li><p>感觉很棒，很久没有写过css了，重新温习了一遍</p>
-<p>写页面应该尽量做到如下：</p>
-<p>尽量自适应<br>少使用绝对定位：根据边距来确定位置<br>少用固定尺寸<br>宽度百分百不要再定义<br>相同样式复用</p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>测试属性（判断属性是否在对象中）</title>
-    <url>/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</url>
-    <content><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p>
-<span id="more"></span>
-
-<h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p>
-<p>let o = { x: 1}</p>
-<p>“x” in o               //true</p>
-<p>“y” in o              //false</p>
-<p>“toString” in o          //true (继承属性)</p>
-<h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p>
-<p>let o = { x: 1}</p>
-<p>o.hasOwnProperty(“x”)              //true</p>
-<h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p>
-<h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>
-]]></content>
-      <categories>
-        <category>知识</category>
-      </categories>
-      <tags>
-        <tag>基础知识</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>项目遇见的问题</title>
-    <url>/2023/08/11/%E9%A1%B9%E7%9B%AE%E9%9A%BE%E7%82%B9/</url>
-    <content><![CDATA[<p>1、在完成林大优选项目时，获取一级下拉框数据并渲染到选择框时，下拉框数据总是显示无数据，但是在开发者工具中又显示下拉框数据有值，困扰了我好一会儿。</p>
-<p>部分代码如下</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><code class="hljs javascript"><br><span class="hljs-comment">//html</span><br>&lt;el-select v-model=<span class="hljs-string">&quot;c1&quot;</span> placeholder=<span class="hljs-string">&quot;请选择&quot;</span>&gt;<br>                        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">el-option</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;item in c1Arr&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;item?.id&quot;</span> <span class="hljs-attr">:label</span>=<span class="hljs-string">&quot;item?.name&quot;</span> <span class="hljs-attr">:value</span>=<span class="hljs-string">&quot;item?.id&quot;</span> /&gt;</span></span><br>                &lt;/el-select&gt;<br><br><span class="hljs-comment">//js</span><br><span class="hljs-comment">//一级分类数组</span><br><span class="hljs-keyword">let</span> c1Arr = <span class="hljs-title function_">reactive</span>([])<br><span class="hljs-comment">//一级选择框的值</span><br><span class="hljs-keyword">let</span> c1 = <span class="hljs-title function_">ref</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br><span class="hljs-comment">//获取一级分类方法</span><br><span class="hljs-keyword">const</span> <span class="hljs-title function_">getC1</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-keyword">let</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">reqC1</span>()<br>    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res);<br>    <span class="hljs-keyword">if</span> (res.<span class="hljs-property">code</span> == <span class="hljs-number">200</span>) &#123;<br>        c1Arr.<span class="hljs-property">value</span> = res.<span class="hljs-property">data</span><br>        c1.<span class="hljs-property">value</span> = c1Arr[<span class="hljs-number">0</span>]?.<span class="hljs-property">name</span><br>    &#125;<br>&#125;<br><span class="hljs-title function_">onMounted</span>(<span class="hljs-function">() =&gt;</span> [<br>    <span class="hljs-title function_">getC1</span>()<br>])<br></code></pre></td></tr></table></figure>
-
-<p>解决：不断思考，最后想会不会是ref和reactive定义响应式数据由区别的原因，因为我之前完成公司项目的时候就是用的ref没有问题，但是我现在用reactive就出现了问题。在查阅官方文档后，我发现了问题，在官方文档中对于reactive有这样一段话：</p>
-<p><code>reactive()</code> API 有一些局限性：</p>
-<ol>
-<li><strong>有限的值类型</strong> ：它只能用于对象类型 (对象、数组和如 <code>Map</code>、<code>Set</code> 这样的<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects#keyed_collections">集合类型</a>)。它不能持有如 <code>string</code>、<code>number</code> 或 <code>boolean</code> 这样的<a href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive">原始类型</a>。</li>
-<li><strong>不能替换整个对象</strong> ：由于 Vue 的响应式跟踪是通过属性访问实现的，因此我们必须始终保持对响应式对象的相同引用。这意味着我们不能轻易地“替换”响应式对象，因为这样的话与第一个引用的响应性连接将丢失。</li>
-<li><strong>对解构操作不友好</strong> ：当我们将响应式对象的原始类型属性解构为本地变量时，或者将该属性传递给函数时，我们将丢失响应性连接。</li>
-</ol>
-<p>上面第二点中，在整个过程中，reactive声明的对象需要保持引用地址不变。所以在上面代码中，我们可以不用reactive声明，改用ref，解决问题。</p>
-]]></content>
-      <categories>
-        <category>项目</category>
-      </categories>
-      <tags>
-        <tag>项目</tag>
-      </tags>
   </entry>
 </search>

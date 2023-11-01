@@ -16,15 +16,15 @@
   <meta name="author" content="Yellow One">
   <meta name="keywords" content="">
   
-    <meta name="description" content="今天遇见一个业务需求，在前端页面中有这样一个功能，点击下载图标，实现下载文件功能，后端接口返回的数据格式是二进制流。且数据格式与其他接口有所区别（其他接口数据在response.data.data中，这个接口数据在response.data中）。所以我需要解决两个点，1、数据格式处理，因为同事在响应拦截器中进行处理了，返回给接口封装函数的数据就是response.data.data，所以我在用那个">
+    <meta name="description" content="12345678910const res &#x3D; await monitor.downloadSnapshot(str)  const blob &#x3D; new Blob([res],&amp;#123;type:&amp;#x27;application&#x2F;zip&amp;#x27;&amp;#125;)  const url &#x3D; URL.createObjectURL(blob)  const downloadLink &#x3D; docum">
 <meta property="og:type" content="article">
 <meta property="og:title" content="后端传数据流前端处理问题">
 <meta property="og:url" content="https://github.com/hy5555/hy5555.github.io.git/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Yellow One">
-<meta property="og:description" content="今天遇见一个业务需求，在前端页面中有这样一个功能，点击下载图标，实现下载文件功能，后端接口返回的数据格式是二进制流。且数据格式与其他接口有所区别（其他接口数据在response.data.data中，这个接口数据在response.data中）。所以我需要解决两个点，1、数据格式处理，因为同事在响应拦截器中进行处理了，返回给接口封装函数的数据就是response.data.data，所以我在用那个">
+<meta property="og:description" content="12345678910const res &#x3D; await monitor.downloadSnapshot(str)  const blob &#x3D; new Blob([res],&amp;#123;type:&amp;#x27;application&#x2F;zip&amp;#x27;&amp;#125;)  const url &#x3D; URL.createObjectURL(blob)  const downloadLink &#x3D; docum">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-26T12:05:33.896Z">
-<meta property="article:modified_time" content="2023-08-18T07:32:25.930Z">
+<meta property="article:modified_time" content="2023-10-19T02:53:51.719Z">
 <meta property="article:author" content="Yellow One">
 <meta property="article:tag" content="技术记录">
 <meta name="twitter:card" content="summary_large_image">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          879 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          10 分钟
+          8 分钟
         
       </span>
     
@@ -290,8 +290,7 @@
             
               <div class="markdown-body">
                 
-                <p>今天遇见一个业务需求，在前端页面中有这样一个功能，点击下载图标，实现下载文件功能，后端接口返回的数据格式是二进制流。且数据格式与其他接口有所区别（其他接口数据在response.data.data中，这个接口数据在response.data中）。所以我需要解决两个点，1、数据格式处理，因为同事在响应拦截器中进行处理了，返回给接口封装函数的数据就是response.data.data，所以我在用那个传文件接口的时候加了一个请求头“file:true”，然后在响应拦截器中进行判断，如果响应体中存在此属性，则返回response.data,否则返回response.data.data。2、处理二进制流文件，首先时按照网上常规的方法进行，</p>
-<figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure>
+                <figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure>
 
 <p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p>
 <figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs oxygene"><span class="hljs-comment">//下载快照</span><br>downloadSnapshot(name<br><span class="hljs-comment">&#123;</span><br><span class="hljs-comment">return request(&#123;</span><br><span class="hljs-comment">url:/api/v2/snapshot/download?target=$&#123;name&#125;</span>,<br><span class="hljs-keyword">method</span>:<span class="hljs-string">&#x27;post&#x27;</span>,<br>file: <span class="hljs-keyword">true</span>,<br>responseType: <span class="hljs-string">&#x27;arraybuffer&#x27;</span>,<br>headers: <span class="hljs-comment">&#123; &#x27;Content-Type&#x27;: &#x27;multipart/form-data&#x27;)</span><br></code></pre></td></tr></table></figure>
