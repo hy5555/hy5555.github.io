@@ -6,7 +6,7 @@
   <link href="https://github.com/hy5555/hy5555.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/hy5555/hy5555.github.io.git/"/>
-  <updated>2023-11-01T09:07:14.607Z</updated>
+  <updated>2025-02-12T14:08:01.206Z</updated>
   <id>https://github.com/hy5555/hy5555.github.io.git/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>25年元宵节一些小小的思考</title>
+    <link href="https://github.com/hy5555/hy5555.github.io.git/2025/02/12/25%E5%B9%B4%E8%A7%84%E5%88%92/"/>
+    <id>https://github.com/hy5555/hy5555.github.io.git/2025/02/12/25%E5%B9%B4%E8%A7%84%E5%88%92/</id>
+    <published>2025-02-12T13:39:20.894Z</published>
+    <updated>2025-02-12T14:08:01.206Z</updated>
+    
+    <content type="html"><![CDATA[<hr><p>今天是2025年的元宵节，这周工作很多，让我感觉压力有点大，工作的事情工作时再说，这两天我有种不想在公司继续干了的想法，毕业进公司已经七个多月了，工作上琐碎的事情让我心烦意乱，总觉得自己身处围城其中，经常想要逃离这个地方，但是听朋友们的话语和网上的言论，感觉围城之外还是围城，但是心里还是觉得，自己需要一定的能力，当想走出围城的时候，就能够走出围城。</p><p>盘一下自己目前的技术栈，Vue3，element plus组件库，前端三件套。</p><p>想要跳出去，需要学习uniapp，做至少两个项目，一个壁纸项目已经选好了，另外一个待确定，express框架也需要重新温习一下了，再还有就是微前端，这是一个点，四月前学习uniapp，每天抽出一个小时，或者定下看三集网课，五月学习express，六月学习微前端，平时需要润色简历和记录问题以及解决办法。</p><p>工作之中，尽量提高工作效率，不懂的就去问，脸皮厚一点，把其他人想的好一点。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;hr&gt;
+&lt;p&gt;今天是2025年的元宵节，这周工作很多，让我感觉压力有点大，工作的事情工作时再说，这两天我有种不想在公司继续干了的想法，毕业进公司已经七个多月了，工作上琐碎的事情让我心烦意乱，总觉得自己身处围城其中，经常想要逃离这个地方，但是听朋友们的话语和网上的言论，感觉围城之</summary>
+      
+    
+    
+    
+    <category term="乱讲" scheme="https://github.com/hy5555/hy5555.github.io.git/categories/%E4%B9%B1%E8%AE%B2/"/>
+    
+    
+    <category term="乱讲" scheme="https://github.com/hy5555/hy5555.github.io.git/tags/%E4%B9%B1%E8%AE%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>git常规使用</title>
@@ -461,23 +486,6 @@
     
     
     <category term="基础知识" scheme="https://github.com/hy5555/hy5555.github.io.git/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>箭头函数与普通函数this指向的问题</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/20/this%E6%8C%87%E5%90%91/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/20/this%E6%8C%87%E5%90%91/</id>
-    <published>2023-02-20T12:17:09.653Z</published>
-    <updated>2023-06-21T01:03:16.041Z</updated>
-    
-    <content type="html"><![CDATA[<p>箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，</p><span id="more"></span><p>普通函数的上下文或this值是全局对象（Window），在严格模式下，普通函数的上下文或this值是undefined。箭头函数与普通函数不同，箭头函数总是继承自身定义环境的this值，也就是看箭头函数外部的this值，倘若箭头函数存在于方法中，则箭头函数的this值就是调用此方法的对象，箭头函数适用于许多场景，例如在ES6之前，在嵌套函数中，内部函数与外部函数this指向并不一定相同，通常的解决办法是将外部函数的this复制于某个变量，内部函数再使用此变量，在ES6之后，将内部函数写成箭头函数，可更好的解决此问题，因为内部箭头函数继承了外部函数的this值。在Vue中使用axios时，then()函数和catch()函数通常也以箭头函数作为参数，防止this指向出错。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;箭头函数是ES6定义的一种新的定义函数的方式。在非严格模式下，&lt;/p&gt;</summary>
-    
-    
-    
     
   </entry>
   

@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Vue面试题 |  Yellow One</title>
+      <title>归档: 2025/2 |  Yellow One</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -64,188 +64,68 @@
       
     <main class="content on">
       <section class="outer">
-  <article
-  id="post-Vue面试题"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Vue面试题
-</h1>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" class="article-date">
-  <time datetime="2023-08-07T08:15:32.462Z" itemprop="datePublished">2023-08-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E9%9D%A2%E8%AF%95/">面试</a>
-  </div>
   
-<div class="word_count">
-    <span class="post-time">
-        <span class="post-meta-item-icon">
-            <i class="ri-quill-pen-line"></i>
-            <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">560</span>
-        </span>
-    </span>
-
-    <span class="post-time">
-        &nbsp; | &nbsp;
-        <span class="post-meta-item-icon">
-            <i class="ri-book-open-line"></i>
-            <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
-        </span>
-    </span>
-</div>
- 
-    </div>
-      
-    <div class="tocbot"></div>
-
-
-
-
-  
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="1、Vue实例挂载的过程中发生了什么？"><a href="#1、Vue实例挂载的过程中发生了什么？" class="headerlink" title="1、Vue实例挂载的过程中发生了什么？"></a>1、Vue实例挂载的过程中发生了什么？</h3><p>是什么？</p>
-<p>Vue实例挂载过程是指将Vue实例与DOM元素关联起来的过程。</p>
-<p>发生了什么？</p>
-<p>1、初始化数据（props，methods，data）。</p>
-<p>2、Vue会将模板编译成渲染函数，这样可以将数据动态地渲染到视图中。</p>
-<p>3、Vue根据渲染函数生成虚拟DOM。</p>
-<p>4、新旧虚拟DOM会进行对比，进行更新。</p>
-<p>5、将最新的虚拟DOM挂载到指定的元素上。</p>
-<h3 id="2、v-if和v-for的优先级是什么？"><a href="#2、v-if和v-for的优先级是什么？" class="headerlink" title="2、v-if和v-for的优先级是什么？"></a>2、v-if和v-for的优先级是什么？</h3><p>结论：在Vue2中，v-for优先级高于v-if，在Vue3中，v-if优先级高于v-for。</p>
-<p>使用：不建议v-for和v-if同时使用，在Vue2中同时使用，由于v-for优先级高，所以无论v-if表达式是true还是false，标签都会被渲染后再进行条件判断。在Vue3中同时使用，由于v-if优先级高，v-if不能访问v-for中的变量，有时会影响我们使用。</p>
-<p>建议：有同时使用的需要时，可以在元素外面加入一层temlate标签。</p>
-<h3 id="3、为什么Vue中data属性是一个函数而不是一个对象。"><a href="#3、为什么Vue中data属性是一个函数而不是一个对象。" class="headerlink" title="3、为什么Vue中data属性是一个函数而不是一个对象。"></a>3、为什么Vue中data属性是一个函数而不是一个对象。</h3><p>防止每个组件实例对象共用一个data，使用函数，使得每个组件实例对象的data是一份单独的拷贝。</p>
-<h3 id="4、Vue2和Vue3响应式原理"><a href="#4、Vue2和Vue3响应式原理" class="headerlink" title="4、Vue2和Vue3响应式原理"></a>4、Vue2和Vue3响应式原理</h3><p>在Vue2中，利用的是原生JS下边的Object.defineProperty()来进行数据劫持，通过里面的getter和setter方法来进行数据的查看和修改。</p>
-<p>Vue2响应式数据实现的缺陷：1、无法监听对象的新增和删除属性。2、无法监听数组方法，当监听的下标对应数据发生改变。</p>
-<p>在Vue3中，对于对象类型的数据，是通过Proxy，创建一个对象的代理，实现数据的响应式。</p>
-<h3 id="5、组件和插件有什么区别？"><a href="#5、组件和插件有什么区别？" class="headerlink" title="5、组件和插件有什么区别？"></a>5、组件和插件有什么区别？</h3><p>概念：组件：在Vue中，每个.vue文件都可以视作一个组件，组件就是把图形、非图形的各种逻辑抽象为一个统一的概念来进行开发的模式。</p>
-<p>插件：通常为Vue添加全局功能。</p>
-<p>区别：1、编写模式不同</p>
-<p>2、使用方法不同</p>
- 
-      <!-- reward -->
-      
-    </div>
+  <ul class="ads">
     
-
-    <!-- copyright -->
-    
-    <div class="declare">
-      <ul class="post-copyright">
         <li>
-          <i class="ri-copyright-line"></i>
-          <strong>版权声明： </strong>
-          
-          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
-          
+            <a target="_blank" rel="noopener" href="https://curl.qcloud.com/kvO7hb43">
+                <img src="https://pic.imgdb.cn/item/62174b452ab3f51d912a5ccc.jpg" width="300" alt="云服务器限时秒杀">
+            </a>
         </li>
-      </ul>
-    </div>
     
-    <footer class="article-footer">
+        <li>
+            <a target="_blank" rel="noopener" href="https://www.vultr.com/?ref=8630075">
+                <img src="https://pic.imgdb.cn/item/62174b452ab3f51d912a5cd7.png" width="300" alt="vultr优惠vps">
+            </a>
+        </li>
+    
+</ul>
+  
+  
+  <article class="articles">
+    
+    
+    <h1 class="page-type-title">2025/2</h1>
+    
+    
+  
+  
+  
+  
+  
+  
+  <div class="archives-wrap">
+    <div class="archive-year-wrap">
+      <a href="/archives/2025" class="archive-year">2025</a>
+    </div>
+    <div class="archives">
+      
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2025/02/12/25%E5%B9%B4%E8%A7%84%E5%88%92/" class="archive-article-date">
+  <time datetime="2025-02-12T13:39:20.894Z" itemprop="datePublished">02/12</time>
+</a>
        
-<div class="share-btn">
-      <span class="share-sns share-outer">
-        <i class="ri-share-forward-line"></i>
-        分享
-      </span>
-      <div class="share-wrap">
-        <i class="arrow"></i>
-        <div class="share-icons">
-          
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="ri-weibo-fill"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="ri-wechat-fill"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="ri-qq-fill"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="ri-douban-line"></i>
-          </a>
-          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a> -->
-          
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="ri-facebook-circle-fill"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="ri-twitter-fill"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="ri-google-fill"></i>
-          </a>
-        </div>
-      </div>
-</div>
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2025/02/12/25%E5%B9%B4%E8%A7%84%E5%88%92/"
+    >25年元宵节一些小小的思考</a> 
+</h2>
+ 
 
-<div class="wx-share-modal">
-    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2023/08/07/Vue%E9%9D%A2%E8%AF%95%E9%A2%98/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
-
-    </footer>
+    </header>
+    
+    
   </div>
-
-   
-  <nav class="article-nav">
-    
-      <a href="/2023/08/11/%E9%A1%B9%E7%9B%AE%E9%9A%BE%E7%82%B9/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            项目遇见的问题
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2023/08/03/Vue3%E6%8F%92%E6%A7%BD/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Vue3插槽</div>
-      </a>
-    
-  </nav>
+</article>
+      
+      
+    </div>
+  </div>
+  
+  
 
   
-   
-    
-    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
-    <div id="twikoo" class="twikoo"></div>
-    <script>
-        twikoo.init({
-            envId: ""
-        })
-    </script>
- 
-</article>
-
 </section>
       <footer class="footer">
   <div class="outer">
@@ -392,22 +272,6 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
- 
-<script src="/js/tocbot.min.js"></script>
-
-<script>
-  tocbot.init({
-    tocSelector: ".tocbot",
-    contentSelector: ".article-entry",
-    headingSelector: "h1, h2, h3, h4, h5, h6",
-    hasInnerContainers: true,
-    scrollSmooth: true,
-    scrollContainer: "main",
-    positionFixedSelector: ".tocbot",
-    positionFixedClass: "is-position-fixed",
-    fixedSidebarOffset: "auto",
-  });
-</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link
