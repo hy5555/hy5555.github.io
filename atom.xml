@@ -6,7 +6,7 @@
   <link href="https://github.com/hy5555/hy5555.github.io.git/atom.xml" rel="self"/>
   
   <link href="https://github.com/hy5555/hy5555.github.io.git/"/>
-  <updated>2025-02-12T14:08:01.206Z</updated>
+  <updated>2025-02-20T15:06:42.800Z</updated>
   <id>https://github.com/hy5555/hy5555.github.io.git/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue3+Vite的环境配置</title>
+    <link href="https://github.com/hy5555/hy5555.github.io.git/2025/02/20/Vue3+Vite%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>https://github.com/hy5555/hy5555.github.io.git/2025/02/20/Vue3+Vite%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</id>
+    <published>2025-02-20T14:59:51.428Z</published>
+    <updated>2025-02-20T15:06:42.800Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1、是什么"><a href="#1、是什么" class="headerlink" title="1、是什么"></a>1、是什么</h4><p>Vite的import.meta.env可以全局使用，其中默认具有一些属性(MODE,DEV,PROD,SSR,BASE_YRL),如果你需要扩展更多的环境变量，可以使用.env文件来丰富。</p><h4 id="2、做什么"><a href="#2、做什么" class="headerlink" title="2、做什么"></a>2、做什么</h4><p>env中有一些常用配置：<br>    MODE，用来指明现在所处于的模式，一般通过它进行不同环境的区分，比如 dev、test、pre、prd 等等，默认为：“development”<br>    BASE_URL，用来请求静态资源初始的 url<br>    PROD，用来判断当前环境是否是正式环境<br>    DEV，用来与 PROD 相反的环境<br>    SSR，用来判断是否是服务端渲染的环境</p><pre><code>可以根据这些配置，来区分不同模式下的差异</code></pre><h4 id="3、如何做"><a href="#3、如何做" class="headerlink" title="3、如何做"></a>3、如何做</h4><p>1、在项目根目录下新建.env文件</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#必须使用<span class="variable constant_">VITE</span>开头的配置信息，否则无法生效</span><br><span class="line"><span class="variable constant_">VITE_APP_ENV</span> = <span class="string">&#x27;prod&#x27;</span></span><br><span class="line">#自动获取地址推荐</span><br><span class="line"><span class="variable constant_">VITE_APP_BASE_URL</span> = <span class="string">&#x27;&#x27;</span><span class="comment">//代理地址</span></span><br></pre></td></tr></table></figure><p>如果不想使用VITE开头，也可以更改，<br>在vite.config.ts文件中添加 envPrefix:”HY”//HY为自定义开头名</p><p>2、在package.json中设置启动和打包命令</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vite --mode serve-dev&quot;</span><span class="punctuation">,</span><span class="comment">//运行取.env.serve-dev里面的配置</span></span><br><span class="line">    <span class="attr">&quot;build:test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vite build --mode  build-test&quot;</span><span class="punctuation">,</span><span class="comment">//打包取.env.build-test文件里面的配置</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vite build --mode build&quot;</span><span class="punctuation">,</span><span class="comment">//打包取.env.build文件里面的配置</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure><p>说明：<br>.env.[mode]的优先级比.env文件的优先级高</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;1、是什么&quot;&gt;&lt;a href=&quot;#1、是什么&quot; class=&quot;headerlink&quot; title=&quot;1、是什么&quot;&gt;&lt;/a&gt;1、是什么&lt;/h4&gt;&lt;p&gt;Vite的import.meta.env可以全局使用，其中默认具有一些属性(MODE,DEV,PROD,SSR,BA</summary>
+      
+    
+    
+    
+    <category term="学习" scheme="https://github.com/hy5555/hy5555.github.io.git/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Vue" scheme="https://github.com/hy5555/hy5555.github.io.git/categories/%E5%AD%A6%E4%B9%A0/Vue/"/>
+    
+    
+    <category term="学习" scheme="https://github.com/hy5555/hy5555.github.io.git/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="Vue" scheme="https://github.com/hy5555/hy5555.github.io.git/tags/Vue/"/>
+    
+  </entry>
   
   <entry>
     <title>25年元宵节一些小小的思考</title>
@@ -465,27 +493,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>测试属性（判断属性是否在对象中）</title>
-    <link href="https://github.com/hy5555/hy5555.github.io.git/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/"/>
-    <id>https://github.com/hy5555/hy5555.github.io.git/2023/02/22/%E6%B5%8B%E8%AF%95%E5%B1%9E%E6%80%A7/</id>
-    <published>2023-02-22T11:36:22.717Z</published>
-    <updated>2023-11-01T09:06:26.317Z</updated>
-    
-    <content type="html"><![CDATA[<p>JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。</p><span id="more"></span><h3 id="1、in"><a href="#1、in" class="headerlink" title="1、in"></a>1、in</h3><p>in操作符要求左边是一个属性名，右边是一个对象。如果对象有包含相应名字的自有属性或继承属性，将返回true。</p><p>let o = { x: 1}</p><p>“x” in o               //true</p><p>“y” in o              //false</p><p>“toString” in o          //true (继承属性)</p><h3 id="2、hasOwnProperty"><a href="#2、hasOwnProperty" class="headerlink" title="2、hasOwnProperty()"></a>2、hasOwnProperty()</h3><p>用于测试对象是否包含相应名字的自有属性，如有，返回true，对继承的属性返回false。</p><p>let o = { x: 1}</p><p>o.hasOwnProperty(“x”)              //true</p><h3 id="3、propertyIsEnumerable"><a href="#3、propertyIsEnumerable" class="headerlink" title="3、propertyIsEnumerable()"></a>3、propertyIsEnumerable()</h3><p>此方法在hasOwnProperty()方法的基础上，如果测试对象自有属性不可枚举，也返回false。</p><h3 id="4、"><a href="#4、" class="headerlink" title="4、!=="></a>4、!==</h3><p>缺点是无法判断o中定义为undefined的属性。</p>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;JavaScript对象可以被想象成一组属性，实际开发中经常需要测试这组属性的成员关系，即检查对象中是否有一个给定名字的属性。有以下方法。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学习" scheme="https://github.com/hy5555/hy5555.github.io.git/categories/%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="基础知识" scheme="https://github.com/hy5555/hy5555.github.io.git/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     
   </entry>
   
