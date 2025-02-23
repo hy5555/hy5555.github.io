@@ -182,6 +182,67 @@
     
     
     <article
+  id="post-后端传数据流前端处理问题"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/"
+    >后端传数据流前端处理问题</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/26/%E5%90%8E%E7%AB%AF%E4%BC%A0%E6%95%B0%E6%8D%AE%E6%B5%81%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2023-07-26T12:05:33.896Z" itemprop="datePublished">2023-07-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs qml"><span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> monitor.downloadSnapshot(str)<br>  <span class="hljs-keyword">const</span> blob = <span class="hljs-keyword">new</span> Blob([res],&#123;<span class="hljs-attribute">type</span>:<span class="hljs-string">&#x27;application/zip&#x27;</span>&#125;)<br>  <span class="hljs-keyword">const</span> <span class="hljs-built_in">url</span> = URL.createObjectURL(blob)<br>  <span class="hljs-keyword">const</span> downloadLink = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">&#x27;a&#x27;</span>);<br>  downloadLink.href = <span class="hljs-built_in">url</span>;<br>  downloadLink.download = <span class="hljs-string">`<span class="hljs-subst">$&#123;str&#125;</span>.zip`</span>; <span class="hljs-comment">// 设置下载的文件名</span><br>  <span class="hljs-built_in">document</span>.body.appendChild(downloadLink);<br>  downloadLink.click();<br>  URL.revokeObjectURL(<span class="hljs-built_in">url</span>);<br>  <span class="hljs-built_in">document</span>.body.removeChild(downloadLink);<br></code></pre></td></tr></table></figure>
+
+<p>这样处理可以处理.txt文件，但是我这里需要下载的是压缩包，压缩包下载下来不太对头，几个G，不可能文件这么大，后面问了mentor，发现需要在接口方法中加入字段。</p>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs oxygene"><span class="hljs-comment">//下载快照</span><br>downloadSnapshot(name<br><span class="hljs-comment">&#123;</span><br><span class="hljs-comment">return request(&#123;</span><br><span class="hljs-comment">url:/api/v2/snapshot/download?target=$&#123;name&#125;</span>,<br><span class="hljs-keyword">method</span>:<span class="hljs-string">&#x27;post&#x27;</span>,<br>file: <span class="hljs-keyword">true</span>,<br>responseType: <span class="hljs-string">&#x27;arraybuffer&#x27;</span>,<br>headers: <span class="hljs-comment">&#123; &#x27;Content-Type&#x27;: &#x27;multipart/form-data&#x27;)</span><br></code></pre></td></tr></table></figure>
+
+<p>然后就成功解决了。</p>
+<ul>
+<li><code>responseType: &#39;arraybuffer&#39;</code> 表示希望将响应数据以二进制数组（ArrayBuffer）的形式返回，而不是默认的字符串或 JSON 格式。适用于需要处理二进制数据（例如图片、音频、视频等）的情况。</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/" rel="tag">技术记录</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-易易城项目"
   class="article article-type-post"
   itemscope
@@ -769,55 +830,6 @@
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Project/" rel="tag">Project</a></li></ul>
 
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-Vue3第一天"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/"
-    >Vue3</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/02/23/Vue3%E7%AC%AC%E4%B8%80%E5%A4%A9/" class="article-date">
-  <time datetime="2023-02-23T03:33:45.555Z" itemprop="datePublished">2023-02-23</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h3 id="setup"><a href="#setup" class="headerlink" title="setup"></a>setup</h3><p>setup配置项是vue3中新添加的配置项，组件所用到的数据、方法等等均放在此配置项中。setup返回值有两种，一种是返回对象，还有一种是返回自定义渲染模板（render函数）。在vue3中使用setup无疑比vue2更接近原生JS。</p>
-<h3 id="ref和reactive"><a href="#ref和reactive" class="headerlink" title="ref和reactive"></a>ref和reactive</h3><p>ref和reactive是两个函数，使用时需要引入，ref函数用来定义基本数据类型，reactive函数用来定义复杂数据类型，使其数据成为响应式。在vue2中，通过Object.defineProperty()函数中的set和get方法来实现数据劫持，在删除属性和添加属性上有一定的不便之处，在vue3中通过这两个函数可以解决这个问题。ref定义的值获取通过xxx.value获取。</p>
-<h3 id="computed函数"><a href="#computed函数" class="headerlink" title="computed函数"></a>computed函数</h3><p>使用前需要引入，写入setup中</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
     </footer>
   </div>
 

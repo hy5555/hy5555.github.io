@@ -65,7 +65,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-Vue3+Vite的环境配置"
+  id="post-VSCode中写Vue3项目配置别名"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -84,11 +84,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2025/02/20/Vue3+Vite%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-date">
-  <time datetime="2025-02-20T14:59:51.428Z" itemprop="datePublished">2025-02-20</time>
+      <a href="/2025/02/23/VSCode%E4%B8%AD%E5%86%99Vue3%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D/" class="article-date">
+  <time datetime="2025-02-23T14:53:04.732Z" itemprop="datePublished">2025-02-23</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/Vue/">Vue</a>
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E9%85%8D%E7%BD%AE/">配置</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E9%85%8D%E7%BD%AE/VSCode/">VSCode</a>
   </div>
   
 <div class="word_count">
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">369</span>
+            <span class="post-count">444</span>
         </span>
     </span>
 
@@ -105,7 +105,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -120,18 +120,38 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h4 id="1、是什么"><a href="#1、是什么" class="headerlink" title="1、是什么"></a>1、是什么</h4><p>Vite的import.meta.env可以全局使用，其中默认具有一些属性(MODE,DEV,PROD,SSR,BASE_YRL),如果你需要扩展更多的环境变量，可以使用.env文件来丰富。</p>
-<h4 id="2、做什么"><a href="#2、做什么" class="headerlink" title="2、做什么"></a>2、做什么</h4><p>env中有一些常用配置：<br>    MODE，用来指明现在所处于的模式，一般通过它进行不同环境的区分，比如 dev、test、pre、prd 等等，默认为：“development”<br>    BASE_URL，用来请求静态资源初始的 url<br>    PROD，用来判断当前环境是否是正式环境<br>    DEV，用来与 PROD 相反的环境<br>    SSR，用来判断是否是服务端渲染的环境</p>
-<pre><code>可以根据这些配置，来区分不同模式下的差异
-</code></pre>
-<h4 id="3、如何做"><a href="#3、如何做" class="headerlink" title="3、如何做"></a>3、如何做</h4><p>1、在项目根目录下新建.env文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#必须使用<span class="variable constant_">VITE</span>开头的配置信息，否则无法生效</span><br><span class="line"><span class="variable constant_">VITE_APP_ENV</span> = <span class="string">&#x27;prod&#x27;</span></span><br><span class="line">#自动获取地址推荐</span><br><span class="line"><span class="variable constant_">VITE_APP_BASE_URL</span> = <span class="string">&#x27;&#x27;</span><span class="comment">//代理地址</span></span><br></pre></td></tr></table></figure>
+  <h1 id="Vue3项目路径别名配置终极指南（VSCode-Vite-TypeScript）"><a href="#Vue3项目路径别名配置终极指南（VSCode-Vite-TypeScript）" class="headerlink" title="Vue3项目路径别名配置终极指南（VSCode + Vite + TypeScript）"></a>Vue3项目路径别名配置终极指南（VSCode + Vite + TypeScript）</h1><h2 id="一、核心配置四部曲"><a href="#一、核心配置四部曲" class="headerlink" title="一、核心配置四部曲"></a>一、核心配置四部曲</h2><h3 id="1-VSCode智能提示支持"><a href="#1-VSCode智能提示支持" class="headerlink" title="1. VSCode智能提示支持"></a>1. VSCode智能提示支持</h3><p> <strong>插件安装</strong> **：  **</p>
+<ul>
+<li><strong>Path Intellisense（路径自动补全）</strong></li>
+<li><strong>Volar（Vue3语法支持）</strong><br><strong>设置映射关系</strong> <strong>（.vscode/settings.json）：</strong></li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;path-intellisense.mappings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;/src&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;typescript.preferences.importModuleSpecifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;non-relative&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
 
-<p>如果不想使用VITE开头，也可以更改，<br>在vite.config.ts文件中添加 envPrefix:”HY”//HY为自定义开头名</p>
-<p>2、在package.json中设置启动和打包命令</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;dev&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vite --mode serve-dev&quot;</span><span class="punctuation">,</span><span class="comment">//运行取.env.serve-dev里面的配置</span></span><br><span class="line">    <span class="attr">&quot;build:test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vite build --mode  build-test&quot;</span><span class="punctuation">,</span><span class="comment">//打包取.env.build-test文件里面的配置</span></span><br><span class="line">    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vite build --mode build&quot;</span><span class="punctuation">,</span><span class="comment">//打包取.env.build文件里面的配置</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-Vite工程配置（vite-config-ts）"><a href="#2-Vite工程配置（vite-config-ts）" class="headerlink" title="2. Vite工程配置（vite.config.ts）"></a>2. Vite工程配置（vite.config.ts）</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">vue</span>()],</span><br><span class="line">  <span class="attr">resolve</span>: &#123;</span><br><span class="line">    <span class="attr">alias</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;@&#x27;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;src&#x27;</span>),</span><br><span class="line">      <span class="comment">// 扩展示例</span></span><br><span class="line">      <span class="string">&#x27;@components&#x27;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;src/components&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<p>说明：<br>.env.[mode]的优先级比.env文件的优先级高</p>
+<h3 id="3-TypeScript配置（tsconfig-json）"><a href="#3-TypeScript配置（tsconfig-json）" class="headerlink" title="3. TypeScript配置（tsconfig.json）"></a>3. TypeScript配置（tsconfig.json）</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;src/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;@components/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;src/components/*&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;types&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;vite/client&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;include&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;src/**/*.ts&quot;</span><span class="punctuation">,</span> <span class="string">&quot;src/**/*.d.ts&quot;</span><span class="punctuation">,</span> <span class="string">&quot;src/**/*.vue&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-类型声明文件（src-vite-env-d-ts）"><a href="#4-类型声明文件（src-vite-env-d-ts）" class="headerlink" title="4. 类型声明文件（src/vite-env.d.ts）"></a>4. 类型声明文件（src/vite-env.d.ts）</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解决Vue文件导入报红</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&#x27;*.vue&#x27;</span> &#123;</span><br><span class="line">  <span class="keyword">import</span> <span class="keyword">type</span> &#123; <span class="title class_">DefineComponent</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">component</span>: <span class="title class_">DefineComponent</span>&lt;&#123;&#125;, &#123;&#125;, <span class="built_in">any</span>&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> component</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 支持别名路径类型识别</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&#x27;@/*&#x27;</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="built_in">any</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二、关键注意事项"><a href="#二、关键注意事项" class="headerlink" title="二、关键注意事项"></a>二、关键注意事项</h2><ol>
+<li><strong>依赖安装</strong><br>必须安装类型声明包：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @types/node --save-dev</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>路径验证方法</strong></li>
+</ol>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在任意文件测试</span></span><br><span class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">&#x27;@/config&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Button</span> <span class="keyword">from</span> <span class="string">&#x27;@components/Button.vue&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li><strong>路径解析流程图解</strong></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VSCode智能提示 → Path Intellisense → tsconfig路径映射 → Vite实际解析</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、高级优化方案"><a href="#三、高级优化方案" class="headerlink" title="三、高级优化方案"></a>三、高级优化方案</h2><h3 id="1-智能提示增强"><a href="#1-智能提示增强" class="headerlink" title="1. 智能提示增强"></a>1. 智能提示增强</h3><p><strong>创建全局类型声明（types/global.d.ts）：</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&#x27;@/*&#x27;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="attr">value</span>: <span class="built_in">any</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-多环境配置示例"><a href="#2-多环境配置示例" class="headerlink" title="2. 多环境配置示例"></a>2. 多环境配置示例</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">createAlias</span> = (<span class="params"><span class="attr">dir</span>: <span class="built_in">string</span></span>) =&gt; path.<span class="title function_">resolve</span>(__dirname, dir)</span><br><span class="line"><span class="attr">resolve</span>: &#123;</span><br><span class="line">  <span class="attr">alias</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;@&#x27;</span>: <span class="title function_">createAlias</span>(<span class="string">&#x27;src&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;@core&#x27;</span>: <span class="title function_">createAlias</span>(<span class="string">&#x27;src/core&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;@test&#x27;</span>: <span class="title function_">createAlias</span>(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
@@ -196,12 +216,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2025/02/20/Vue3+Vite%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2025/02/23/VSCode%E4%B8%AD%E5%86%99Vue3%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li></ul>
 
     </footer>
   </div>
@@ -209,19 +229,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2025/02/23/VSCode%E4%B8%AD%E5%86%99Vue3%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Vue3+Vite的环境配置
-          
-        </div>
-      </a>
     
-    
-      <a href="/2025/02/12/25%E5%B9%B4%E8%A7%84%E5%88%92/" class="article-nav-link">
+      <a href="/2025/02/20/Vue3+Vite%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">25年元宵节一些小小的思考</div>
+        <div class="article-nav-title">Vue3+Vite的环境配置</div>
       </a>
     
   </nav>
