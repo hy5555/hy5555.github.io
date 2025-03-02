@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Vue3+Vite的环境配置 |  Yellow One</title>
+      <title>Vue+Vite项目编写插件更改打包产物结构 |  Yellow One</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -65,7 +65,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-VSCode中写Vue3项目配置别名"
+  id="post-Vue+Vite项目编写插件更改打包产物结构"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -76,7 +76,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Vue3+Vite的环境配置
+  Vue+Vite项目编写插件更改打包产物结构
 </h1>
  
 
@@ -84,11 +84,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2025/02/23/VSCode%E4%B8%AD%E5%86%99Vue3%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D/" class="article-date">
-  <time datetime="2025-02-23T14:53:04.732Z" itemprop="datePublished">2025-02-23</time>
+      <a href="/2025/03/02/Vue+Vite%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99%E6%8F%92%E4%BB%B6%E6%9B%B4%E6%94%B9%E6%89%93%E5%8C%85%E4%BA%A7%E7%89%A9%E7%BB%93%E6%9E%84/" class="article-date">
+  <time datetime="2025-03-02T07:21:38.012Z" itemprop="datePublished">2025-03-02</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E9%85%8D%E7%BD%AE/">配置</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E9%85%8D%E7%BD%AE/VSCode/">VSCode</a>
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/Vue/">Vue</a> / <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/Vue/Vite/">Vite</a>
   </div>
   
 <div class="word_count">
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">444</span>
+            <span class="post-count">853</span>
         </span>
     </span>
 
@@ -105,7 +105,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -120,38 +120,43 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="Vue3项目路径别名配置终极指南（VSCode-Vite-TypeScript）"><a href="#Vue3项目路径别名配置终极指南（VSCode-Vite-TypeScript）" class="headerlink" title="Vue3项目路径别名配置终极指南（VSCode + Vite + TypeScript）"></a>Vue3项目路径别名配置终极指南（VSCode + Vite + TypeScript）</h1><h2 id="一、核心配置四部曲"><a href="#一、核心配置四部曲" class="headerlink" title="一、核心配置四部曲"></a>一、核心配置四部曲</h2><h3 id="1-VSCode智能提示支持"><a href="#1-VSCode智能提示支持" class="headerlink" title="1. VSCode智能提示支持"></a>1. VSCode智能提示支持</h3><p> <strong>插件安装</strong> **：  **</p>
-<ul>
-<li><strong>Path Intellisense（路径自动补全）</strong></li>
-<li><strong>Volar（Vue3语法支持）</strong><br><strong>设置映射关系</strong> <strong>（.vscode/settings.json）：</strong></li>
+  <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p><strong>在公司项目中，使用到了微前端，主应用和子应用部署在两台机器上，所以主应用打包后的产物里面的配置文件中的转发域名，在不同的环境里面是不同的，客户更新环境时，希望只替换资源文件，而不替换配置文件。那么主应用中的打包产物结构就应该变换一下，将资源文件放在一个目录（web），将配置文件放在一个目录（conf），提供给客户的包应该去掉conf这个目录。</strong></p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p><strong>编写一个插件，改变打包产物目录结构，接下来我将写一个demo，将除index.html文件的其他资源文件放入web目录下。</strong></p>
+<p><strong>首先确定思路</strong></p>
+<p><strong>1、将资源文件放进web目录下</strong></p>
+<p><strong>2、修改index.html文件中的引用路径</strong></p>
+<p><strong>3、将public静态资源的文件移到web目录下面</strong></p>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ul>
+<li><strong>安装</strong>Cheerio库</li>
 </ul>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;path-intellisense.mappings&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@&quot;</span><span class="punctuation">:</span> <span class="string">&quot;$&#123;workspaceFolder&#125;/src&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;typescript.preferences.importModuleSpecifier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;non-relative&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm i cheerio</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-Vite工程配置（vite-config-ts）"><a href="#2-Vite工程配置（vite-config-ts）" class="headerlink" title="2. Vite工程配置（vite.config.ts）"></a>2. Vite工程配置（vite.config.ts）</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span></span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">vue</span>()],</span><br><span class="line">  <span class="attr">resolve</span>: &#123;</span><br><span class="line">    <span class="attr">alias</span>: &#123;</span><br><span class="line">      <span class="string">&#x27;@&#x27;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;src&#x27;</span>),</span><br><span class="line">      <span class="comment">// 扩展示例</span></span><br><span class="line">      <span class="string">&#x27;@components&#x27;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;src/components&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>在根目录下新建plugin目录</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">import &#123; readFileSync &#125; from &#x27;fs&#x27;</span><br><span class="line">import path from &#x27;path&#x27;</span><br><span class="line">import &#123; createRequire &#125; from &#x27;module&#x27;</span><br><span class="line">import fs from &#x27;fs&#x27;</span><br><span class="line">const require = createRequire(import.meta.url)</span><br><span class="line">const cheerio = require(&#x27;cheerio&#x27;)</span><br><span class="line">export default function customOutputDir(options = &#123;&#125;) &#123;</span><br><span class="line">  const dirName = options.dirName || &#x27;web&#x27;</span><br><span class="line">  let outputPath = &#x27;&#x27;</span><br><span class="line">  return &#123;</span><br><span class="line">    name: &#x27;custom-output-dir&#x27;,</span><br><span class="line">    enforce: &#x27;post&#x27;,</span><br><span class="line">    configResolved(config) &#123;</span><br><span class="line">      outputPath = path.resolve(config.root, config.build.outDir)</span><br><span class="line">    &#125;,</span><br><span class="line">    generateBundle(outputOptions, bundle) &#123;</span><br><span class="line">      const htmlEntries = []</span><br><span class="line">      // 处理所有构建文件</span><br><span class="line">      for (const [filename, assetInfo] of Object.entries(bundle)) &#123;</span><br><span class="line">        if (filename === &#x27;index.html&#x27;) &#123;</span><br><span class="line">          htmlEntries.push(assetInfo)</span><br><span class="line">          continue</span><br><span class="line">        &#125;</span><br><span class="line">        // 修改文件路径并标准化路径</span><br><span class="line">        const newFileName = path.join(dirName, filename).replace(/\\/g, &#x27;/&#x27;)</span><br><span class="line">        assetInfo.fileName = newFileName</span><br><span class="line">      &#125;</span><br><span class="line">      // 处理HTML中的资源引用</span><br><span class="line">      htmlEntries.forEach(assetInfo =&gt; &#123;</span><br><span class="line">        const $ = cheerio.load(assetInfo.source)</span><br><span class="line">      </span><br><span class="line">        // 处理所有资源引用</span><br><span class="line">        $(&#x27;script[src], link[href], img[src], source[src]&#x27;).each((_, el) =&gt; &#123;</span><br><span class="line">          const attributes = el.attribs</span><br><span class="line">          const attr = &#x27;src&#x27; in attributes ? &#x27;src&#x27; : &#x27;href&#x27;</span><br><span class="line">          const originalPath = attributes[attr]</span><br><span class="line">          if (!originalPath || /^(https?:|data:)/.test(originalPath)) return</span><br><span class="line">          // 标准化路径处理</span><br><span class="line">          let normalizedPath = originalPath</span><br><span class="line">            .replace(/^\/+/, &#x27;&#x27;)         // 去除开头的斜杠</span><br><span class="line">            .replace(/^\.\/+/, &#x27;&#x27;)       // 去除开头的./ </span><br><span class="line">            .replace(/\/+/g, &#x27;/&#x27;)        // 合并多个斜杠</span><br><span class="line">          // 构建新路径</span><br><span class="line">          const newPath = path.posix.join(dirName, normalizedPath)</span><br><span class="line">          </span><br><span class="line">          // 处理绝对路径和相对路径</span><br><span class="line">          if (originalPath.startsWith(&#x27;/&#x27;)) &#123;</span><br><span class="line">            attributes[attr] = `/$&#123;newPath&#125;`</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            attributes[attr] = `./$&#123;newPath&#125;` // 始终使用相对路径</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">        assetInfo.source = $.html()</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 处理public目录文件</span><br><span class="line">    async writeBundle() &#123;</span><br><span class="line">      const movePublicFiles = (dir) =&gt; &#123;</span><br><span class="line">        const files = fs.readdirSync(dir)</span><br><span class="line">      </span><br><span class="line">        files.forEach(file =&gt; &#123;</span><br><span class="line">          const fullPath = path.join(dir, file)</span><br><span class="line">          const stats = fs.statSync(fullPath)</span><br><span class="line">          if (stats.isDirectory() &amp;&amp; file !== &#x27;web&#x27;) &#123;</span><br><span class="line">            movePublicFiles(fullPath)</span><br><span class="line">          &#125; else if (!stats.isDirectory() &amp;&amp; file !== &#x27;index.html&#x27;) &#123;</span><br><span class="line">            const relativePath = path.relative(outputPath, dir)</span><br><span class="line">            const destDir = path.join(</span><br><span class="line">              outputPath,</span><br><span class="line">              dirName,</span><br><span class="line">              relativePath === &#x27;.&#x27; ? &#x27;&#x27; : relativePath</span><br><span class="line">            )</span><br><span class="line">          </span><br><span class="line">            fs.mkdirSync(destDir, &#123; recursive: true &#125;)</span><br><span class="line">            fs.renameSync(fullPath, path.join(destDir, file))</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">      movePublicFiles(outputPath)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="3-TypeScript配置（tsconfig-json）"><a href="#3-TypeScript配置（tsconfig-json）" class="headerlink" title="3. TypeScript配置（tsconfig.json）"></a>3. TypeScript配置（tsconfig.json）</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;compilerOptions&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;baseUrl&quot;</span><span class="punctuation">:</span> <span class="string">&quot;.&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;paths&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;@/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;src/*&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;@components/*&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;src/components/*&quot;</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;types&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;vite/client&quot;</span><span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;include&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;src/**/*.ts&quot;</span><span class="punctuation">,</span> <span class="string">&quot;src/**/*.d.ts&quot;</span><span class="punctuation">,</span> <span class="string">&quot;src/**/*.vue&quot;</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>在vite.config.ts中引入插件</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//更改打包产物目录结构</span><br><span class="line">import customOutputDir from &#x27;./plugin/custom-output-dir&#x27;</span><br></pre></td></tr></table></figure>
 
-<h3 id="4-类型声明文件（src-vite-env-d-ts）"><a href="#4-类型声明文件（src-vite-env-d-ts）" class="headerlink" title="4. 类型声明文件（src/vite-env.d.ts）"></a>4. 类型声明文件（src/vite-env.d.ts）</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解决Vue文件导入报红</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&#x27;*.vue&#x27;</span> &#123;</span><br><span class="line">  <span class="keyword">import</span> <span class="keyword">type</span> &#123; <span class="title class_">DefineComponent</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line">  <span class="keyword">const</span> <span class="attr">component</span>: <span class="title class_">DefineComponent</span>&lt;&#123;&#125;, &#123;&#125;, <span class="built_in">any</span>&gt;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> component</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 支持别名路径类型识别</span></span><br><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&#x27;@/*&#x27;</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> <span class="built_in">any</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>在plugins配置中添加以下内容</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//更改打包产物目录结构</span><br><span class="line">import customOutputDir from &#x27;./plugin/custom-output-dir&#x27;</span><br><span class="line"></span><br><span class="line">export default defineConfig((&#123; command, mode &#125;) =&gt; &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">      customOutputDir(&#123;</span><br><span class="line">        dirName: &#x27;web&#x27; // 可自定义目录名称</span><br><span class="line">      &#125;),</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
-<h2 id="二、关键注意事项"><a href="#二、关键注意事项" class="headerlink" title="二、关键注意事项"></a>二、关键注意事项</h2><ol>
-<li><strong>依赖安装</strong><br>必须安装类型声明包：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @types/node --save-dev</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>打包</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm build</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li><strong>路径验证方法</strong></li>
-</ol>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在任意文件测试</span></span><br><span class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">&#x27;@/config&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Button</span> <span class="keyword">from</span> <span class="string">&#x27;@components/Button.vue&#x27;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>打包产物结构</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dist/</span><br><span class="line">├─ index.html         # 保留在根目录</span><br><span class="line">└─ web/              # 新增子目录</span><br><span class="line">   ├─ assets/</span><br><span class="line">   │  └─ main.1234.js</span><br><span class="line">   └─ images/</span><br><span class="line">      └─ logo.png</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li><strong>路径解析流程图解</strong></li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VSCode智能提示 → Path Intellisense → tsconfig路径映射 → Vite实际解析</span><br></pre></td></tr></table></figure>
-
-<h2 id="三、高级优化方案"><a href="#三、高级优化方案" class="headerlink" title="三、高级优化方案"></a>三、高级优化方案</h2><h3 id="1-智能提示增强"><a href="#1-智能提示增强" class="headerlink" title="1. 智能提示增强"></a>1. 智能提示增强</h3><p><strong>创建全局类型声明（types/global.d.ts）：</strong></p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="variable language_">module</span> <span class="string">&#x27;@/*&#x27;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="attr">value</span>: <span class="built_in">any</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> value</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-多环境配置示例"><a href="#2-多环境配置示例" class="headerlink" title="2. 多环境配置示例"></a>2. 多环境配置示例</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.ts</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">createAlias</span> = (<span class="params"><span class="attr">dir</span>: <span class="built_in">string</span></span>) =&gt; path.<span class="title function_">resolve</span>(__dirname, dir)</span><br><span class="line"><span class="attr">resolve</span>: &#123;</span><br><span class="line">  <span class="attr">alias</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;@&#x27;</span>: <span class="title function_">createAlias</span>(<span class="string">&#x27;src&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;@core&#x27;</span>: <span class="title function_">createAlias</span>(<span class="string">&#x27;src/core&#x27;</span>),</span><br><span class="line">    <span class="string">&#x27;@test&#x27;</span>: <span class="title function_">createAlias</span>(<span class="string">&#x27;test&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p><strong>除了背景里面我说的场景，更改打包产物结构，还适用于多环境构建，不同环境构建到不同子目录（根据nginx配置来设置不同环境的打包名称）。</strong></p>
  
       <!-- reward -->
       
@@ -216,12 +221,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2025/02/23/VSCode%E4%B8%AD%E5%86%99Vue3%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com/hy5555/hy5555.github.io.git/2025/03/02/Vue+Vite%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99%E6%8F%92%E4%BB%B6%E6%9B%B4%E6%94%B9%E6%89%93%E5%8C%85%E4%BA%A7%E7%89%A9%E7%BB%93%E6%9E%84/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vite/" rel="tag">Vite</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
 
     </footer>
   </div>
@@ -229,17 +234,8 @@
    
   <nav class="article-nav">
     
-      <a href="/2025/03/02/Vue+Vite%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99%E6%8F%92%E4%BB%B6%E6%9B%B4%E6%94%B9%E6%89%93%E5%8C%85%E4%BA%A7%E7%89%A9%E7%BB%93%E6%9E%84/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Vue+Vite项目编写插件更改打包产物结构
-          
-        </div>
-      </a>
     
-    
-      <a href="/2025/02/20/Vue3+Vite%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="article-nav-link">
+      <a href="/2025/02/23/VSCode%E4%B8%AD%E5%86%99Vue3%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E5%88%AB%E5%90%8D/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">Vue3+Vite的环境配置</div>
       </a>
